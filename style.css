@@ -27,6 +27,7 @@ nav {
     padding: 40px 0;
     z-index: 100;
     gap: 15px; /* Space between logo and links */
+    z-index: 100;
 }
 
 .logo {
