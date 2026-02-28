@@ -57,10 +57,10 @@ nav a:hover { opacity: 1; }
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertical Center */
-    align-items: center;     /* Horizontal Center */
-    text-align: center;      /* Text line Center */
-    padding: 0 10%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden; /* Add this line! */
 }
 
 
