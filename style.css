@@ -98,3 +98,27 @@ footer {
     font-size: 0.7rem;
     z-index: 10;
 }
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 100vh; /* Keeps it full screen height */
+    }
+
+    .hero-bg {
+        /* This ensures the 'important' part of your image stays visible */
+        object-position: center center; 
+        width: auto;
+        height: 100%;
+        min-width: 100vw;
+    }
+
+    h1 {
+        font-size: 2.8rem; /* Shrinks the text so it doesn't overlap */
+        line-height: 1.1;
+    }
+
+    .hero-sub {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+}
