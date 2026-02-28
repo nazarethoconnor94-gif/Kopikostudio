@@ -4,129 +4,80 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    background-color: #000; /* Fallback black */
+    background-color: #000; /* Only shows if image fails */
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
 * { box-sizing: border-box; }
 
-/* --- 2. NAVIGATION (CENTERED) --- */
-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    padding: 50px 0;
-    z-index: 100;
-    gap: 12px;
-}
-
-.logo {
-    font-weight: 600;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 1rem;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.8rem;
-    opacity: 0.6;
-    letter-spacing: 1px;
-}
-
-/* --- 3. HERO SECTION (THE CENTERING ENGINE) --- */
+/* --- 2. THE HERO (MUST BE TRANSPARENT) --- */
 .hero-section {
     position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Vertical center */
-    align-items: center;     /* Horizontal center */
-    text-align: center;
-    overflow: hidden;        /* Keeps the image from leaking out */
+    justify-content: center;
+    align-items: center;
+    background: transparent; /* This ensures the black doesn't cover the photo */
+    overflow: hidden;
 }
-
-
 
 .hero-bg {
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    /* This 'transform' is the magic for PC centering */
-    transform: translate(-50%, -50%); 
-    z-index: -1;
-    filter: brightness(0.45);
+    transform: translate(-50%, -50%);
+    z-index: -1; /* This pushes it BEHIND everything else */
+    filter: brightness(0.5); /* Dims it so text pops */
+    display: block;
 }
 
 
 
-/* --- 4. CONTENT --- */
+/* --- 3. THE TEXT (MUST BE ON TOP) --- */
 .hero-content {
+    position: relative;
+    z-index: 10; /* This pulls the text FORWARD */
     color: white;
-    max-width: 850px;
-    padding: 0 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-}
-
-.est-badge {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 0.7rem;
-    margin-bottom: 20px;
-    color: rgba(255,255,255,0.5);
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
 }
 
 h1 {
-    font-size: clamp(2.5rem, 10vw, 5.5rem);
-    line-height: 0.95;
-    margin-bottom: 30px;
-    letter-spacing: -0.05em;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1;
+    margin: 20px 0;
 }
 
-.hero-sub {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    opacity: 0.7;
-    max-width: 500px;
-}
-
-/* --- 5. THE BUTTON --- */
-.cta {
-    display: inline-block;
-    background: white;
-    color: black;
-    padding: 20px 45px;
-    border-radius: 100px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
-}
-
-.cta:hover { transform: scale(1.05); }
-
-/* --- 6. FOOTER --- */
-footer {
+/* --- 4. NAVIGATION --- */
+nav {
     position: absolute;
-    bottom: 30px;
+    top: 0;
     width: 100%;
-    text-align: center;
-    color: rgba(255,255,255,0.3);
-    font-size: 0.75rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    background: transparent;
+}
+
+.logo {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 10px;
 }
