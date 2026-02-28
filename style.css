@@ -1,11 +1,11 @@
-/* --- The "Edge-to-Edge" Reset --- */
+/* --- 1. THE EDGE-TO-EDGE RESET --- */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow-x: hidden; /* Stops horizontal scrolling */
-    background-color: #000; /* Background color while image loads */
+    overflow-x: hidden; /* Prevents side-scrolling */
+    background-color: #111; /* Dark fallback while image loads */
     font-family: 'Inter', sans-serif;
 }
 
@@ -13,7 +13,7 @@ html, body {
     box-sizing: border-box;
 }
 
-/* --- Navigation --- */
+/* --- 2. NAVIGATION --- */
 nav {
     position: absolute;
     top: 0;
@@ -27,30 +27,34 @@ nav {
 
 .logo {
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: white;
-    letter-spacing: -0.02em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 nav a {
     text-decoration: none;
     color: white;
-    font-size: 0.9rem;
-    margin-left: 30px;
+    font-size: 0.85rem;
     opacity: 0.7;
     transition: 0.3s;
+    letter-spacing: 1px;
 }
 
 nav a:hover { opacity: 1; }
 
-/* --- Full Screen Hero --- */
+/* --- 3. THE HERO SECTION (CENTERED) --- */
 .hero-section {
     position: relative;
-    width: 100vw;   /* 100% of the window width */
-    height: 100vh;  /* 100% of the window height */
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    align-items: center;
-    padding: 0 8%;
+    flex-direction: column;
+    justify-content: center; /* Centers text vertically */
+    align-items: center;     /* Centers text horizontally */
+    text-align: center;      /* Centers individual lines of text */
+    padding: 0 5%;
 }
 
 .hero-bg {
@@ -59,61 +63,68 @@ nav a:hover { opacity: 1; }
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This is what makes it hit the edges perfectly */
+    object-fit: cover;      /* Fills the screen */
+    object-position: center; /* Centers the actual photo content */
     z-index: -1;
-    filter: brightness(0.5); /* Dims the image for readability */
+    filter: brightness(0.5); /* Dims photo so text is readable */
 }
 
-/* --- Typography --- */
+/* --- 4. TYPOGRAPHY --- */
 .hero-content {
     color: white;
-    max-width: 700px;
+    max-width: 900px;
+    z-index: 10;
 }
 
 .est-badge {
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.75rem;
+    letter-spacing: 3px;
+    font-size: 0.7rem;
     margin-bottom: 20px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.5);
 }
 
 h1 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    line-height: 1;
+    font-size: clamp(2.5rem, 10vw, 5.5rem);
+    line-height: 0.95;
     font-weight: 600;
-    margin-bottom: 25px;
-    letter-spacing: -0.04em;
+    margin-bottom: 30px;
+    letter-spacing: -0.05em;
 }
 
 .hero-sub {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    opacity: 0.8;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 45px;
+    opacity: 0.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* --- Button --- */
+/* --- 5. THE BUTTON --- */
 .cta {
     display: inline-block;
     background: white;
     color: black;
-    padding: 18px 35px;
+    padding: 20px 45px;
     border-radius: 100px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
 }
 
 .cta:hover {
     transform: scale(1.05);
 }
 
-/* --- Footer --- */
+/* --- 6. FOOTER --- */
 footer {
     position: absolute;
     bottom: 30px;
-    left: 8%;
-    color: rgba(255,255,255,0.4);
-    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
 }
