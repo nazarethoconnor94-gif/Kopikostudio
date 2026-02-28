@@ -98,36 +98,3 @@ footer {
     font-size: 0.7rem;
     z-index: 10;
 }
-/* --- ONLY FOR MOBILE (SCREENS SMALLER THAN 768px) --- */
-@media (max-width: 768px) {
-    .hero-bg {
-        /* This tells the browser: "On phone, ignore the PC centering 
-           and slide the photo until the people are in the middle." */
-        object-position: 25% center; 
-        
-        /* Ensures the photo stays full height on the phone */
-        height: 100%;
-        width: auto;
-        min-width: 100vw;
-    }
-}
-
-
-    .hero-bg {
-        /* This ensures the 'important' part of your image stays visible */
-        object-position: center center; 
-        width: auto;
-        height: 100%;
-        min-width: 100vw;
-    }
-
-    h1 {
-        font-size: 2.8rem; /* Shrinks the text so it doesn't overlap */
-        line-height: 1.1;
-    }
-
-    .hero-sub {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-}
