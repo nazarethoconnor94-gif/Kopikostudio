@@ -1,135 +1,87 @@
-/* --- 1. GLOBAL RESET --- */
+/* --- GLOBAL RESET --- */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: #000; /* Only shows if image fails */
+    background-color: #000;
     font-family: 'Inter', sans-serif;
     color: white;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 * { box-sizing: border-box; }
 
-/* --- 2. NAVIGATION (CENTERED) --- */
+/* --- NAV (CENTERED) --- */
 nav {
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     display: flex;
-    flex-direction: column; 
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 50px 0;
+    padding: 40px 0;
     z-index: 100;
-    background: transparent;
 }
 
 .logo {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-size: 1.1rem;
 }
 
 nav a {
-    text-decoration: none;
     color: white;
+    text-decoration: none;
     font-size: 0.8rem;
     opacity: 0.6;
     margin-top: 10px;
-    transition: 0.3s;
 }
 
-nav a:hover { opacity: 1; }
-
-/* --- 3. HERO SECTION (CENTRE-LOCK) --- */
+/* --- HERO (CENTRE-LOCK) --- */
 .hero-section {
     position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Vertical centering */
-    align-items: center;     /* Horizontal centering */
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    overflow: hidden;
-    background: transparent;
 }
 
 
 
-/* --- 4. THE BACKGROUND IMAGE --- */
 .hero-bg {
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    /* This transform ensures the center of the image stays in the center of the PC screen */
-    transform: translate(-50%, -50%); 
-    z-index: -1; /* Pushes image BEHIND the text */
-    filter: brightness(0.5); /* Dims the photo so text is readable */
-    display: block;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Keeping background on layer 1 */
+    filter: brightness(0.5);
 }
 
-
-
-/* --- 5. CONTENT LAYERING --- */
 .hero-content {
     position: relative;
-    z-index: 10; /* Pulls text in front of the image */
-    max-width: 850px;
+    z-index: 10; /* Keeping text on layer 10 (on top) */
+    max-width: 800px;
     padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.est-badge {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 0.7rem;
-    margin-bottom: 20px;
-    color: rgba(255,255,255,0.5);
 }
 
 h1 {
-    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-size: clamp(2.5rem, 8vw, 5rem);
     line-height: 1;
-    margin-bottom: 30px;
-    letter-spacing: -0.05em;
+    margin: 20px 0;
 }
 
-.hero-sub {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    opacity: 0.7;
-    max-width: 500px;
-}
-
-/* --- 6. THE BUTTON --- */
 .cta {
     display: inline-block;
     background: white;
     color: black;
-    padding: 20px 45px;
+    padding: 18px 40px;
     border-radius: 100px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s ease;
 }
-
-.cta:hover { transform: scale(1.05); }
-
-/* --- 7. FOOTER --- */
-footer {
-    position: absolute;
-    bottom: 30px;
-    width: 100%;
-    text-
