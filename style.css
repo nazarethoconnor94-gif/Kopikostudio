@@ -1,4 +1,4 @@
-/* --- GLOBAL RESET --- */
+/* --- 1. RESET --- */
 html, body {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ html, body {
 
 * { box-sizing: border-box; }
 
-/* --- NAV (CENTERED) --- */
+/* --- 2. CENTERED NAV --- */
 nav {
     position: absolute;
     top: 0;
@@ -38,14 +38,14 @@ nav a {
     margin-top: 10px;
 }
 
-/* --- HERO (CENTRE-LOCK) --- */
+/* --- 3. CENTERED HERO --- */
 .hero-section {
     position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Vertical center */
+    align-items: center;     /* Horizontal center */
     text-align: center;
 }
 
@@ -58,16 +58,19 @@ nav a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: translate(-50%, -50%);
-    z-index: 1; /* Keeping background on layer 1 */
+    transform: translate(-50%, -50%); /* Keeps image centered on PC */
+    z-index: 1; 
     filter: brightness(0.5);
 }
 
 .hero-content {
     position: relative;
-    z-index: 10; /* Keeping text on layer 10 (on top) */
+    z-index: 10; /* Text sits on top of image */
     max-width: 800px;
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -84,4 +87,14 @@ h1 {
     border-radius: 100px;
     text-decoration: none;
     font-weight: 600;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.7rem;
+    z-index: 10;
 }
