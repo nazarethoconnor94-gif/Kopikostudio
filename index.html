@@ -17,9 +17,10 @@
         </div>
     </div>
 
+    <!-- The container that holds the 3-column grid -->
     <div class="main-layout">
         
-        <aside class="side-column"></aside>
+        <aside class="noir-frame"></aside>
 
         <main class="hero">
             <nav>
@@ -33,15 +34,13 @@
             </div>
         </main>
 
-        <aside class="side-column"></aside>
+        <aside class="noir-frame"></aside>
 
     </div>
 
     <script>
         function closeModal() {
             document.getElementById('brand-modal').style.display = 'none';
-            // This ensures the layout refreshes once the modal is gone
-            window.dispatchEvent(new Event('resize'));
         }
     </script>
 
