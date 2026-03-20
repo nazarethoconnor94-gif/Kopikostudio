@@ -1,4 +1,4 @@
-/* --- 1. RESET & CORE --- */
+/* --- 1. RESET --- */
 * { 
     margin: 0; 
     padding: 0; 
@@ -7,16 +7,15 @@
     outline: 0 !important; 
 }
 
-html, body {
+body, html {
     height: 100%;
-    width: 100%;
-    background-color: #000000 !important; /* Absolute Black Force */
+    background-color: #000;
     color: #fff;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     overflow: hidden;
 }
 
-/* --- 2. MASTER GRID --- */
+/* --- 2. THE MASTER GRID --- */
 .main-layout {
     display: grid;
     grid-template-columns: 200px 1fr 200px; 
@@ -30,7 +29,7 @@ html, body {
     height: 100vh;
 }
 
-/* --- 3. HERO SECTION --- */
+/* --- 3. THE HERO --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -80,91 +79,83 @@ nav {
     font-weight: 600;
 }
 
-/* --- 4. THE SPLASH SCREEN (SCALED BIRD) --- */
+/* --- 5. THE SPLASH SCREEN (LARGE BIRD VERSION) --- */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background-color: #000000 !important;
+    background: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
     text-align: center;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal-content {
-    max-width: 600px;
-    padding: 20px;
+    transition: opacity 0.8s ease;
 }
 
 .modal-title { 
-    font-size: clamp(2rem, 6vw, 3rem); 
+    font-size: clamp(2.5rem, 8vw, 4.5rem); 
     letter-spacing: 15px; 
     font-weight: 100; 
     color: #fff; 
-    text-indent: 15px; 
-    margin-bottom: 5px;
+    text-indent: 15px;
 }
 
 .bird-container {
-    margin: 20px auto 30px auto;
+    margin: 30px auto;
 }
 
 .gold-bird {
-    width: 90px; /* Locked at approximately 1/4 of the previous size */
+    width: 280px; /* The larger size you had before */
     height: auto;
     display: block;
     margin: 0 auto;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,1));
-    animation: goldFocus 6s infinite ease-in-out;
+    animation: goldShimmer 5s infinite ease-in-out;
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.1));
 }
 
 .modal-definition { 
     color: #444; 
-    margin-bottom: 45px; 
+    margin: 0 0 50px 0; 
     font-style: italic;
-    font-size: 0.9rem;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
 }
 
 .cta-minimal {
     background: transparent; 
     color: white; 
-    border: 1px solid #222 !important; 
-    padding: 12px 40px; 
+    border: 1px solid #333 !important; 
+    padding: 14px 45px; 
     cursor: pointer; 
     letter-spacing: 3px;
     text-transform: uppercase;
-    font-size: 0.7rem;
-    transition: all 0.4s ease;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
 }
 
 .cta-minimal:hover {
     border-color: #fff !important;
-    letter-spacing: 5px;
 }
 
 .modal-disclaimer { 
     font-size: 9px; 
     color: #1a1a1a; 
-    margin-top: 60px; 
+    margin-top: 80px; 
     letter-spacing: 2px;
 }
 
-/* --- 5. ANIMATIONS --- */
-@keyframes goldFocus {
+/* --- 6. ANIMATIONS --- */
+@keyframes goldShimmer {
     0%, 100% { 
-        transform: translateY(0); 
-        filter: brightness(1) drop-shadow(0 2px 5px rgba(212, 175, 55, 0.05)); 
+        transform: translateY(0) scale(1); 
+        filter: brightness(1) contrast(1); 
     }
     50% { 
-        transform: translateY(-5px); 
-        filter: brightness(1.2) drop-shadow(0 10px 20px rgba(212, 175, 55, 0.2)); 
+        transform: translateY(-10px) scale(1.02); 
+        filter: brightness(1.2) contrast(1.1); 
     }
 }
 
-/* --- 6. MOBILE --- */
+/* --- 7. MOBILE --- */
 @media (max-width: 900px) {
     .main-layout { grid-template-columns: 1fr; }
     .noir-frame { display: none; }
@@ -174,5 +165,4 @@ nav {
         background-size: cover; 
     }
     .hero-content { text-align: center !important; padding-right: 0; max-width: 90% !important; }
-    .gold-bird { width: 75px; }
 }
