@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kōpiko Studio</title>
+    <title>Kōpiko Studio | Creative Agency</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. THE SPLASH SCREEN -->
     <div id="brand-modal" class="modal-overlay">
         <div class="modal-content">
             <h1 class="modal-title">KŌPIKO</h1>
@@ -18,21 +17,32 @@
         </div>
     </div>
 
-    <!-- 2. THE MAIN HERO SECTION -->
-    <section class="hero">
-        <nav>
-            <div class="logo">KŌPIKO</div>
-        </nav>
+    <div class="main-layout">
+        
+        <aside class="side-column">
+            <div class="ad-placeholder">ADVERTISEMENT</div>
+            </aside>
 
-        <div class="hero-content">
-            <h1>Creative Identity <br> for the Bold.</h1>
-            <p>Founded by Nazareth O'Connor. Est. 2026.</p>
-            <a href="mailto:nazarethoconnor@kopikostudio.com" class="cta">Start a Project</a>
-        </div>
-    </section>
+        <main class="hero">
+            <nav>
+                <div class="logo">KŌPIKO</div>
+            </nav>
+
+            <div class="hero-content">
+                <h1>Creative Identity <br> for the Bold.</h1>
+                <p>Founded by Nazareth O'Connor. Est. 2026.</p>
+                <a href="mailto:nazarethoconnor@kopikostudio.com" class="cta">Start a Project</a>
+            </div>
+        </main>
+
+        <aside class="side-column">
+            <div class="ad-placeholder">ADVERTISEMENT</div>
+            </aside>
+
+    </div>
 
     <script>
-        // This makes the 'Enter' button work
+        // Hides the splash screen when 'Enter' is clicked
         function closeModal() {
             document.getElementById('brand-modal').style.display = 'none';
         }
