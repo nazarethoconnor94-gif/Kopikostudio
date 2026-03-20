@@ -23,8 +23,8 @@ body, html {
     background-color: #000; /* Pure black */
     height: 100vh;
     /* Very subtle dark border to separate the frame slightly */
-    border-left: 1px solid #0a0a0a;
-    border-right: 1px solid #0a0a0a;
+    border-left: 0px solid #0a0a0a;
+    border-right: 0px solid #0a0a0a;
 }
 
 /* --- 4. THE HERO IMAGE (CENTERED) --- */
