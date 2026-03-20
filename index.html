@@ -16,6 +16,13 @@
 </head>
 <body>
 
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">Kopiko Studio</div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
     <nav>
         <div class="logo">Kopiko Studio</div>
         <div class="nav-links">
@@ -30,7 +37,7 @@
         </picture>
         
         <div class="main-layout">
-            <aside class="ad-column left-side">
+            <aside class="ad-column">
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-5170173308625628"
@@ -47,7 +54,7 @@
                 <a href="mailto:nazarethoconnor@kopikostudio.com" class="cta">Start a Project</a>
             </div>
 
-            <aside class="ad-column right-side">
+            <aside class="ad-column">
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-5170173308625628"
@@ -62,6 +69,15 @@
     <footer>
         <p>&copy; 2026 Kopiko Studio. All rights reserved.</p>
     </footer>
+
+    <script>
+        window.addEventListener("load", function() {
+            const loader = document.getElementById("loader");
+            setTimeout(() => {
+                loader.classList.add("loader-hidden");
+            }, 1000); 
+        });
+    </script>
 
 </body>
 </html>
