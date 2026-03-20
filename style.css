@@ -15,7 +15,7 @@ body, html {
     overflow: hidden;
 }
 
-/* --- 2. THE GRID --- */
+/* --- 2. THE MASTER GRID (3 COLUMNS) --- */
 .main-layout {
     display: grid;
     grid-template-columns: 200px 1fr 200px; 
@@ -29,19 +29,20 @@ body, html {
     height: 100vh;
 }
 
-/* --- 3. THE HERO (ALIGNMENT FIX) --- */
+/* --- 3. THE HERO (DESKTOP) --- */
 .hero {
     position: relative;
     height: 100vh;
     width: 100%; 
+    /* Desktop Image */
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hme.jpg');
     background-size: cover;
     background-position: center;
     
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertical Center */
-    align-items: flex-end !important; /* Forces content to the RIGHT */
+    justify-content: center; /* Vertical center */
+    align-items: flex-end !important; /* Pushes content box to the RIGHT */
 }
 
 nav { 
@@ -54,12 +55,11 @@ nav {
 
 .logo { font-size: 1.2rem; letter-spacing: 6px; font-weight: 200; color: #fff; }
 
-/* --- 4. HERO CONTENT (PUSHED RIGHT) --- */
+/* --- 4. HERO CONTENT (ALIGNMENT) --- */
 .hero-content {
-    text-align: right !important; /* Aligns text lines to the right */
-    padding-right: 40px; /* Space between text and the right-side column */
-    width: auto;
-    max-width: 80% !important;
+    text-align: right !important; /* Right-aligns the actual lines of text */
+    padding-right: 60px; /* Space from the right column */
+    max-width: 600px;
 }
 
 .hero-content h1 {
@@ -108,13 +108,22 @@ nav {
 
 .modal-disclaimer { font-size: 9px; color: #1a1a1a; margin-top: 60px; }
 
-/* --- 6. MOBILE --- */
+/* --- 6. MOBILE (PHONE SETTINGS) --- */
 @media (max-width: 900px) {
     .main-layout { grid-template-columns: 1fr; }
     .noir-frame { display: none; }
-    .hero { align-items: center !important; }
+    
+    .hero { 
+        align-items: center !important; /* Back to center for mobile screens */
+        /* SWAPPING TO YOUR MOBILE FILENAME */
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('mobile-bg.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
     .hero-content {
         text-align: center !important;
         padding-right: 0;
+        max-width: 90% !important;
     }
 }
