@@ -1,5 +1,11 @@
-/* --- 1. RESET --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* --- 1. RESET ALL BORDERS --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    border: none !important; /* Forces all borders to vanish */
+    outline: none !important; /* Forces all outlines to vanish */
+}
 
 body, html {
     height: 100%;
@@ -12,22 +18,20 @@ body, html {
 /* --- 2. THE MASTER GRID --- */
 .main-layout {
     display: grid;
-    /* Fixed 200px sides, flexible center */
     grid-template-columns: 200px 1fr 200px; 
     width: 100vw;
     height: 100vh;
+    background-color: #000;
 }
 
-/* --- 3. SIDE COLUMN STYLING (CLEAN NOIR) --- */
+/* --- 3. SIDE COLUMN STYLING --- */
 .side-column {
-    background-color: #000; /* Pure black */
+    background-color: #000; 
     height: 100vh;
-    /* Very subtle dark border to separate the frame slightly */
-    border-left: 0px solid #0a0a0a;
-    border-right: 0px solid #0a0a0a;
+    /* No borders, no outlines, just pure black space */
 }
 
-/* --- 4. THE HERO IMAGE (CENTERED) --- */
+/* --- 4. THE HERO IMAGE --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -43,13 +47,14 @@ body, html {
 }
 
 nav { position: absolute; top: 40px; width: 100%; text-align: center; }
-.logo { font-size: 1.2rem; letter-spacing: 6px; font-weight: 200; }
+.logo { font-size: 1.2rem; letter-spacing: 6px; font-weight: 200; color: #fff; }
 
 .hero-content h1 {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 100;
     line-height: 1.1;
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .hero-content p { color: #888; margin-bottom: 40px; font-size: 1.1rem; }
@@ -62,10 +67,7 @@ nav { position: absolute; top: 40px; width: 100%; text-align: center; }
     text-decoration: none;
     border-radius: 100px;
     font-weight: 600;
-    transition: 0.3s ease;
 }
-
-.cta:hover { transform: scale(1.05); }
 
 /* --- 5. THE SPLASH SCREEN --- */
 .modal-overlay {
@@ -79,15 +81,17 @@ nav { position: absolute; top: 40px; width: 100%; text-align: center; }
     text-align: center;
 }
 
-.modal-title { font-size: 3.5rem; letter-spacing: 12px; font-weight: 100; margin-bottom: 10px; }
+.modal-title { font-size: 3.5rem; letter-spacing: 12px; font-weight: 100; margin-bottom: 10px; color: #fff; }
 .modal-definition { color: #444; margin-bottom: 40px; }
 
 .cta-minimal {
-    background: transparent; color: white; border: 1px solid #333;
-    padding: 12px 40px; cursor: pointer; letter-spacing: 2px;
+    background: transparent; 
+    color: white; 
+    border: 1px solid #333 !important; /* Small exception for the button border */
+    padding: 12px 40px; 
+    cursor: pointer; 
+    letter-spacing: 2px;
 }
-
-.cta-minimal:hover { border-color: #fff; }
 
 .modal-disclaimer { font-size: 9px; color: #1a1a1a; margin-top: 60px; }
 
