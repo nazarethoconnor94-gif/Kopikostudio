@@ -12,7 +12,7 @@ body, html {
 /* --- 2. THE MASTER GRID --- */
 .main-layout {
     display: grid;
-    /* 200px sides, flexible center */
+    /* Fixed 200px sides, flexible center */
     grid-template-columns: 200px 1fr 200px; 
     width: 100vw;
     height: 100vh;
@@ -22,9 +22,9 @@ body, html {
 .side-column {
     background-color: #000; /* Pure black */
     height: 100vh;
-    /* Very subtle dark border to separate the frame from the image */
-    border-left: 1px solid #111;
-    border-right: 1px solid #111;
+    /* Very subtle dark border to separate the frame slightly */
+    border-left: 1px solid #0a0a0a;
+    border-right: 1px solid #0a0a0a;
 }
 
 /* --- 4. THE HERO IMAGE (CENTERED) --- */
