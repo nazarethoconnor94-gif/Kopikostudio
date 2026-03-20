@@ -1,42 +1,53 @@
-/* --- 5. CONTENT (WITH SAFETY MARGINS) --- */
-.hero-content {
-    grid-column: 2;
-    text-align: center;
-    /* This 60px padding creates a 'No-Go Zone' between your content and the ads */
-    padding: 0 60px; 
-    max-width: 900px;
-    margin: 0 auto;
-    z-index: 20;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kōpiko Studio | Creative Agency</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
 
-.cta {
-    display: inline-block;
-    background: white;
-    color: black;
-    padding: 18px 40px;
-    border-radius: 100px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
-    /* Added a bit of extra margin to ensure it's not near the bottom of the screen either */
-    margin-top: 20px; 
-    border: 2px solid white;
-}
+    <div id="brand-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="meander-container">
+                <svg viewBox="0 0 800 200" class="meander-line">
+                    <path d="M0,100 Q100,20 200,100 T400,100 T600,100 T800,100" />
+                </svg>
+            </div>
+            <h1 class="modal-title">KŌPIKO</h1>
+            <p class="modal-definition"><em>(v.) To meander; to follow a winding path.</em></p>
+            <button onclick="closeModal()" class="cta-minimal">Enter Studio</button>
+            <p class="modal-disclaimer">Not affiliated with Kopiko Coffee.</p>
+        </div>
+    </div>
 
-.cta:hover { 
-    background: transparent;
-    color: white;
-    transform: scale(1.05); 
-}
+    <div class="main-layout">
+        <aside class="ad-column left-ad">
+            </aside>
 
-/* --- 6. OPTIONAL: AD LABELS (GOOD FOR COMPLIANCE) --- */
-/* This adds a tiny, faint label above your ad columns so users know they are ads */
-.ad-column::before {
-    content: "ADVERTISEMENT";
-    display: block;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.2);
-    position: absolute;
-    top: 10px;
-}
+        <main class="hero-content">
+            <nav>
+                <div class="logo">KŌPIKO</div>
+            </nav>
+            
+            <h1>Creative Identity <br> for the Bold.</h1>
+            <p>We guide brands through the winding path of digital storytelling.</p>
+            
+            <a href="mailto:nazarethoconnor@kopikostudio.com" class="cta">Start a Project</a>
+        </main>
+
+        <aside class="ad-column right-ad">
+            </aside>
+    </div>
+
+    <script>
+    function closeModal() {
+        document.getElementById('brand-modal').style.opacity = '0';
+        setTimeout(() => {
+            document.getElementById('brand-modal').style.display = 'none';
+        }, 800);
+    }
+    </script>
+
+</body>
+</html>
