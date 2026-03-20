@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
     <div id="brand-modal" class="modal-overlay">
@@ -16,38 +17,61 @@
             </div>
             <h1 class="modal-title">KŌPIKO</h1>
             <p class="modal-definition"><em>(v.) To meander; to follow a winding path.</em></p>
+            <p class="modal-text">In a world of straight lines, we find the beauty in the wander. We are a creative studio dedicated to the journey of design.</p>
+            
             <button onclick="closeModal()" class="cta-minimal">Enter Studio</button>
-            <p class="modal-disclaimer">Not affiliated with Kopiko Coffee.</p>
+            
+            <p class="modal-disclaimer">Kōpiko Studio is an independent agency and is not affiliated with Kopiko coffee.</p>
         </div>
     </div>
 
     <div class="main-layout">
+        
         <aside class="ad-column left-ad">
             </aside>
 
         <main class="hero-content">
             <nav>
                 <div class="logo">KŌPIKO</div>
+                <div class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="meaning.html">The Meaning</a>
+                </div>
             </nav>
             
-            <h1>Creative Identity <br> for the Bold.</h1>
-            <p>We guide brands through the winding path of digital storytelling.</p>
-            
-            <a href="mailto:nazarethoconnor@kopikostudio.com" class="cta">Start a Project</a>
+            <div class="hero-text-wrapper">
+                <h1>Creative Identity <br> for the Bold.</h1>
+                <p>We guide brands through the winding path of digital storytelling.</p>
+                <a href="mailto:nazarethoconnor@kopikostudio.com" class="cta">Start a Project</a>
+            </div>
         </main>
 
         <aside class="ad-column right-ad">
             </aside>
+
     </div>
 
     <script>
-    function closeModal() {
-        document.getElementById('brand-modal').style.opacity = '0';
-        setTimeout(() => {
-            document.getElementById('brand-modal').style.display = 'none';
-        }, 800);
-    }
+        // Function to hide the splash screen
+        function closeModal() {
+            const modal = document.getElementById('brand-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 800);
+        }
+
+        // Only show the splash screen once per session
+        window.onload = function() {
+            if (!sessionStorage.getItem('viewedIntro')) {
+                document.getElementById('brand-modal').style.display = 'flex';
+                sessionStorage.setItem('viewedIntro', 'true');
+            } else {
+                document.getElementById('brand-modal').style.display = 'none';
+            }
+        }
     </script>
 
 </body>
+</html>
 </html>
