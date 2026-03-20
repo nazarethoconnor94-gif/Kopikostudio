@@ -29,7 +29,7 @@ body, html {
     height: 100vh;
 }
 
-/* --- 3. THE HERO (PUSHED CONTENT TO THE RIGHT) --- */
+/* --- 3. THE HERO (ALIGNMENT FIX) --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -37,28 +37,29 @@ body, html {
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hme.jpg');
     background-size: cover;
     background-position: center;
+    
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* This pushes the content to the right edge of the image */
-    align-items: flex-end; 
+    justify-content: center; /* Vertical Center */
+    align-items: flex-end !important; /* Forces content to the RIGHT */
 }
 
 nav { 
     position: absolute; 
     top: 40px; 
+    left: 0;
     width: 100%; 
     text-align: center; 
-    /* We keep the logo centered, but you can move it if you want */
 }
 
 .logo { font-size: 1.2rem; letter-spacing: 6px; font-weight: 200; color: #fff; }
 
-/* --- 4. HERO CONTENT BOX --- */
+/* --- 4. HERO CONTENT (PUSHED RIGHT) --- */
 .hero-content {
-    text-align: right; /* Makes the lines of text align to the right */
-    padding-right: 60px; /* Space between the text and the right column */
-    max-width: 600px; /* Keeps the text from getting too wide */
+    text-align: right !important; /* Aligns text lines to the right */
+    padding-right: 40px; /* Space between text and the right-side column */
+    width: auto;
+    max-width: 80% !important;
 }
 
 .hero-content h1 {
@@ -111,10 +112,9 @@ nav {
 @media (max-width: 900px) {
     .main-layout { grid-template-columns: 1fr; }
     .noir-frame { display: none; }
+    .hero { align-items: center !important; }
     .hero-content {
-        align-items: center;
-        text-align: center;
+        text-align: center !important;
         padding-right: 0;
-        margin: 0 auto;
     }
 }
