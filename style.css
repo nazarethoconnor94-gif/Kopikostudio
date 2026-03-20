@@ -1,85 +1,4 @@
-/* --- 1. RESET --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    border: 0 !important; 
-    outline: 0 !important; 
-}
-
-body, html {
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    overflow: hidden;
-}
-
-/* --- 2. THE MASTER GRID (3 COLUMNS) --- */
-.main-layout {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px; 
-    width: 100vw;
-    height: 100vh;
-    background: #000;
-}
-
-.noir-frame {
-    background-color: #000; 
-    height: 100vh;
-}
-
-/* --- 3. THE HERO --- */
-.hero {
-    position: relative;
-    height: 100vh;
-    width: 100%; 
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hme.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end !important; 
-}
-
-nav { 
-    position: absolute; 
-    top: 40px; 
-    left: 0;
-    width: 100%; 
-    text-align: center; 
-}
-
-.logo { font-size: 1.2rem; letter-spacing: 6px; font-weight: 200; color: #fff; }
-
-.hero-content {
-    text-align: right !important; 
-    padding-right: 60px; 
-    max-width: 600px;
-}
-
-.hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 100;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-.hero-content p { color: #888; margin-bottom: 40px; font-size: 1.1rem; }
-
-.cta {
-    display: inline-block;
-    background: #fff;
-    color: #000;
-    padding: 18px 45px;
-    text-decoration: none;
-    border-radius: 100px;
-    font-weight: 600;
-}
-
-/* --- 5. THE SPLASH SCREEN (UPDATED FOR B11) --- */
+/* --- UPDATED SPLASH SCREEN SECTION --- */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -93,82 +12,73 @@ nav {
 }
 
 .modal-content {
-    max-width: 800px;
+    max-width: 600px;
     padding: 20px;
 }
 
 .modal-title { 
-    font-size: clamp(2.5rem, 7vw, 4rem); 
-    letter-spacing: 18px; 
+    font-size: clamp(2rem, 6vw, 3rem); 
+    letter-spacing: 15px; 
     font-weight: 100; 
     color: #fff; 
-    text-indent: 18px; /* Corrects center alignment with high letter-spacing */
-    margin-bottom: 10px;
+    text-indent: 15px; 
+    margin-bottom: 5px;
 }
 
-/* Bird Styling */
+/* Bird Container - Scaled Down */
 .bird-container {
-    margin: 40px auto;
+    margin: 15px auto 25px auto; /* Tighter spacing for the smaller icon */
 }
 
 .gold-bird {
-    width: clamp(250px, 35vw, 450px);
+    /* Scaled to roughly 1/4 of previous size */
+    width: 90px; 
     height: auto;
-    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.8));
-    /* Animation fakes a light sweep across the gold */
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.9));
     animation: goldFocus 6s infinite ease-in-out;
 }
 
 .modal-definition { 
     color: #444; 
-    margin-bottom: 50px; 
+    margin-bottom: 40px; 
     font-style: italic;
-    letter-spacing: 2px;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
 }
 
 .cta-minimal {
     background: transparent; 
-    color: white; 
+    color: #fff; 
     border: 1px solid #222 !important; 
-    padding: 15px 50px; 
+    padding: 12px 35px; 
     cursor: pointer; 
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     transition: all 0.4s ease;
 }
 
 .cta-minimal:hover {
     border-color: #fff !important;
-    background: #fff;
-    color: #000;
+    letter-spacing: 5px;
 }
 
-.modal-disclaimer { 
-    font-size: 9px; 
-    color: #1a1a1a; 
-    margin-top: 80px; 
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-/* --- 6. ANIMATIONS --- */
+/* Updated Animation for smaller scale */
 @keyframes goldFocus {
     0%, 100% { 
-        transform: translateY(0) scale(1); 
-        filter: brightness(1) contrast(1) drop-shadow(0 5px 15px rgba(212, 175, 55, 0.1)); 
+        transform: translateY(0); 
+        filter: brightness(1) drop-shadow(0 2px 5px rgba(212, 175, 55, 0.05)); 
     }
     50% { 
-        transform: translateY(-12px) scale(1.03); 
-        filter: brightness(1.2) contrast(1.15) drop-shadow(0 15px 35px rgba(212, 175, 55, 0.2)); 
+        transform: translateY(-5px); 
+        filter: brightness(1.2) drop-shadow(0 10px 20px rgba(212, 175, 55, 0.15)); 
     }
 }
 
-/* --- 7. MOBILE --- */
+/* Mobile Tweak for the small bird */
 @media (max-width: 900px) {
-    .main-layout { grid-template-columns: 1fr; }
-    .noir-frame { display: none; }
-    .hero { align-items: center !important; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('mobile-bg.jpg'); background-size: cover; }
-    .hero-content { text-align: center !important; padding-right: 0; max-width: 90% !important; }
-    .gold-bird { width: 220px; }
+    .gold-bird { width: 75px; }
+    .modal-title { letter-spacing: 10px; text-indent: 10px; }
 }
