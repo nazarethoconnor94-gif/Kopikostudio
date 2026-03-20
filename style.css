@@ -1,48 +1,41 @@
-/* --- 1. RESET & BASE --- */
+/* --- 1. RESET --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body, html {
     height: 100%;
     background-color: #000;
     color: #fff;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     overflow-x: hidden;
 }
 
-/* --- 2. THE 3-COLUMN GRID --- */
+/* --- 2. THE MASTER GRID (3 COLUMNS) --- */
 .main-layout {
     display: grid;
-    /* Sidebars are 200px wide, Center expands to fill the rest */
+    /* Sides are 200px, Middle (1fr) takes the rest */
     grid-template-columns: 200px 1fr 200px; 
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
 }
 
-/* --- 3. SIDEBAR STYLES (AD SPACES) --- */
+/* --- 3. SIDEBARS (THE FRAMES) --- */
 .side-column {
-    background-color: #050505; /* Slightly lighter black for contrast */
-    border-left: 1px solid #111;
-    border-right: 1px solid #111;
+    background-color: #080808; 
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    /* DELETE THE NEXT LINE once you see it working */
+    border: 1px solid red; 
 }
 
-.ad-placeholder {
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: #222;
-    position: absolute;
-    top: 20px;
-}
+.ad-tag { font-size: 8px; color: #222; letter-spacing: 2px; }
 
-/* --- 4. THE HERO (CENTER IMAGE) --- */
+/* --- 4. THE HERO IMAGE (THE CENTER) --- */
 .hero {
     position: relative;
     height: 100vh;
-    /* Ensure hme.jpg is in the same folder as this CSS */
+    width: 100%; /* Only fills the middle column */
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hme.jpg');
     background-size: cover;
     background-position: center;
@@ -57,7 +50,7 @@ nav { position: absolute; top: 40px; width: 100%; text-align: center; }
 .logo { font-size: 1.2rem; letter-spacing: 6px; font-weight: 200; }
 
 .hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Responsive font size */
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 100;
     line-height: 1.1;
     margin-bottom: 20px;
@@ -73,12 +66,9 @@ nav { position: absolute; top: 40px; width: 100%; text-align: center; }
     text-decoration: none;
     border-radius: 100px;
     font-weight: 600;
-    transition: 0.3s;
 }
 
-.cta:hover { transform: scale(1.05); }
-
-/* --- 5. SPLASH SCREEN (OVERLAY) --- */
+/* --- 5. THE SPLASH SCREEN --- */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -91,28 +81,17 @@ nav { position: absolute; top: 40px; width: 100%; text-align: center; }
 }
 
 .modal-title { font-size: 3.5rem; letter-spacing: 12px; font-weight: 100; margin-bottom: 10px; }
-.modal-definition { color: #444; margin-bottom: 40px; font-style: italic; }
-
+.modal-definition { color: #444; margin-bottom: 40px; }
 .cta-minimal {
-    background: transparent;
-    color: white;
-    border: 1px solid #333;
-    padding: 12px 40px;
-    cursor: pointer;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    background: transparent; color: white; border: 1px solid #333;
+    padding: 12px 40px; cursor: pointer; letter-spacing: 2px;
 }
-
-.cta-minimal:hover { border-color: #fff; }
-
 .modal-disclaimer { font-size: 9px; color: #1a1a1a; margin-top: 60px; }
 
-/* --- 6. MOBILE RESPONSIVENESS --- */
-@media (max-width: 900px) {
+/* --- 6. MOBILE (FOR PHONES) --- */
+@media (max-width: 850px) {
     .main-layout {
-        grid-template-columns: 1fr; /* Stack into 1 column on phones */
+        grid-template-columns: 1fr; /* Go full screen on mobile */
     }
-    .side-column {
-        display: none; /* Hide ads on mobile to keep the focus on your work */
-    }
+    .side-column { display: none; }
 }
