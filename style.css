@@ -41,7 +41,7 @@ body, html {
 /* --- THE HERO IMAGE CONTENT --- */
 .hero {
     height: 100vh;
-    width: 100%;
+    width: 80%;
     /* Check that 'hme.jpg' is in the same folder as this CSS file! */
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hme.jpg');
     background-size: cover;
