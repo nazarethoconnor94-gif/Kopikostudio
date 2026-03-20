@@ -5,38 +5,29 @@ body, html {
     height: 100%;
     background-color: #000;
     color: #fff;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     overflow-x: hidden;
 }
 
-/* --- 2. THE GRID ENGINE --- */
+/* --- 2. THE MASTER GRID --- */
 .main-layout {
     display: grid;
+    /* 200px sides, flexible center */
     grid-template-columns: 200px 1fr 200px; 
     width: 100vw;
     height: 100vh;
 }
 
-/* --- 3. SIDE COLUMN STYLING (RED LINES REMOVED) --- */
+/* --- 3. SIDE COLUMN STYLING (CLEAN NOIR) --- */
 .side-column {
-    background-color: #050505; 
+    background-color: #000; /* Pure black */
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* We keep a very subtle dark border instead of red */
+    /* Very subtle dark border to separate the frame from the image */
     border-left: 1px solid #111;
     border-right: 1px solid #111;
 }
 
-.ad-tag {
-    font-size: 8px;
-    letter-spacing: 3px;
-    color: #1a1a1a; /* Very dark text so it's subtle */
-    text-transform: uppercase;
-}
-
-/* --- 4. THE HERO (LOCKED IN MIDDLE) --- */
+/* --- 4. THE HERO IMAGE (CENTERED) --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -71,7 +62,10 @@ nav { position: absolute; top: 40px; width: 100%; text-align: center; }
     text-decoration: none;
     border-radius: 100px;
     font-weight: 600;
+    transition: 0.3s ease;
 }
+
+.cta:hover { transform: scale(1.05); }
 
 /* --- 5. THE SPLASH SCREEN --- */
 .modal-overlay {
@@ -87,10 +81,14 @@ nav { position: absolute; top: 40px; width: 100%; text-align: center; }
 
 .modal-title { font-size: 3.5rem; letter-spacing: 12px; font-weight: 100; margin-bottom: 10px; }
 .modal-definition { color: #444; margin-bottom: 40px; }
+
 .cta-minimal {
     background: transparent; color: white; border: 1px solid #333;
     padding: 12px 40px; cursor: pointer; letter-spacing: 2px;
 }
+
+.cta-minimal:hover { border-color: #fff; }
+
 .modal-disclaimer { font-size: 9px; color: #1a1a1a; margin-top: 60px; }
 
 /* --- 6. MOBILE RESPONSIVE --- */
