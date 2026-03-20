@@ -1,83 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kopiko Studio | Nazareth O'Connor</title>
+/* --- 5. CONTENT (WITH SAFETY MARGINS) --- */
+.hero-content {
+    grid-column: 2;
+    text-align: center;
+    /* This 60px padding creates a 'No-Go Zone' between your content and the ads */
+    padding: 0 60px; 
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 20;
+}
 
-    <meta name="google-adsense-account" content="ca-pub-5170173308625628">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5170173308625628"
-     crossorigin="anonymous"></script>
+.cta {
+    display: inline-block;
+    background: white;
+    color: black;
+    padding: 18px 40px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+    /* Added a bit of extra margin to ensure it's not near the bottom of the screen either */
+    margin-top: 20px; 
+    border: 2px solid white;
+}
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+.cta:hover { 
+    background: transparent;
+    color: white;
+    transform: scale(1.05); 
+}
 
-    <div id="loader">
-        <div class="loader-content">
-            <div class="loader-logo">Kopiko Studio</div>
-            <div class="loader-bar"></div>
-        </div>
-    </div>
-
-    <nav>
-        <div class="logo">Kopiko Studio</div>
-        <div class="nav-links">
-            <a href="mailto:nazarethoconnor@kopikostudio.com">Contact</a>
-        </div>
-    </nav>
-
-    <header class="hero-section">
-        <picture>
-            <source media="(max-width: 768px)" srcset="mobile-bg.jpg">
-            <img src="hme.jpg" alt="Kopiko Studio Background" class="hero-bg">
-        </picture>
-        
-        <div class="main-layout">
-            <aside class="ad-column">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5170173308625628"
-                     data-ad-slot="YOUR_LEFT_AD_SLOT_ID"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </aside>
-
-            <div class="hero-content">
-                <p class="est-badge">Est. 2026</p>
-                <h1>Creative solutions<br>for bold brands.</h1>
-                <p class="hero-sub">Founded by Nazareth O'Connor. Digital experiences that stand out.</p>
-                <a href="mailto:nazarethoconnor@kopikostudio.com" class="cta">Start a Project</a>
-            </div>
-
-            <aside class="ad-column">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5170173308625628"
-                     data-ad-slot="YOUR_RIGHT_AD_SLOT_ID"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </aside>
-        </div>
-    </header>
-
-    <footer>
-        <p>&copy; 2026 Kopiko Studio. All rights reserved.</p>
-    </footer>
-
-    <script>
-        window.addEventListener("load", function() {
-            const loader = document.getElementById("loader");
-            setTimeout(() => {
-                loader.classList.add("loader-hidden");
-            }, 1000); 
-        });
-    </script>
-
-</body>
-</html>
+/* --- 6. OPTIONAL: AD LABELS (GOOD FOR COMPLIANCE) --- */
+/* This adds a tiny, faint label above your ad columns so users know they are ads */
+.ad-column::before {
+    content: "ADVERTISEMENT";
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.2);
+    position: absolute;
+    top: 10px;
+}
