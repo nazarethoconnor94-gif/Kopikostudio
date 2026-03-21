@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css?v=105">
+    <link rel="stylesheet" href="style.css?v=106">
 </head>
 <body>
 
@@ -24,41 +24,48 @@
 
         <main class="center-col">
             <nav class="top-nav">
-                <div class="logo">KŌPIKO</div>
-                <div class="nav-links">
-                    <a href="#">About</a>
-                    <a href="#">Commercial</a>
-                    <a href="#">Weddings</a>
-                    <a href="#">Contact</a>
+                <div class="nav-group left">
+                    <a href="index.html">home</a>
+                    <a href="about.html">about</a>
+                </div>
+                <div class="logo">Kōpiko</div>
+                <div class="nav-group right">
+                    <a href="weddings.html">weddings</a>
+                    <a href="commercial.html">commercial</a>
                 </div>
             </nav>
 
-            <section class="hero-section">
-                <div class="hero-image-box">
-                    <img src="hme.jpg" alt="Featured Work" class="main-img">
+            <section class="hero-split">
+                <div class="hero-box hero-img-container">
+                    <img src="hme.jpg" alt="Hero" class="hero-img">
                 </div>
                 
-                <div class="hero-text-box">
+                <div class="hero-box identity-box">
                     <div class="identity-stack">
-                        <!-- BIGGER FLOATING LOGO -->
-                        <img src="b11.webp" alt="Bird Icon" class="sketch-bird">
+                        <img src="b11.webp" alt="Floating Bird" class="large-sketch-bird">
                         <h2>creative identity <br> for the bold</h2>
                     </div>
                 </div>
             </section>
 
-            <section class="portfolio-grid">
+            <section class="bottom-grid">
                 <div class="grid-card">
-                    <img src="wedding-thumb.jpg" alt="Weddings">
-                    <p>+ Weddings</p>
+                    <div class="card-img-placeholder">
+                        <img src="wedding-thumb.jpg" alt="Weddings">
+                    </div>
+                    <p>weddings</p>
                 </div>
                 <div class="grid-card">
-                    <img src="commercial-thumb.jpg" alt="Commercial">
-                    <p>+ Commercial</p>
+                    <div class="card-img-placeholder">
+                        <img src="commercial-thumb.jpg" alt="Commercial">
+                    </div>
+                    <p>commercial</p>
                 </div>
                 <div class="grid-card">
-                    <img src="about-thumb.jpg" alt="About">
-                    <p>+ About us</p>
+                    <div class="card-img-placeholder">
+                        <img src="about-thumb.jpg" alt="About">
+                    </div>
+                    <p>about</p>
                 </div>
             </section>
         </main>
@@ -71,7 +78,10 @@
             const modal = document.getElementById('brand-modal');
             modal.style.opacity = '0';
             modal.style.pointerEvents = 'none';
-            setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 800);
+            setTimeout(() => { 
+                modal.style.display = 'none'; 
+                document.body.style.overflow = 'auto';
+            }, 800);
         }
     </script>
 </body>
