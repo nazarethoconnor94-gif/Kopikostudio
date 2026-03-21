@@ -1,77 +1,71 @@
-/* --- UPDATED NAVIGATION (STRICT BRANDING) --- */
+/* --- 1. CORE RESET --- */
+* { margin: 0; padding: 0; box-sizing: border-box; border: 0 !important; outline: 0 !important; }
+html, body { height: 100%; width: 100%; background-color: #000 !important; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; overflow: hidden; }
+
+/* --- 2. MASTER GRID --- */
+.main-layout { display: grid; grid-template-columns: 200px 1fr 200px; width: 100vw; height: 100vh; background: #000; }
+.noir-frame { background-color: #000; height: 100vh; }
+
+/* --- 3. HERO --- */
+.hero { 
+    position: relative; 
+    height: 100vh; 
+    width: 100%; 
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hme.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-end !important; 
+}
+
+/* --- 4. NAVIGATION (FIXED) --- */
 .top-nav { 
     position: absolute; 
     top: 40px; 
-    left: 0;
+    left: 0; 
     width: 100%; 
-    display: flex;
+    display: flex; 
     justify-content: space-between; 
-    align-items: center;
-    padding: 0 60px;
-    z-index: 10;
+    align-items: center; 
+    padding: 0 60px; 
+    z-index: 10; 
 }
+.nav-links { display: flex; gap: 40px; flex: 1; }
+.nav-links.right { justify-content: flex-end; }
 
-.nav-links {
-    display: flex;
-    gap: 40px; 
-    flex: 1; /* Keeps logo centered */
+.logo, .nav-item { font-family: 'Helvetica Neue', Arial, sans-serif; text-transform: uppercase; color: #fff; letter-spacing: 6px; }
+.logo { font-size: 1.2rem; font-weight: 200; flex: 0; text-indent: 6px; text-align: center; }
+.nav-item { text-decoration: none; font-size: 0.7rem; font-weight: 200; transition: 0.4s; }
+.nav-item:hover { opacity: 0.6; }
+.nav-item.active { color: #555 !important; pointer-events: none; }
+
+/* --- 5. SPLASH SCREEN (REFINED) --- */
+.modal-overlay { 
+    position: fixed; 
+    inset: 0; 
+    background: #000; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 9999; 
+    text-align: center; 
+    transition: opacity 0.8s ease; 
 }
+.modal-title { font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: 15px; font-weight: 100; color: #fff; text-indent: 15px; margin-bottom: 10px; }
+.bird-container { margin: 30px auto; }
+.gold-bird { width: 280px; height: auto; display: block; margin: 0 auto; animation: goldShimmer 5s infinite ease-in-out; }
+.modal-definition { color: #444; margin-bottom: 50px; font-style: italic; letter-spacing: 2px; }
+.cta-minimal { background: transparent; color: white; border: 1px solid #333 !important; padding: 14px 45px; cursor: pointer; letter-spacing: 3px; font-size: 0.8rem; }
+.modal-disclaimer { font-size: 9px; color: #1a1a1a; margin-top: 80px; letter-spacing: 2px; }
 
-.nav-links.right {
-    justify-content: flex-end;
-}
+/* --- 6. ANIMATIONS & MOBILE --- */
+@keyframes goldShimmer { 0%, 100% { transform: translateY(0); filter: brightness(1); } 50% { transform: translateY(-10px); filter: brightness(1.2); } }
 
-/* Matching the Logo and Link Fonts */
-.logo, .nav-item {
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Matching your body font */
-    text-transform: uppercase;
-    color: #fff;
-    letter-spacing: 6px; /* Matches your original logo spacing */
-}
-
-.logo { 
-    font-size: 1.2rem; 
-    font-weight: 200; 
-    text-align: center;
-    flex: 0; 
-    text-indent: 6px; /* Offsets letter-spacing to center text perfectly */
-}
-
-.nav-item {
-    text-decoration: none;
-    font-size: 0.7rem;
-    font-weight: 200;
-    transition: all 0.4s ease;
-    cursor: pointer;
-}
-
-/* Hover effect: Subtle glow */
-.nav-item:hover {
-    color: #fff;
-    opacity: 0.7;
-}
-
-/* ACTIVE STATE: Turns grey when it is the current page */
-.nav-item.active {
-    color: #555 !important; /* Muted grey for the current page */
-    cursor: default;
-    pointer-events: none; /* Prevents re-clicking the page you are on */
-}
-
-/* --- MOBILE TWEAKS --- */
 @media (max-width: 900px) {
-    .top-nav {
-        flex-direction: column;
-        gap: 20px;
-        top: 20px;
-        padding: 0;
-    }
-    .nav-links {
-        gap: 15px;
-        justify-content: center !important;
-    }
-    .nav-item {
-        font-size: 0.55rem;
-        letter-spacing: 3px;
-    }
+    .main-layout { grid-template-columns: 1fr; }
+    .noir-frame { display: none; }
+    .top-nav { flex-direction: column; gap: 15px; top: 20px; }
+    .nav-links { gap: 10px; }
 }
