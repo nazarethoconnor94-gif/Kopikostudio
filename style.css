@@ -1,6 +1,6 @@
 /* --- 1. CORE RESET --- */
 * { margin: 0; padding: 0; box-sizing: border-box; border: 0 !important; outline: 0 !important; }
-html, body { height: 100%; width: 100%; background-color: #000 !important; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; overflow: hidden; }
+html, body { height: 100%; width: 100%; background-color: #000000 !important; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; overflow: hidden; }
 
 /* --- 2. MASTER GRID --- */
 .main-layout { display: grid; grid-template-columns: 200px 1fr 200px; width: 100vw; height: 100vh; background: #000; }
@@ -20,7 +20,7 @@ html, body { height: 100%; width: 100%; background-color: #000 !important; color
     align-items: flex-end !important; 
 }
 
-/* --- 4. NAVIGATION (FIXED) --- */
+/* --- 4. NAVIGATION (WHITES & GREYS) --- */
 .top-nav { 
     position: absolute; 
     top: 40px; 
@@ -41,7 +41,7 @@ html, body { height: 100%; width: 100%; background-color: #000 !important; color
 .nav-item:hover { opacity: 0.6; }
 .nav-item.active { color: #555 !important; pointer-events: none; }
 
-/* --- 5. SPLASH SCREEN (REFINED) --- */
+/* --- 5. SPLASH SCREEN (MINIMALIST RESTORED) --- */
 .modal-overlay { 
     position: fixed; 
     inset: 0; 
@@ -53,19 +53,48 @@ html, body { height: 100%; width: 100%; background-color: #000 !important; color
     text-align: center; 
     transition: opacity 0.8s ease; 
 }
-.modal-title { font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: 15px; font-weight: 100; color: #fff; text-indent: 15px; margin-bottom: 10px; }
-.bird-container { margin: 30px auto; }
-.gold-bird { width: 280px; height: auto; display: block; margin: 0 auto; animation: goldShimmer 5s infinite ease-in-out; }
-.modal-definition { color: #444; margin-bottom: 50px; font-style: italic; letter-spacing: 2px; }
-.cta-minimal { background: transparent; color: white; border: 1px solid #333 !important; padding: 14px 45px; cursor: pointer; letter-spacing: 3px; font-size: 0.8rem; }
-.modal-disclaimer { font-size: 9px; color: #1a1a1a; margin-top: 80px; letter-spacing: 2px; }
+.modal-content { max-width: 600px; padding: 20px; }
+.modal-title { font-size: clamp(2rem, 6vw, 3rem); letter-spacing: 15px; font-weight: 100; color: #fff; text-indent: 15px; margin-bottom: 5px; }
+
+.bird-container { margin: 20px auto 25px auto; }
+.gold-bird { 
+    width: 90px; /* Small 1/4 scale bird */
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.9));
+    animation: goldFocus 6s infinite ease-in-out; 
+}
+
+.modal-definition { color: #444; margin-bottom: 40px; font-style: italic; font-size: 0.9rem; letter-spacing: 1.5px; }
+
+/* Refined Minimalist Button */
+.cta-minimal { 
+    background: transparent; 
+    color: #fff; 
+    border: 1px solid #222 !important; 
+    padding: 12px 35px; 
+    cursor: pointer; 
+    letter-spacing: 3px; 
+    text-transform: uppercase; 
+    font-size: 0.7rem; 
+    transition: all 0.4s ease; 
+}
+.cta-minimal:hover { border-color: #fff !important; letter-spacing: 5px; }
+
+.modal-disclaimer { font-size: 9px; color: #1a1a1a; margin-top: 60px; letter-spacing: 2px; }
 
 /* --- 6. ANIMATIONS & MOBILE --- */
-@keyframes goldShimmer { 0%, 100% { transform: translateY(0); filter: brightness(1); } 50% { transform: translateY(-10px); filter: brightness(1.2); } }
+@keyframes goldFocus { 
+    0%, 100% { transform: translateY(0); filter: brightness(1); } 
+    50% { transform: translateY(-5px); filter: brightness(1.2); } 
+}
 
 @media (max-width: 900px) {
     .main-layout { grid-template-columns: 1fr; }
     .noir-frame { display: none; }
-    .top-nav { flex-direction: column; gap: 15px; top: 20px; }
-    .nav-links { gap: 10px; }
+    .top-nav { flex-direction: column; gap: 15px; top: 20px; padding: 0; }
+    .nav-links { gap: 10px; justify-content: center !important; }
+    .nav-item { font-size: 0.55rem; letter-spacing: 3px; }
+    .gold-bird { width: 75px; }
 }
