@@ -5,63 +5,81 @@ body {
     color: #fff; 
     font-family: 'Helvetica Neue', Arial, sans-serif; 
     overflow-x: hidden; 
-    /* Lock scroll until enter is clicked */
     overflow-y: hidden; 
 }
 
-.site-wrapper { max-width: 1400px; margin: 0 auto; padding: 40px 60px; }
+/* Updated to 1000px as requested */
+.site-wrapper { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 60px 20px; 
+}
 
 /* --- 2. NAV --- */
-.top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; }
-.nav-links { display: flex; gap: 40px; flex: 1; }
+.top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; }
+.nav-links { display: flex; gap: 30px; flex: 1; }
 .nav-links.right { justify-content: flex-end; }
 .logo, .nav-item { text-transform: uppercase; letter-spacing: 6px; font-weight: 200; color: #fff; text-decoration: none; }
 .logo { font-size: 1.2rem; flex: 0; text-align: center; }
-.nav-item { font-size: 0.7rem; transition: 0.4s; }
+.nav-item { font-size: 0.65rem; transition: 0.4s; }
 .nav-item.active { color: #555 !important; }
 
-/* --- 3. HERO & BIRD --- */
-.hero-split { display: flex; gap: 60px; align-items: flex-end; margin-bottom: 60px; }
-.hero-image-box { flex: 2; aspect-ratio: 16 / 9; background: #111; }
+/* --- 3. HERO SPLIT (RE-ALIGNED LEFT) --- */
+.hero-split { 
+    display: flex; 
+    gap: 40px; 
+    align-items: center; /* Centers text vertically against the image */
+    margin-bottom: 60px; 
+}
+
+.hero-image-box { 
+    flex: 1.8; 
+    aspect-ratio: 16 / 9; 
+    background: #111; 
+}
 .main-feat-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.identity-stack { display: flex; flex-direction: column; align-items: flex-start; }
-.hero-bird { width: 40px; height: auto; margin-bottom: 15px; animation: goldFocus 6s infinite ease-in-out; }
-.hero-text-box h1 { font-size: 2.2rem; font-weight: 200; line-height: 1.1; text-transform: lowercase; }
+.hero-text-box { 
+    flex: 1; 
+}
+
+.identity-stack { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; /* Centers bird and text together */
+    text-align: center; 
+}
+
+/* THE MINI FLOATING BIRD (Centered) */
+.hero-bird { 
+    width: 45px; 
+    height: auto; 
+    margin-bottom: 15px; 
+    animation: goldFocus 6s infinite ease-in-out; 
+}
+
+.hero-text-box h1 { 
+    font-size: 1.8rem; 
+    font-weight: 200; 
+    line-height: 1.2; 
+    text-transform: lowercase; 
+}
 
 /* --- 4. GRID --- */
-.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.portfolio-card { text-decoration: none; color: #fff; }
-.portfolio-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 15px; }
-.card-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.portfolio-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 12px; transition: 0.4s; }
+.portfolio-card:hover img { opacity: 0.6; }
+.card-label { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 2px; color: #888; }
 
-/* --- 5. SPLASH SCREEN (FIXED) --- */
+/* --- 5. SPLASH SCREEN --- */
 .modal-overlay { 
-    position: fixed; 
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: #000; 
-    display: flex; justify-content: center; align-items: center; 
-    z-index: 99999; /* Extra high to stay on top */
-    text-align: center; 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; display: flex; justify-content: center; align-items: center; 
+    z-index: 99999; text-align: center; 
 }
 .gold-bird { width: 80px; height: auto; margin: 20px auto; animation: goldFocus 6s infinite ease-in-out; display: block; }
 .modal-title { font-size: 2.5rem; letter-spacing: 15px; font-weight: 100; margin-bottom: 10px; }
-.modal-definition { color: #444; font-style: italic; margin-bottom: 40px; }
-
-/* Refined Button */
-.cta-minimal { 
-    background: transparent; 
-    color: #fff; 
-    border: 1px solid #333; 
-    padding: 12px 35px; 
-    cursor: pointer; 
-    text-transform: uppercase; 
-    font-size: 0.75rem; 
-    letter-spacing: 3px;
-    position: relative;
-    z-index: 100000; /* Ensure button is above everything else */
-}
-.cta-minimal:hover { border-color: #fff; }
+.cta-minimal { background: transparent; color: #fff; border: 1px solid #333; padding: 12px 35px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; }
 
 @keyframes goldFocus { 
     0%, 100% { transform: translateY(0); filter: brightness(1); } 
@@ -70,7 +88,8 @@ body {
 
 /* MOBILE */
 @media (max-width: 800px) {
-    .hero-split { flex-direction: column; align-items: center; text-align: center; }
+    .hero-split { flex-direction: column; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .top-nav { flex-direction: column; gap: 20px; }
+}
 }
