@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
 </head>
-<body style="background-color: #000 !important;">
+<body>
 
     <div id="brand-modal" class="modal-overlay">
         <div class="modal-content">
@@ -15,7 +15,7 @@
                 <img src="b11.webp" alt="Gold Bird" class="gold-bird">
             </div>
             <p class="modal-definition"><em>To meander; to follow a winding path.</em></p>
-            <button onclick="closeModal()" class="cta-minimal">Enter Studio</button>
+            <button id="enter-btn" onclick="closeModal()" class="cta-minimal">Enter Studio</button>
         </div>
     </div>
 
@@ -65,155 +65,20 @@
     <script>
         function closeModal() {
             const modal = document.getElementById('brand-modal');
+            
+            // 1. Start the fade out
             modal.style.opacity = '0';
+            modal.style.transition = 'opacity 0.6s ease';
+            
+            // 2. Disable clicks on the modal immediately
             modal.style.pointerEvents = 'none';
-            setTimeout(() => { modal.style.display = 'none'; }, 800);
-        }
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css?v=17">
-</head>
-<body style="background-color: #000 !important;">
-
-    <div id="brand-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h1 class="modal-title">KŌPIKO</h1>
-            <div class="bird-container">
-                <img src="b11.webp" alt="Gold Bird" class="gold-bird">
-            </div>
-            <p class="modal-definition"><em>To meander; to follow a winding path.</em></p>
-            <button onclick="closeModal()" class="cta-minimal">Enter Studio</button>
-        </div>
-    </div>
-
-    <div class="site-wrapper">
-        <nav class="top-nav">
-            <div class="nav-links left">
-                <a href="index.html" class="nav-item active">Home</a>
-            </div>
-            <div class="logo">KŌPIKO</div>
-            <div class="nav-links right">
-                <a href="commercial.html" class="nav-item">Commercial</a>
-                <a href="weddings.html" class="nav-item">Weddings</a>
-                <a href="mailto:nazarethoconnor@kopikostudio.com" class="nav-item">Contact</a>
-            </div>
-        </nav>
-
-        <main class="content-container">
-            <section class="hero-split">
-                <div class="hero-image-box">
-                    <img src="hme.jpg" alt="Featured Work" class="main-feat-img">
-                </div>
-                <div class="hero-text-box">
-                    <div class="identity-stack">
-                        <img src="b11.webp" alt="Floating Bird" class="hero-bird">
-                        <h1>creative identity <br> for the bold</h1>
-                    </div>
-                </div>
-            </section>
-
-            <section class="portfolio-grid">
-                <a href="weddings.html" class="portfolio-card">
-                    <img src="wedding-thumb.jpg" alt="Weddings">
-                    <div class="card-label"><span>+</span> Weddings</div>
-                </a>
-                <a href="commercial.html" class="portfolio-card">
-                    <img src="commercial-thumb.jpg" alt="Commercial">
-                    <div class="card-label"><span>+</span> Commercial</div>
-                </a>
-                <a href="about.html" class="portfolio-card">
-                    <img src="about-thumb.jpg" alt="About">
-                    <div class="card-label"><span>+</span> About Us</div>
-                </a>
-            </section>
-        </main>
-    </div>
-
-    <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            modal.style.opacity = '0';
-            modal.style.pointerEvents = 'none';
-            setTimeout(() => { modal.style.display = 'none'; }, 800);
-        }
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css?v=17">
-</head>
-<body style="background-color: #000 !important;">
-
-    <div id="brand-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h1 class="modal-title">KŌPIKO</h1>
-            <div class="bird-container">
-                <img src="b11.webp" alt="Gold Bird" class="gold-bird">
-            </div>
-            <p class="modal-definition"><em>To meander; to follow a winding path.</em></p>
-            <button onclick="closeModal()" class="cta-minimal">Enter Studio</button>
-        </div>
-    </div>
-
-    <div class="site-wrapper">
-        <nav class="top-nav">
-            <div class="nav-links left">
-                <a href="index.html" class="nav-item active">Home</a>
-            </div>
-            <div class="logo">KŌPIKO</div>
-            <div class="nav-links right">
-                <a href="commercial.html" class="nav-item">Commercial</a>
-                <a href="weddings.html" class="nav-item">Weddings</a>
-                <a href="mailto:nazarethoconnor@kopikostudio.com" class="nav-item">Contact</a>
-            </div>
-        </nav>
-
-        <main class="content-container">
-            <section class="hero-split">
-                <div class="hero-image-box">
-                    <img src="hme.jpg" alt="Featured Work" class="main-feat-img">
-                </div>
-                <div class="hero-text-box">
-                    <div class="identity-stack">
-                        <img src="b11.webp" alt="Floating Bird" class="hero-bird">
-                        <h1>creative identity <br> for the bold</h1>
-                    </div>
-                </div>
-            </section>
-
-            <section class="portfolio-grid">
-                <a href="weddings.html" class="portfolio-card">
-                    <img src="wedding-thumb.jpg" alt="Weddings">
-                    <div class="card-label"><span>+</span> Weddings</div>
-                </a>
-                <a href="commercial.html" class="portfolio-card">
-                    <img src="commercial-thumb.jpg" alt="Commercial">
-                    <div class="card-label"><span>+</span> Commercial</div>
-                </a>
-                <a href="about.html" class="portfolio-card">
-                    <img src="about-thumb.jpg" alt="About">
-                    <div class="card-label"><span>+</span> About Us</div>
-                </a>
-            </section>
-        </main>
-    </div>
-
-    <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            modal.style.opacity = '0';
-            modal.style.pointerEvents = 'none';
-            setTimeout(() => { modal.style.display = 'none'; }, 800);
+            
+            // 3. Completely remove it after the fade ends
+            setTimeout(() => {
+                modal.style.display = 'none';
+                // Ensure the body can scroll if the content is long
+                document.body.style.overflow = 'auto';
+            }, 600);
         }
     </script>
 </body>
