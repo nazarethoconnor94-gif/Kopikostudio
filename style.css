@@ -1,168 +1,75 @@
-/* --- 1. RESET --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    border: 0 !important; 
-    outline: 0 !important; 
-}
 
-body, html {
-    height: 100%;
-    background-color: #000;
-    color: #fff;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    overflow: hidden;
-}
-
-/* --- 2. THE MASTER GRID --- */
-.main-layout {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px; 
-    width: 100vw;
-    height: 100vh;
-    background: #000;
-}
-
-.noir-frame {
-    background-color: #000; 
-    height: 100vh;
-}
-
-/* --- 3. THE HERO --- */
-.hero {
-    position: relative;
-    height: 100vh;
-    width: 100%; 
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hme.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end !important; 
-}
-
-nav { 
+/* --- UPDATED NAVIGATION SECTION --- */
+.top-nav { 
     position: absolute; 
     top: 40px; 
     left: 0;
     width: 100%; 
-    text-align: center; 
-}
-
-.logo { font-size: 1.2rem; letter-spacing: 6px; font-weight: 200; color: #fff; }
-
-.hero-content {
-    text-align: right !important; 
-    padding-right: 60px; 
-    max-width: 600px;
-}
-
-.hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 100;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-.hero-content p { color: #888; margin-bottom: 40px; font-size: 1.1rem; }
-
-.cta {
-    display: inline-block;
-    background: #fff;
-    color: #000;
-    padding: 18px 45px;
-    text-decoration: none;
-    border-radius: 100px;
-    font-weight: 600;
-}
-
-/* --- 5. THE SPLASH SCREEN (LARGE BIRD VERSION) --- */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: #000;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; 
     align-items: center;
-    z-index: 9999;
-    text-align: center;
-    transition: opacity 0.8s ease;
+    padding: 0 60px; /* Aligns with your hero-content padding */
+    z-index: 10;
 }
 
-.modal-title { 
-    font-size: clamp(2.5rem, 8vw, 4.5rem); 
-    letter-spacing: 15px; 
-    font-weight: 100; 
+/* Containers for the links */
+.nav-links {
+    display: flex;
+    gap: 40px; 
+    flex: 1; /* This is the secret to keeping the logo centered */
+}
+
+.nav-links.right {
+    justify-content: flex-end;
+}
+
+/* The Center Logo */
+.logo { 
+    font-size: 1.4rem; 
+    letter-spacing: 10px; 
+    font-weight: 200; 
     color: #fff; 
-    text-indent: 15px;
+    text-align: center;
+    flex: 0; 
+    text-indent: 10px;
 }
 
-.bird-container {
-    margin: 30px auto;
-}
-
-.gold-bird {
-    width: 280px; /* The larger size you had before */
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    animation: goldShimmer 5s infinite ease-in-out;
-    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.1));
-}
-
-.modal-definition { 
-    color: #444; 
-    margin: 0 0 50px 0; 
-    font-style: italic;
-    letter-spacing: 1px;
-}
-
-.cta-minimal {
-    background: transparent; 
-    color: white; 
-    border: 1px solid #333 !important; 
-    padding: 14px 45px; 
-    cursor: pointer; 
-    letter-spacing: 3px;
+/* Individual Links */
+.nav-item {
+    color: #666; /* Muted by default */
+    text-decoration: none;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    font-weight: 300;
+    transition: all 0.4s ease;
 }
 
-.cta-minimal:hover {
-    border-color: #fff !important;
+.nav-item:hover {
+    color: #fff;
+    letter-spacing: 5px; /* Subtle expansion effect */
 }
 
-.modal-disclaimer { 
-    font-size: 9px; 
-    color: #1a1a1a; 
-    margin-top: 80px; 
-    letter-spacing: 2px;
+/* Active Page Highlight */
+.nav-item.active {
+    color: #fff;
+    font-weight: 500;
 }
 
-/* --- 6. ANIMATIONS --- */
-@keyframes goldShimmer {
-    0%, 100% { 
-        transform: translateY(0) scale(1); 
-        filter: brightness(1) contrast(1); 
-    }
-    50% { 
-        transform: translateY(-10px) scale(1.02); 
-        filter: brightness(1.2) contrast(1.1); 
-    }
-}
-
-/* --- 7. MOBILE --- */
+/* --- MOBILE TWEAKS --- */
 @media (max-width: 900px) {
-    .main-layout { grid-template-columns: 1fr; }
-    .noir-frame { display: none; }
-    .hero { 
-        align-items: center !important; 
-        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('mobile-bg.jpg'); 
-        background-size: cover; 
+    .top-nav {
+        flex-direction: column;
+        gap: 25px;
+        top: 30px;
+        padding: 0;
     }
-    .hero-content { text-align: center !important; padding-right: 0; max-width: 90% !important; }
+    .nav-links {
+        gap: 20px;
+        justify-content: center !important;
+    }
+    .nav-item {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+    }
 }
