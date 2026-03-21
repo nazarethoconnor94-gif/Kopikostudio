@@ -1,5 +1,4 @@
-
-/* --- UPDATED NAVIGATION SECTION --- */
+/* --- UPDATED NAVIGATION (STRICT BRANDING) --- */
 .top-nav { 
     position: absolute; 
     top: 40px; 
@@ -8,68 +7,71 @@
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    padding: 0 60px; /* Aligns with your hero-content padding */
+    padding: 0 60px;
     z-index: 10;
 }
 
-/* Containers for the links */
 .nav-links {
     display: flex;
     gap: 40px; 
-    flex: 1; /* This is the secret to keeping the logo centered */
+    flex: 1; /* Keeps logo centered */
 }
 
 .nav-links.right {
     justify-content: flex-end;
 }
 
-/* The Center Logo */
+/* Matching the Logo and Link Fonts */
+.logo, .nav-item {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Matching your body font */
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 6px; /* Matches your original logo spacing */
+}
+
 .logo { 
-    font-size: 1.4rem; 
-    letter-spacing: 10px; 
+    font-size: 1.2rem; 
     font-weight: 200; 
-    color: #fff; 
     text-align: center;
     flex: 0; 
-    text-indent: 10px;
+    text-indent: 6px; /* Offsets letter-spacing to center text perfectly */
 }
 
-/* Individual Links */
 .nav-item {
-    color: #666; /* Muted by default */
     text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    font-weight: 300;
+    font-size: 0.7rem;
+    font-weight: 200;
     transition: all 0.4s ease;
+    cursor: pointer;
 }
 
+/* Hover effect: Subtle glow */
 .nav-item:hover {
     color: #fff;
-    letter-spacing: 5px; /* Subtle expansion effect */
+    opacity: 0.7;
 }
 
-/* Active Page Highlight */
+/* ACTIVE STATE: Turns grey when it is the current page */
 .nav-item.active {
-    color: #fff;
-    font-weight: 500;
+    color: #555 !important; /* Muted grey for the current page */
+    cursor: default;
+    pointer-events: none; /* Prevents re-clicking the page you are on */
 }
 
 /* --- MOBILE TWEAKS --- */
 @media (max-width: 900px) {
     .top-nav {
         flex-direction: column;
-        gap: 25px;
-        top: 30px;
+        gap: 20px;
+        top: 20px;
         padding: 0;
     }
     .nav-links {
-        gap: 20px;
+        gap: 15px;
         justify-content: center !important;
     }
     .nav-item {
-        font-size: 0.65rem;
-        letter-spacing: 2px;
+        font-size: 0.55rem;
+        letter-spacing: 3px;
     }
 }
