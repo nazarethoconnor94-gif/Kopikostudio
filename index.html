@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css?v=14">
+    <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body style="background-color: #000 !important;">
 
@@ -26,9 +26,7 @@
             <div class="nav-links left">
                 <a href="index.html" class="nav-item active">Home</a>
             </div>
-
             <div class="logo">KŌPIKO</div>
-
             <div class="nav-links right">
                 <a href="commercial.html" class="nav-item">Commercial</a>
                 <a href="weddings.html" class="nav-item">Weddings</a>
@@ -41,8 +39,12 @@
                 <div class="hero-image-box">
                     <img src="hme.jpg" alt="Featured Work">
                 </div>
+
                 <div class="hero-text-box">
-                    <h1>Creative identity <br> for the bold</h1>
+                    <div class="identity-stack">
+                        <img src="b11.webp" alt="Floating Bird" class="hero-bird">
+                        <h1>creative identity <br> for the bold</h1>
+                    </div>
                 </div>
             </section>
 
@@ -61,7 +63,6 @@
                 </a>
             </section>
         </main>
-
     </div>
 
     <script>
@@ -69,9 +70,7 @@
             const modal = document.getElementById('brand-modal');
             modal.style.opacity = '0';
             modal.style.pointerEvents = 'none';
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 800);
+            setTimeout(() => { modal.style.display = 'none'; }, 800);
         }
     </script>
 </body>
