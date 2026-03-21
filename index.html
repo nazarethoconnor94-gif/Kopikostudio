@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body style="background-color: #000 !important;">
 
@@ -22,13 +22,14 @@
 
     <div class="site-wrapper">
         
-        <nav id="main-nav" class="top-nav" style="display: none;">
+        <nav class="top-nav">
             <div class="nav-links left">
                 <a href="index.html" class="nav-item active">Home</a>
             </div>
+
             <div class="logo">KŌPIKO</div>
+
             <div class="nav-links right">
-                <a href="about.html" class="nav-item">About Us</a>
                 <a href="commercial.html" class="nav-item">Commercial</a>
                 <a href="weddings.html" class="nav-item">Weddings</a>
                 <a href="mailto:nazarethoconnor@kopikostudio.com" class="nav-item">Contact</a>
@@ -38,7 +39,7 @@
         <main class="content-container">
             <section class="hero-split">
                 <div class="hero-image-box">
-                    <img src="hme.jpg" alt="Hero Featured Work">
+                    <img src="hme.jpg" alt="Featured Work">
                 </div>
                 <div class="hero-text-box">
                     <h1>Creative identity <br> for the bold</h1>
@@ -46,17 +47,17 @@
             </section>
 
             <section class="portfolio-grid">
-                <a href="weddings.html" class="card">
+                <a href="weddings.html" class="portfolio-card">
                     <img src="wedding-thumb.jpg" alt="Weddings">
-                    <span>Plus Weddings</span>
+                    <div class="card-label"><span>+</span> Weddings</div>
                 </a>
-                <a href="commercial.html" class="card">
+                <a href="commercial.html" class="portfolio-card">
                     <img src="commercial-thumb.jpg" alt="Commercial">
-                    <span>Plus Commercial</span>
+                    <div class="card-label"><span>+</span> Commercial</div>
                 </a>
-                <a href="about.html" class="card">
+                <a href="about.html" class="portfolio-card">
                     <img src="about-thumb.jpg" alt="About">
-                    <span>Plus About Us</span>
+                    <div class="card-label"><span>+</span> About Us</div>
                 </a>
             </section>
         </main>
@@ -66,12 +67,10 @@
     <script>
         function closeModal() {
             const modal = document.getElementById('brand-modal');
-            const nav = document.getElementById('main-nav');
             modal.style.opacity = '0';
             modal.style.pointerEvents = 'none';
             setTimeout(() => {
-                modal.style.display = 'flex';
-                modal.remove(); // Removes splash from code after use
+                modal.style.display = 'none';
             }, 800);
         }
     </script>
