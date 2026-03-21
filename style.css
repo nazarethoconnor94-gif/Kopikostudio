@@ -1,46 +1,42 @@
 /* --- 1. CORE --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    background-color: #000 !important; 
-    color: #fff; 
-    font-family: 'Helvetica Neue', Arial, sans-serif; 
-    overflow-x: hidden;
+body, html { height: 100%; background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+/* --- 2. MASTER GRID (Fluid) --- */
+.main-layout {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px; /* Slimmer side frames for more room */
+    min-height: 100vh;
+}
+.noir-frame { background-color: #000; }
+
+.center-col {
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
 }
 
-.site-wrapper { 
-    max-width: 1200px; /* Slightly wider to allow the Hero more breathing room */
-    margin: 0 auto; 
-    padding: 40px 20px; 
-}
+/* --- 3. NAV --- */
+.top-nav { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+.logo { font-size: 1.4rem; letter-spacing: 8px; text-transform: uppercase; font-weight: 200; }
+.nav-links a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
 
-/* --- 2. NAV --- */
-.top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; }
-.nav-links { display: flex; gap: 30px; flex: 1; }
-.nav-links.right { justify-content: flex-end; }
-.logo { font-size: 1.3rem; letter-spacing: 8px; text-transform: uppercase; font-weight: 200; text-align: center; }
-.nav-item { text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem; color: #fff; text-decoration: none; transition: 0.4s; font-weight: 200; }
-.nav-item.active { color: #444 !important; }
-
-/* --- 3. HERO SPLIT (THE MASSIVE HERO) --- */
-.hero-split { 
-    display: flex; 
-    gap: 40px; 
-    align-items: flex-end; 
-    margin-bottom: 80px;
-    width: 100%;
+/* --- 4. HERO SECTION --- */
+.hero-section {
+    display: flex;
+    gap: 60px;
+    align-items: center; 
 }
 
 .hero-image-box { 
-    width: 80%; /* MASSIVE Hero Image */
-    aspect-ratio: 16 / 9; 
-    background: #111; 
+    flex: 2.5; /* Image takes the majority of space */
+    aspect-ratio: 16 / 9;
 }
-
-.main-feat-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.main-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .hero-text-box { 
-    width: 20%; 
-    padding-bottom: 15px;
+    flex: 1; 
 }
 
 .identity-stack { 
@@ -50,53 +46,47 @@ body {
     text-align: center; 
 }
 
-.hero-bird { 
-    width: 45px; 
-    height: auto; 
-    margin-bottom: 15px; 
-    animation: goldFocus 6s infinite ease-in-out; 
+/* THE BIGGER FLOATING BIRD */
+.sketch-bird {
+    width: 180px; /* Increased size significantly */
+    height: auto;
+    margin-bottom: 30px;
+    animation: floatingBird 6s infinite ease-in-out;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
 }
 
-.hero-text-box h1 { 
-    font-size: clamp(1.2rem, 2vw, 1.8rem); 
-    font-weight: 200; 
-    line-height: 1.1; 
-    text-transform: lowercase; 
+.identity-stack h2 {
+    font-size: 1.8rem;
+    font-weight: 200;
+    line-height: 1.1;
+    text-transform: lowercase;
+    letter-spacing: 1px;
 }
 
-/* --- 4. SMALL PORTFOLIO GRID --- */
-.portfolio-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 25px; 
-    max-width: 800px; /* Keeps the bottom images small and centered */
-    margin-left: 0; /* Keeps them lined up with the start of the Hero image */
+/* --- 5. PORTFOLIO GRID --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+.grid-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 15px; border: 1px solid #1a1a1a; }
+.grid-card p { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #555; }
+
+/* --- 6. SPLASH & ANIMATIONS --- */
+@keyframes floatingBird { 
+    0%, 100% { transform: translateY(0) rotate(0deg); } 
+    50% { transform: translateY(-15px) rotate(2deg); } 
 }
 
-.portfolio-card img { 
-    width: 100%; 
-    aspect-ratio: 1/1; 
-    object-fit: cover; 
-    margin-bottom: 12px; 
-    filter: grayscale(20%);
-    transition: 0.5s ease;
-}
-
-.portfolio-card:hover img { filter: grayscale(0%); opacity: 0.8; }
-
-.card-label { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 2px; color: #555; }
-
-/* --- 5. SPLASH --- */
-.modal-overlay { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; text-align: center; }
-.gold-bird { width: 80px; animation: goldFocus 6s infinite ease-in-out; margin-bottom: 20px; }
-.modal-title { font-size: 2.2rem; letter-spacing: 12px; font-weight: 100; margin-bottom: 10px; }
-.cta-minimal { background: transparent; color: #fff; border: 1px solid #333; padding: 12px 35px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; }
-
-@keyframes goldFocus { 0%, 100% { transform: translateY(0); filter: brightness(1); } 50% { transform: translateY(-8px); filter: brightness(1.2); } }
+.modal-overlay { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; text-align: center; transition: 0.8s; }
+.gold-bird { width: 280px; margin-bottom: 30px; animation: floatingBird 5s infinite ease-in-out; }
+.modal-title { font-size: 3.5rem; letter-spacing: 20px; font-weight: 100; margin-bottom: 10px; }
+.cta-minimal { background: transparent; color: white; border: 1px solid #333; padding: 15px 50px; cursor: pointer; text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; }
 
 /* MOBILE */
-@media (max-width: 800px) {
-    .hero-split { flex-direction: column; }
-    .hero-image-box, .hero-text-box { width: 100%; }
+@media (max-width: 900px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .hero-section { flex-direction: column; }
     .portfolio-grid { grid-template-columns: 1fr; }
+    .sketch-bird { width: 120px; }
 }
