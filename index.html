@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
-    <!-- Force refresh for updated Nav -->
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body style="background-color: #000 !important;">
 
     <div id="brand-modal" class="modal-overlay">
         <div class="modal-content">
-            <h1 class="modal-title">KŌPIKO STUDIO</h1>
+            <h1 class="modal-title">KŌPIKO</h1>
             <div class="bird-container">
                 <img src="b11.webp" alt="Kōpiko Gold Bird" class="gold-bird">
             </div>
@@ -25,16 +24,11 @@
         <aside class="noir-frame"></aside>
 
         <main class="hero">
-            <nav class="top-nav">
-                <!-- Left Side: Home Only -->
+            <nav id="main-nav" class="top-nav" style="display: none;">
                 <div class="nav-links left">
                     <a href="index.html" class="nav-item active">Home</a>
                 </div>
-
-                <!-- Center: Logo -->
-                <div class="logo">KŌPIKO STUDIO</div>
-
-                <!-- Right Side: Everything Else -->
+                <div class="logo">KŌPIKO</div>
                 <div class="nav-links right">
                     <a href="commercial.html" class="nav-item">Commercial</a>
                     <a href="weddings.html" class="nav-item">Weddings</a>
@@ -44,7 +38,7 @@
 
             <div class="hero-content">
                 <h1>Creative Identity <br> for the Bold.</h1>
-                <p>Est. 2026.</p>
+                <p>Founded by Nazareth O'Connor. Est. 2026.</p>
                 <a href="mailto:nazarethoconnor@kopikostudio.com" class="cta">Start a Project</a>
             </div>
         </main>
@@ -55,9 +49,16 @@
     <script>
         function closeModal() {
             const modal = document.getElementById('brand-modal');
+            const nav = document.getElementById('main-nav');
+            
             modal.style.opacity = '0';
             modal.style.pointerEvents = 'none';
-            setTimeout(() => { modal.style.display = 'none'; }, 800);
+            
+            setTimeout(() => {
+                modal.style.display = 'none';
+                // Show the navigation once the splash is gone
+                nav.style.display = 'flex';
+            }, 800);
         }
     </script>
 </body>
