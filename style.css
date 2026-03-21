@@ -92,4 +92,3 @@ body {
     .portfolio-grid { grid-template-columns: 1fr; }
     .top-nav { flex-direction: column; gap: 20px; }
 }
-}
