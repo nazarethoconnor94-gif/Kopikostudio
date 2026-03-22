@@ -197,4 +197,133 @@ body.modal-open { overflow: hidden; }
 /* --- 4. HERO SECTION (3D FRAME) --- */
 .main-layout { 
     display: grid; 
-    grid-template
+    grid-template-columns: 80px 1fr 80px; 
+    background: var(--bg-color); 
+}
+
+.center-col { 
+    grid-column: 2; 
+    max-width: 1300px; 
+    margin: 0 auto; 
+    width: 100%; 
+}
+
+.hero-container { 
+    position: relative; 
+    width: 100%; 
+    margin-top: 40px; 
+    margin-bottom: 80px; 
+    display: flex; 
+    align-items: center; 
+}
+
+.hero-img-main { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    background-color: var(--bg-color); 
+    
+    /* 4K Frame Setup */
+    border: 55px solid transparent; 
+    border-image-source: url('border.png'); 
+    border-image-slice: 500 fill; 
+    border-image-repeat: round;
+
+    /* 3D Depth Visuals */
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,1)) 
+            drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    box-shadow: 
+        inset 0 0 80px rgba(0,0,0,1), 
+        0 0 20px rgba(212, 175, 55, 0.05);
+    
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.hero-container:hover .hero-img-main {
+    transform: scale(1.01) translateY(-5px);
+}
+
+.hero-branding { 
+    position: absolute; 
+    z-index: 10; 
+    right: 8%; 
+    text-align: center; 
+    pointer-events: none; 
+}
+
+.bird-v2 { 
+    width: 240px; 
+    animation: floating 6s infinite ease-in-out; 
+    filter: drop-shadow(0 15px 30px #000); 
+}
+
+/* --- 5. BOTTOM GRID (NO CROP) --- */
+.bottom-grid { 
+    display: flex; 
+    gap: 40px; 
+    padding-bottom: 100px; 
+    align-items: flex-start; 
+}
+
+.grid-card { 
+    flex: 1; 
+    text-align: center; 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.card-img-container { 
+    width: 100%; 
+    margin-bottom: 20px; 
+    overflow: hidden; 
+}
+
+.card-img-container img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); 
+}
+
+.grid-card:hover img { 
+    transform: scale(1.03); 
+    filter: brightness(1.1); 
+}
+
+.grid-card p { 
+    font-size: 0.65rem; 
+    letter-spacing: 4px; 
+    text-transform: uppercase; 
+    opacity: 0.5; 
+    transition: 0.4s;
+}
+
+.grid-card:hover p { opacity: 1; color: var(--accent-gold); }
+
+/* --- 6. ANIMATIONS & RESPONSIVENESS --- */
+@keyframes floating { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-15px); } 
+}
+
+@media (max-width: 900px) {
+    .main-layout { grid-template-columns: 25px 1fr 25px; }
+    .top-nav { padding: 20px 0; }
+    .nav-group { display: none; } 
+    .menu-icon { display: flex; } 
+    
+    .hero-container { flex-direction: column; margin-bottom: 40px; }
+    .hero-img-main { border-width: 18px; }
+    
+    .hero-branding { 
+        position: relative; 
+        right: auto; 
+        transform: none; 
+        margin-top: 40px; 
+        width: 100%; 
+    }
+    .bird-v2 { width: 160px; }
+    
+    .bottom-grid { flex-direction: column; gap: 60px; }
+    .grid-card p { font-size: 0.75rem; opacity: 0.8; }
+}
