@@ -43,7 +43,7 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
 
 /* BALANCED BIRD: Precise sizing */
 .hero-bird-balanced { 
-    width: 210px; 
+    width: 300px; 
     height: auto; 
     animation: floating 6s infinite ease-in-out; 
 }
