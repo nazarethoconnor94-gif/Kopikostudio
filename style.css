@@ -1,80 +1,200 @@
-/* --- 1. CORE --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body, html { height: 100%; background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; overflow-x: hidden; }
-
-/* --- 2. THE MASTER GRID --- */
-.main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
-.noir-frame { background-color: #000; }
-.center-col { padding: 0 40px; display: flex; flex-direction: column; }
-
-/* --- 3. NAV --- */
-.top-nav { display: flex; justify-content: space-between; align-items: center; border: 1px solid #fff; margin-top: 25px; padding: 12px 25px; }
-.nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; }
-.nav-group { flex: 1; display: flex; gap: 30px; }
-.nav-group.right { justify-content: flex-end; }
-.logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; font-weight: 200; }
-
-/* --- 4. HERO SPLIT (BALANCED BIRD) --- */
-.hero-split { display: flex; width: 100%; margin-top: 15px; gap: 15px; align-items: stretch; }
-
-.hero-box { 
-    flex: 1; 
-    border: 1px solid #fff; 
-    aspect-ratio: 16 / 9; 
-    min-height: 400px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    overflow: hidden; 
-    background-color: #000; 
+/* --- 1. CORE & RESET --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
-.hero-img-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
+:root { 
+    --bg-color: #000000; 
+    --accent-gold: #d4af37; 
+    --nav-height: 80px;
+}
 
-.identity-stack { 
+body, html { 
+    background-color: var(--bg-color); 
+    color: #fff; 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+    scroll-behavior: smooth;
+}
+
+/* Prevents scrolling when Splash or Menu is active */
+body.modal-open { overflow: hidden; }
+
+/* --- 2. SPLASH PAGE (Brand Entrance) --- */
+#brand-modal { 
+    position: fixed; 
+    inset: 0; 
+    background: var(--bg-color); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 9999; 
     text-align: center; 
+    transition: opacity 0.8s ease, visibility 0.8s; 
+}
+
+.modal-content { 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: center; /* Balanced centering */
-    width: 100%;
-    height: 100%;
+    width: 100%; 
+    padding: 20px; 
 }
 
-/* BALANCED BIRD: Precise sizing */
-.hero-bird-balanced { 
-    width: 300px; 
-    height: auto; 
-    animation: floating 6s infinite ease-in-out; 
+.title-block { 
+    position: relative; 
+    display: inline-block; 
+    margin-bottom: 50px; 
 }
 
-/* TEXT POSITIONING */
-.identity-text { 
-    font-size: clamp(1rem, 2vw, 1.3rem); 
+.modal-title { 
+    font-size: clamp(2.5rem, 8vw, 5.5rem); 
+    letter-spacing: 20px; 
     font-weight: 200; 
+    text-transform: uppercase;
+    margin-right: -20px; /* Counter-acts letter spacing to center text */
+}
+
+/* STUDIO Alignment: Targets the span between the O and K */
+.studio-subtitle {
+    position: absolute; 
+    left: 18%; 
+    right: 18%; 
+    top: 100%; 
+    margin-top: 10px;
+    display: flex; 
+    justify-content: space-between;
+    font-size: clamp(0.5rem, 2vw, 0.85rem); 
+    font-weight: 300; 
+    text-transform: uppercase; 
+    color: #888;
+}
+
+.gold-bird { 
+    width: 140px; 
+    margin-bottom: 40px; 
+    animation: floating 5s infinite ease-in-out; 
+}
+
+.cta-enter { 
+    background: transparent; 
+    color: #fff; 
+    border: 1px solid #fff; 
+    padding: 15px 40px; 
+    letter-spacing: 5px; 
+    text-transform: uppercase; 
+    font-size: 0.7rem; 
+    cursor: pointer; 
+    transition: 0.3s; 
+}
+
+.cta-enter:hover { 
+    background: #fff; 
+    color: #000; 
+}
+
+/* --- 3. STICKY NAVIGATION --- */
+.top-nav-container {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.top-nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 25px 0; 
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo { 
+    font-size: 1.1rem; 
+    text-transform: uppercase; 
+    letter-spacing: 7px; 
+    font-weight: 500; 
+}
+
+.nav-group { display: flex; gap: 30px; }
+.nav-group a { 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 0.7rem; 
     text-transform: lowercase; 
-    margin-top: 45px; /* Keeps the line pushed down */
-    line-height: 1.2;
-    letter-spacing: 3px;
+    letter-spacing: 2px; 
+    opacity: 0.6; 
+    transition: 0.3s; 
+}
+.nav-group a:hover { opacity: 1; }
+
+/* Gold Hamburger Icon */
+.menu-icon { 
+    display: none; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    width: 28px; 
+    height: 16px; 
+    cursor: pointer; 
+    z-index: 1100; 
 }
 
-/* --- 5. GRID --- */
-.bottom-grid { display: flex; gap: 15px; margin-top: 15px; width: 100%; padding-bottom: 40px; }
-.grid-card { flex: 1; border: 1px solid #fff; padding: 15px; text-align: center; }
-.card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
-.card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-.grid-card p { font-size: 0.8rem; text-transform: lowercase; }
-
-/* --- 6. SPLASH --- */
-.modal-overlay { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; text-align: center; transition: opacity 0.8s ease; cursor: pointer; }
-.gold-bird { width: 250px; margin-bottom: 25px; animation: floating 5s infinite ease-in-out; }
-.modal-title { font-size: 3rem; letter-spacing: 18px; font-weight: 100; }
-.cta-minimal { background: transparent; color: white; border: 1px solid #333; padding: 12px 45px; letter-spacing: 4px; font-size: 0.75rem; margin-top: 25px; pointer-events: none; }
-
-@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-@media (max-width: 1000px) {
-    .main-layout { grid-template-columns: 1fr; }
-    .hero-split, .bottom-grid { flex-direction: column; }
-    .hero-box { min-height: 300px; aspect-ratio: auto; }
+.menu-icon span { 
+    width: 100%; 
+    height: 1px; 
+    background: var(--accent-gold); 
+    transition: 0.4s; 
 }
+
+.menu-icon.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.menu-icon.open span:nth-child(2) { opacity: 0; }
+.menu-icon.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* Mobile Drawer & Overlay */
+.mobile-drawer { 
+    position: fixed; 
+    top: -100%; 
+    left: 0; 
+    width: 100%; 
+    background: #050505; 
+    padding: 120px 40px 60px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 35px; 
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+    z-index: 1000; 
+}
+
+.mobile-drawer.active { top: 0; }
+
+.mobile-drawer a { 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 1.8rem; 
+    letter-spacing: 4px; 
+    text-transform: lowercase; 
+    font-weight: 200; 
+}
+
+.menu-overlay { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.9); 
+    opacity: 0; 
+    visibility: hidden; 
+    transition: 0.4s; 
+    z-index: 999; 
+}
+
+.menu-overlay.active { opacity: 1; visibility: visible; }
+
+/* --- 4. HERO SECTION (3D FRAME) --- */
+.main-layout { 
+    display: grid; 
+    grid-template
