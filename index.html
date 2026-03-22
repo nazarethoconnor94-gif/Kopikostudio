@@ -45,22 +45,28 @@
             cursor: pointer; 
         }
 
-        /* --- 3. NAV BAR (FROSTED WINDOW / THIN) --- */
+        /* --- 3. NAV BAR (FLOATING / HANGING) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            margin-top: 25px; 
-            /* Thinner Bar: Reduced vertical padding to 10px */
-            padding: 10px 30px; 
-            /* Frosted Window: Dark base with 30% opacity */
-            background: rgba(40, 40, 40, 0.3); 
-            /* Intense Blur for the "Frosted" effect */
-            backdrop-filter: blur(30px); 
-            -webkit-backdrop-filter: blur(30px);
+            
+            /* Hanging Position */
+            margin: 20px auto 0 auto; 
+            width: 100%; /* Spans the center column */
+            max-width: 1200px; /* Optional: caps the width on ultra-wide screens */
+            
+            padding: 10px 35px; 
+            background: rgba(45, 45, 45, 0.35); 
+            backdrop-filter: blur(35px); 
+            -webkit-backdrop-filter: blur(35px);
+            
+            /* Rounded "Pill" or Soft Corner feel */
+            border-radius: 12px; 
             z-index: 100;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Very faint edge to define it */
         }
+        
         .nav-group { display: flex; gap: 35px; }
         .nav-group a { 
             color: #fff; 
@@ -81,7 +87,13 @@
         }
 
         /* --- 4. HERO SECTION --- */
-        .hero-split { display: grid; grid-template-columns: 2.2fr 1fr; width: 100%; margin-top: 15px; gap: 15px; }
+        .hero-split { 
+            display: grid; 
+            grid-template-columns: 2.2fr 1fr; 
+            width: 100%; 
+            margin-top: 25px; /* Added space for the hanging nav */
+            gap: 15px; 
+        }
         .hero-box { min-height: 550px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
         .hero-img-fill { width: 100%; height: 100%; object-fit: cover; }
         
@@ -108,6 +120,7 @@
             .main-layout { grid-template-columns: 1fr; }
             .hero-split { grid-template-columns: 1fr; }
             .center-col { padding: 0 20px; }
+            .top-nav { width: calc(100% - 40px); margin: 20px auto 0 auto; }
         }
     </style>
 </head>
