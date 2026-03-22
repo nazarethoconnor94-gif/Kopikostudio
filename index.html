@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
     <style>
-        /* --- CORE STYLES --- */
+        /* --- CORE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { height: 100%; background-color: #000; color: #fff; font-family: sans-serif; overflow-x: hidden; }
 
@@ -31,7 +31,6 @@
             align-items: center; 
             justify-content: center; 
             overflow: hidden; 
-            position: relative; /* For absolute positioning of text if needed */
         }
 
         .hero-img-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -46,10 +45,10 @@
             height: 100%;
         }
 
-        /* THE BIRD - Using % to force size regardless of cache */
+        /* THE BIRD - Increased by 20% to 55% of the container */
         .bird-forced { 
-            width: 45% !important; /* This makes it 45% of the box width */
-            max-width: 320px;
+            width: 55% !important; 
+            max-width: 400px;
             height: auto; 
             display: block;
             margin: 0 auto;
@@ -60,8 +59,8 @@
             font-size: 1.2rem; 
             font-weight: 200; 
             text-transform: lowercase; 
-            margin-top: 40px; 
-            letter-spacing: 3px;
+            margin-top: 50px; /* Pushed down slightly more for the larger bird */
+            letter-spacing: 4px;
         }
 
         /* --- BOTTOM GRID --- */
@@ -115,36 +114,3 @@
 
             <section class="hero-split">
                 <div class="hero-box">
-                    <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
-                </div>
-                
-                <div class="hero-box">
-                    <div class="identity-stack">
-                        <img src="b11.webp" alt="Bird" class="bird-forced">
-                        <h2 class="identity-text">creative identity <br> for the bold</h2>
-                    </div>
-                </div>
-            </section>
-
-            <section class="bottom-grid">
-                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
-                <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
-                <div class="grid-card"><div class="card-img-placeholder"><img src="about-thumb.jpg"></div><p>about</p></div>
-            </section>
-        </main>
-
-        <aside style="background:#000;"></aside>
-    </div>
-
-    <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            if (modal) {
-                modal.style.opacity = '0';
-                modal.style.pointerEvents = 'none';
-                setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 800);
-            }
-        }
-    </script>
-</body>
-</html>
