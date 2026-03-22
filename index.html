@@ -59,7 +59,7 @@ permalink: /
         .nav-group a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: lowercase; letter-spacing: 2px; opacity: 0.8; }
         .logo { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
 
-        /* --- 4. HERO CONTAINER: FIXED WHITE FRAME --- */
+        /* --- 4. HERO CONTAINER: 2K FRAME WITH 250 SLICE --- */
         .hero-container { 
             width: 100%; height: auto; position: relative; line-height: 0;
             margin-top: 30px; 
@@ -68,18 +68,20 @@ permalink: /
         .hero-img-main { 
             width: 100%; height: auto; display: block; 
             
-            /* High-End PNG Border Settings */
+            /* High-Res Border Settings */
             border-style: solid; 
-            border-width: 45px; /* How thick the frame looks on screen */
+            border-width: 45px; 
             border-image-source: url('border.png'); 
             
-            /* SLICE VALUE: If the frame is white, test these numbers one by one: 100, 180, 250, 300 */
-            border-image-slice: 180; 
+            /* Updated slice for the 1988px file */
+            border-image-slice: 250; 
             
-            /* Tells the gold texture to stretch around the photo */
             border-image-repeat: stretch; 
             
-            /* Museum shadows for 3D depth */
+            /* Keeps the upscale crisp */
+            image-rendering: -webkit-optimize-contrast;
+            
+            /* Gallery Depth Lighting */
             box-shadow: 
                 0 0 0 5px #000, 
                 inset 0 0 50px rgba(0,0,0,0.9), 
@@ -118,8 +120,8 @@ permalink: /
             .hero-container { display: flex; flex-direction: column; width: 100vw; margin-top: 10px; }
             .hero-img-main { 
                 width: 100vw; 
-                border-width: 20px; 
-                border-image-slice: 180; /* Must match the desktop value */
+                border-width: 22px; 
+                border-image-slice: 250; 
                 box-shadow: 0 0 0 3px #000, inset 0 0 25px rgba(0,0,0,0.85), 0 20px 50px rgba(0,0,0,1);
             }
             .hero-branding-overlay { position: relative; width: 100%; background: #000; padding: 60px 20px; justify-content: center; }
