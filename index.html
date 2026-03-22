@@ -58,14 +58,14 @@
         .nav-group a:hover { opacity: 0.6; }
         .logo { color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
 
-        /* --- 4. HERO SECTION (FULL IMAGE + TRANSPARENT RIGHT SIDE) --- */
+        /* --- 4. HERO SECTION (FULL IMAGE + TOP-RIGHT BRANDING) --- */
         .hero-full {
             width: 100%;
-            height: 750px; /* Slightly taller for more impact */
+            height: 750px; 
             position: relative;
             overflow: hidden;
             display: flex;
-            justify-content: flex-end; /* Aligns the branding zone to the right */
+            justify-content: flex-end; 
         }
 
         .hero-img-bg {
@@ -77,24 +77,26 @@
             z-index: 1;
         }
 
-        /* The Right Side Pane - Now Fully Transparent */
+        /* The Right Side Pane - Invisible */
         .hero-right-pane {
             position: relative;
             z-index: 2;
-            width: 40%; /* Space allocated for branding on the right */
+            width: 40%; 
             height: 100%;
-            
-            /* Background, Blur, and Borders removed as requested */
-            background: transparent; 
-            backdrop-filter: none; 
-            border: none;
             
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            
+            /* ALIGN TO TOP: Changed from center to flex-start */
+            justify-content: flex-start; 
+            
             text-align: center;
-            padding: 40px;
+            
+            /* TOP SPACING: Adjust this value to move the bird higher or lower */
+            padding-top: 80px; 
+            padding-right: 40px;
+            padding-left: 40px;
         }
 
         .bird-v2 { 
@@ -111,7 +113,6 @@
             text-transform: uppercase; 
             letter-spacing: 7px; 
             color: #fff;
-            /* Added shadow for contrast since there's no frost behind it now */
             text-shadow: 0 2px 15px rgba(0,0,0,0.6); 
         }
         .tag-heavy { font-weight: 700; } 
@@ -135,7 +136,7 @@
         @media (max-width: 1000px) {
             .main-layout { grid-template-columns: 1fr; }
             .hero-full { height: 600px; }
-            .hero-right-pane { width: 100%; } /* Center it on mobile */
+            .hero-right-pane { width: 100%; padding-top: 40px; } 
             .center-col { padding: 0 20px; }
         }
     </style>
@@ -177,7 +178,6 @@
                 </div>
             </section>
 
-            <!-- Bottom content continues... -->
             <section class="bottom-grid">
                 <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
                 <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
