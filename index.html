@@ -12,7 +12,6 @@
             background-color: #000; 
             color: #fff; 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            /* Start hidden, but JS will fix this on click */
             overflow: hidden; 
             height: 100%;
         }
@@ -44,18 +43,17 @@
             text-transform: uppercase; 
             font-size: 0.7rem; 
             cursor: pointer; 
-            transition: background 0.3s;
         }
-        .cta-enter:hover { background: #fff; color: #000; }
 
-        /* --- 3. NAV BAR (LIGHT SILVER) --- */
+        /* --- 3. NAV BAR (50% TRANSPARENCY LIGHT GREY) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             margin-top: 25px; 
             padding: 18px 30px; 
-            background: rgba(220, 220, 220, 0.6); 
+            /* Light Silver Grey at 50% opacity */
+            background: rgba(210, 210, 210, 0.5); 
             backdrop-filter: blur(20px); 
             -webkit-backdrop-filter: blur(20px);
             z-index: 100;
@@ -147,16 +145,11 @@
     <script>
         function closeModal() {
             const modal = document.getElementById('brand-modal');
-            // Hide the modal
             modal.style.opacity = '0';
             modal.style.visibility = 'hidden';
-            
-            // Re-enable scrolling on both body and html tags
+            modal.style.pointerEvents = 'none';
             document.body.style.overflow = 'auto';
             document.documentElement.style.overflow = 'auto';
-            
-            // Allow clicking through
-            modal.style.pointerEvents = 'none';
         }
     </script>
 </body>
