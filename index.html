@@ -13,7 +13,6 @@
             color: #fff; 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
             overflow-x: hidden;
-            overflow-y: hidden; /* Locked until Enter */
             height: 100%;
         }
 
@@ -30,50 +29,48 @@
             flex-direction: column; 
         }
 
-        /* --- 2. RESTORED SPLASH PAGE --- */
+        /* --- 2. SPLASH PAGE (Mobile Adjusted) --- */
         #brand-modal { 
             position: fixed; inset: 0; background: #000; 
             display: flex; justify-content: center; align-items: center; 
             z-index: 9999; text-align: center; 
             transition: opacity 0.8s ease, visibility 0.8s; 
         }
-        .modal-title { font-size: 3.5rem; letter-spacing: 18px; font-weight: 200; margin-bottom: 20px; text-transform: uppercase; }
-        .gold-bird { width: 220px; margin-bottom: 30px; animation: floating 5s infinite ease-in-out; }
-        .modal-definition { font-size: 0.9rem; letter-spacing: 2px; color: #888; margin-bottom: 40px; }
-        .cta-enter { background: transparent; color: #fff; border: 1px solid #fff; padding: 15px 40px; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; }
+        .modal-title { font-size: 2.5rem; letter-spacing: 12px; font-weight: 200; margin-bottom: 20px; text-transform: uppercase; }
+        .gold-bird { width: 180px; margin-bottom: 30px; animation: floating 5s infinite ease-in-out; }
+        .cta-enter { background: transparent; color: #fff; border: 1px solid #fff; padding: 12px 30px; letter-spacing: 4px; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; }
 
-        /* --- 3. RESTORED STICKY NAV --- */
+        /* --- 3. STICKY NAV (Mobile Slim) --- */
         .top-nav { 
             display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; width: 100%; padding: 12px 30px; 
-            background: rgba(25, 25, 25, 0.75); backdrop-filter: blur(45px); 
-            -webkit-backdrop-filter: blur(45px); z-index: 100;
+            position: sticky; top: 0; width: 100%; padding: 12px 20px; 
+            background: rgba(15, 15, 15, 0.9); backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px); z-index: 100;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
         }
-        .nav-group { display: flex; gap: 30px; }
-        .nav-group a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: lowercase; letter-spacing: 2px; }
-        .logo { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
+        .nav-group { display: flex; gap: 15px; }
+        .nav-group a { color: #fff; text-decoration: none; font-size: 0.6rem; text-transform: lowercase; letter-spacing: 1px; }
+        .logo { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 500; }
 
         /* --- 4. HERO: NO CROP & RIGHT ALIGNED --- */
         .hero-container {
             width: 100%;
-            height: auto; /* NO CROP: Image dictates height */
+            height: auto; 
             position: relative;
             line-height: 0; 
         }
 
         .hero-img-main {
             width: 100%;
-            height: auto; /* Show full image width and height */
+            height: auto; 
             display: block;
         }
 
-        /* FULLY TRANSPARENT & RIGHT ALIGNED */
         .hero-branding-overlay {
             position: absolute;
             top: 0;
             right: 0; 
-            width: 50%; /* Space for the bigger bird */
+            width: 45%; 
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -81,53 +78,78 @@
             justify-content: center; 
             z-index: 2;
             background: transparent; 
-            padding-right: 40px;
+            padding-right: 20px;
         }
 
         .bird-v2 { 
-            width: 380px; /* Big Bird */
+            width: 380px; 
             height: auto;
             animation: floating 6s infinite ease-in-out; 
-            margin-bottom: 35px;
-            /* Filter to help the bird image pop if it's white/gold */
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
+            margin-bottom: 30px;
+            /* Bird shadow to match text pop */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
         }
 
-        /* --- 5. THE BRANDING STACK (HIGH POP SHADOWS) --- */
+        /* --- 5. THE BRANDING STACK (HEAVY SHADOW) --- */
         .tagline-stack { display: flex; flex-direction: column; align-items: center; gap: 12px; }
         .tag-text { 
-            font-size: 1.25rem; 
+            font-size: 1.2rem; 
             text-transform: uppercase; 
-            letter-spacing: 9px; 
+            letter-spacing: 8px; 
             color: #fff;
-            /* DOUBLE-STACK SHADOW for maximum pop */
-            text-shadow: 
-                2px 2px 4px rgba(0,0,0,1), 
-                0px 0px 20px rgba(0,0,0,0.8); 
+            text-align: center;
+            /* Extra heavy shadow for photo pop */
+            text-shadow: 2px 2px 5px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.8); 
         }
         .tag-heavy { font-weight: 700; } 
         .tag-thin { font-weight: 100; }  
-        
-        /* Line also needs a shadow to be seen on light photos */
         .tag-vertical-line { 
-            width: 1.5px; height: 60px; background-color: #fff; 
-            box-shadow: 2px 2px 4px rgba(0,0,0,1);
+            width: 1.5px; height: 50px; background-color: #fff; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
         }
 
         /* --- 6. BOTTOM GRID --- */
-        .bottom-grid { display: flex; gap: 15px; margin-top: 40px; padding-bottom: 150px; }
+        .bottom-grid { display: flex; gap: 15px; margin-top: 30px; padding-bottom: 100px; }
         .grid-card { flex: 1; text-align: center; }
         .card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
         .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-        .grid-card p { font-size: 0.65rem; letter-spacing: 2px; text-transform: lowercase; }
+        .grid-card p { font-size: 0.6rem; letter-spacing: 1.5px; text-transform: lowercase; }
 
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        @media (max-width: 1000px) {
-            .main-layout { grid-template-columns: 1fr; }
-            .center-col { padding: 0 20px; }
-            .hero-branding-overlay { width: 100%; padding-right: 0; position: relative; padding: 60px 0; }
-            .bird-v2 { width: 280px; }
+        /* --- PHONE OPTIMIZATION (THE FIX) --- */
+        @media (max-width: 800px) {
+            .main-layout { grid-template-columns: 0 1fr 0; } /* Remove side gutters on phone */
+            .center-col { padding: 0 15px; }
+            
+            .hero-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .hero-branding-overlay {
+                position: absolute; /* Keep it over the photo */
+                width: 100%; /* Take full width so it doesn't squash */
+                right: 0;
+                padding-right: 0; /* Center it */
+            }
+
+            .bird-v2 { 
+                width: 220px; /* Scale bird down for small screens */
+                margin-bottom: 15px;
+            }
+
+            .tag-text {
+                font-size: 0.9rem; /* Smaller text for phone */
+                letter-spacing: 4px;
+            }
+
+            .tag-vertical-line { height: 30px; }
+
+            .bottom-grid { 
+                flex-direction: column; /* Stack the cards vertically on phone */
+                gap: 30px;
+            }
         }
     </style>
 </head>
@@ -137,7 +159,6 @@
         <div class="modal-content">
             <h1 class="modal-title">KŌPIKO</h1>
             <img src="b11.webp" alt="Gold Bird" class="gold-bird">
-            <p class="modal-definition"><em>To meander; to follow a winding path.</em></p>
             <button class="cta-enter" onclick="closeModal()">Enter Studio</button>
         </div>
     </div>
@@ -150,17 +171,16 @@
                 <div class="nav-group">
                     <a href="index.html">home</a>
                     <a href="weddings.html">weddings</a>
-                    <a href="commercial.html">commercial</a>
-                    <a href="about.html">about us</a>
+                    <a href="about.html">about</a>
                 </div>
                 <div class="logo">KŌPIKO</div>
             </nav>
 
             <section class="hero-container">
-                <img src="hme.jpg" alt="Full Photography" class="hero-img-main">
+                <img src="hme.jpg" alt="Hero" class="hero-img-main">
                 
                 <div class="hero-branding-overlay">
-                    <img src="b11.webp" alt="Gold Bird" class="bird-v2">
+                    <img src="b11.webp" alt="Bird" class="bird-v2">
                     <div class="tagline-stack">
                         <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
                         <div class="tag-vertical-line"></div>
@@ -185,7 +205,6 @@
             modal.style.opacity = '0';
             modal.style.visibility = 'hidden';
             document.body.style.overflowY = 'auto';
-            document.documentElement.style.overflowY = 'auto';
         }
     </script>
 </body>
