@@ -65,4 +65,97 @@
         .nav-group { display: flex; gap: 35px; }
         .nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; letter-spacing: 2px; font-weight: 400; transition: opacity 0.3s; }
         .nav-group a:hover { opacity: 0.6; }
-        .logo { color: #fff; font-size: 1.2rem
+        .logo { color: #fff; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
+
+        /* --- 4. HERO SECTION --- */
+        .hero-split { display: grid; grid-template-columns: 2.2fr 1fr; width: 100%; margin-top: 25px; gap: 15px; }
+        .hero-box { min-height: 550px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .hero-img-fill { width: 100%; height: 100%; object-fit: cover; }
+        
+        .identity-container { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .bird-v2 { width: 80%; max-width: 400px; animation: floating 6s infinite ease-in-out; margin-bottom: 25px; }
+
+        /* --- 5. THE BRANDING STACK --- */
+        .tagline-stack { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .tag-text { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 6px; color: #fff; }
+        .tag-heavy { font-weight: 700; } 
+        .tag-thin { font-weight: 100; }  
+        .tag-vertical-line { width: 1px; height: 35px; background-color: #fff; }
+
+        /* --- 6. BOTTOM GRID --- */
+        .bottom-grid { display: flex; gap: 15px; margin-top: 15px; padding-bottom: 100px; }
+        .grid-card { flex: 1; padding: 15px; text-align: center; }
+        .card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
+        .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+        .grid-card p { text-transform: lowercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 300; }
+
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        @media (max-width: 1000px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .hero-split { grid-template-columns: 1fr; }
+            .center-col { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="brand-modal">
+        <div class="modal-content">
+            <h1 class="modal-title">KŌPIKO</h1>
+            <img src="b11.webp" alt="Gold Bird" class="gold-bird">
+            <p class="modal-definition"><em>To meander; to follow a winding path.</em></p>
+            <button class="cta-enter" onclick="closeModal()">Enter Studio</button>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <aside></aside>
+        <main class="center-col">
+            <nav class="top-nav">
+                <div class="nav-group">
+                    <a href="index.html">home</a>
+                    <a href="weddings.html">weddings</a>
+                    <a href="commercial.html">commercial</a>
+                    <a href="about.html">about us</a>
+                </div>
+                <div class="logo">KŌPIKO</div>
+            </nav>
+
+            <section class="hero-split">
+                <div class="hero-box">
+                    <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
+                </div>
+                <div class="hero-box">
+                    <div class="identity-container">
+                        <img src="b11.webp" alt="Bird" class="bird-v2">
+                        <div class="tagline-stack">
+                            <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
+                            <div class="tag-vertical-line"></div>
+                            <span class="tag-text tag-thin">FOR THE BOLD</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-grid">
+                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="about-thumb.jpg"></div><p>about us</p></div>
+            </section>
+        </main>
+        <aside></aside>
+    </div>
+
+    <script>
+        function closeModal() {
+            const modal = document.getElementById('brand-modal');
+            modal.style.opacity = '0';
+            modal.style.visibility = 'hidden';
+            modal.style.pointerEvents = 'none';
+            document.body.style.overflowY = 'auto';
+            document.documentElement.style.overflowY = 'auto';
+        }
+    </script>
+</body>
+</html>
