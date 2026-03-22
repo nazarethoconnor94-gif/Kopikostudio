@@ -58,71 +58,62 @@
         .nav-group a:hover { opacity: 0.6; }
         .logo { color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
 
-        /* --- 4. NEW HERO SECTION (EDGE TO EDGE) --- */
-        .hero-edge-container {
-            width: 100%;
-            height: 600px; /* Base height for the image area */
+        /* --- 4. HERO SECTION (PHOTO + TRANSPARENT BRANDING) --- */
+        .hero-split { 
+            display: grid; 
+            grid-template-columns: 2.2fr 1fr; 
+            width: 100%; 
             margin-top: 0; /* Flush with header */
-            position: relative; /* Setup context for layering */
-            overflow: hidden; /* Keep image contained */
-            display: flex; /* Flex layout to center the content box */
-            align-items: center;
-            justify-content: center;
+            gap: 15px; 
+        }
+        
+        .hero-box { 
+            min-height: 550px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            position: relative;
         }
 
-        /* The Image Layer (Behind everything) */
-        .hero-img-behind {
-            position: absolute;
-            inset: 0; /* Cover the container */
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Maintain aspect ratio */
-            z-index: 1; /* Lowest z-index in the container */
+        /* 4a. Photo Box (Left) */
+        .hero-img-fill { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
             display: block;
         }
-
-        /* The Floating Identity Box (Frosted Glass Layer) */
-        .floating-identity-box {
-            position: relative;
-            z-index: 2; /* Sits above the image */
-            
-            /* Box Styling */
-            padding: 50px 70px; /* Room for content */
-            border-radius: 12px;
-            
-            /* THE FROST EFFECT (Matches Nav) */
-            background: rgba(30, 30, 30, 0.45); /* Lighter base color for contrast */
-            backdrop-filter: blur(35px); /* Strong frost over the image */
-            -webkit-backdrop-filter: blur(35px);
-            
-            /* Faint boundary edge */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3); /* Subtle depth shadow */
-            
-            /* Content Layout */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        
+        /* 4b. Branding Box (Right - Fully Transparent & Pushed Right) */
+        .hero-identity-container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end; /* ALIGNS BIRD & STACK TO THE RIGHT EDGE */
+            justify-content: center; 
+            text-align: right; /* ALIGNS TEXT RIGHT */
+            padding-right: 15px; /* Tiny gap from the absolute edge */
         }
 
-        /* Bird inside the glass box */
+        /* Floating Bird (Pushed Right) */
         .bird-v2 { 
-            width: 250px; /* Reduced width for focus */
-            height: auto;
+            width: 80%; 
+            max-width: 250px; 
             animation: floating 6s infinite ease-in-out; 
-            margin-bottom: 25px; /* Space before text */
+            margin-bottom: 25px; /* Space before text stack */
         }
 
-        /* --- 5. THE BRANDING STACK (Inside Glass) --- */
-        .tagline-stack { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .tag-text { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 6px; color: #fff; }
+        /* --- 5. THE BRANDING STACK (Fully Transparent / High Contrast) --- */
+        .tagline-stack { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end; /* ALIGNS TEXT LINES & VERTICAL LINE RIGHT */
+            gap: 10px; 
+        }
+        .tag-text { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 6px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Helps legibility over images */ }
+        .tag-heavy { font-weight: 700; } 
+        .tag-thin { font-weight: 100; }  
         
-        /* The specific contrasts you requested */
-        .tag-heavy { font-weight: 700; }  /* CREATIVE IDENTITY is bold */
-        .tag-thin { font-weight: 100; }    /* FOR THE BOLD is thin */
-        
+        /* Vertical Divider (Pushed Right) */
         .tag-vertical-line { width: 1px; height: 35px; background-color: #fff; }
 
         /* --- 6. BOTTOM GRID (Unchanged) --- */
@@ -132,76 +123,4 @@
         .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
         .grid-card p { text-transform: lowercase; font-size: 0.65rem; letter-spacing: 2px; font-weight: 300; }
 
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        /* Responsiveness for the new layout */
-        @media (max-width: 1000px) {
-            .main-layout { grid-template-columns: 1fr; }
-            .hero-edge-container { height: auto; padding: 40px 0; }
-            .hero-img-behind { position: relative; inset: 0; }
-            .floating-identity-box { position: absolute; padding: 30px; border-radius: 0; width: 100%; }
-            .center-col { padding: 0 20px; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="brand-modal">
-        <div class="modal-content">
-            <h1 class="modal-title">KŌPIKO</h1>
-            <img src="b11.webp" alt="Gold Bird" class="gold-bird">
-            <p class="modal-definition"><em>To meander; to follow a winding path.</em></p>
-            <button class="cta-enter" onclick="closeModal()">Enter Studio</button>
-        </div>
-    </div>
-
-    <div class="main-layout">
-        <aside></aside>
-        <main class="center-col">
-            <nav class="top-nav">
-                <div class="nav-group">
-                    <a href="index.html">home</a>
-                    <a href="weddings.html">weddings</a>
-                    <a href="commercial.html">commercial</a>
-                    <a href="about.html">about us</a>
-                </div>
-                <div class="logo">KŌPIKO</div>
-            </nav>
-
-            <section class="hero-edge-container">
-                <img src="hme.jpg" alt="Hero Image Background" class="hero-img-behind">
-
-                <div class="floating-identity-box">
-                    <img src="b11.webp" alt="Gold Bird Identity" class="bird-v2">
-                    
-                    <div class="tagline-stack">
-                        <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
-                        
-                        <div class="tag-vertical-line"></div>
-                        
-                        <span class="tag-text tag-thin">FOR THE BOLD</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="bottom-grid">
-                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
-                <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
-                <div class="grid-card"><div class="card-img-placeholder"><img src="about-thumb.jpg"></div><p>about us</p></div>
-            </section>
-        </main>
-        <aside></aside>
-    </div>
-
-    <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            modal.style.opacity = '0';
-            modal.style.visibility = 'hidden';
-            modal.style.pointerEvents = 'none';
-            document.body.style.overflowY = 'auto';
-            document.documentElement.style.overflowY = 'auto';
-        }
-    </script>
-</body>
-</html>
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 5
