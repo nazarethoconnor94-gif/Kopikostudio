@@ -2,7 +2,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body, html { height: 100%; background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; overflow-x: hidden; }
 
-/* --- 2. THE MASTER GRID --- */
+/* --- 2. MASTER GRID --- */
 .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
 .noir-frame { background-color: #000; }
 .center-col { padding: 0 40px; display: flex; flex-direction: column; }
@@ -14,14 +14,14 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
 .nav-group.right { justify-content: flex-end; }
 .logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; font-weight: 200; }
 
-/* --- 4. HERO SPLIT (REVISED BIRD & TEXT) --- */
+/* --- 4. HERO SPLIT (REFINED BIRD SIZE) --- */
 .hero-split { display: flex; width: 100%; margin-top: 15px; gap: 15px; align-items: stretch; }
 
 .hero-box { 
     flex: 1; 
     border: 1px solid #fff; 
     aspect-ratio: 16 / 9; 
-    min-height: 450px; 
+    min-height: 400px; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -36,28 +36,29 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    height: 100%; 
-    justify-content: center; /* Centers the whole stack vertically */
+    justify-content: center;
+    width: 100%;
 }
 
-/* BIGGER BIRD */
-.hero-bird-large { 
-    width: clamp(180px, 22vw, 280px); /* Bumped up from 140px/220px */
+/* REFINED BIRD: Approx 20% larger than original 140px */
+.hero-bird-refined { 
+    width: 170px; 
+    max-height: 45%; /* Prevents it from taking over the box */
     height: auto; 
     animation: floating 6s infinite ease-in-out; 
 }
 
-/* TEXT MOVED DOWN */
+/* TEXT POSITIONING */
 .identity-text { 
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem); 
+    font-size: clamp(1.1rem, 2vw, 1.5rem); 
     font-weight: 200; 
     text-transform: lowercase; 
-    margin-top: 40px; /* Pushes the line down away from the bird */
-    line-height: 1.1;
-    letter-spacing: 1px;
+    margin-top: 50px; /* Stronger push downward */
+    line-height: 1.2;
+    letter-spacing: 2px;
 }
 
-/* --- 5. BOTTOM GRID --- */
+/* --- 5. GRID --- */
 .bottom-grid { display: flex; gap: 15px; margin-top: 15px; width: 100%; padding-bottom: 40px; }
 .grid-card { flex: 1; border: 1px solid #fff; padding: 15px; text-align: center; }
 .card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
@@ -70,10 +71,10 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
 .modal-title { font-size: 3rem; letter-spacing: 18px; font-weight: 100; }
 .cta-minimal { background: transparent; color: white; border: 1px solid #333; padding: 12px 45px; letter-spacing: 4px; font-size: 0.75rem; margin-top: 25px; pointer-events: none; }
 
-@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 @media (max-width: 1000px) {
     .main-layout { grid-template-columns: 1fr; }
     .hero-split, .bottom-grid { flex-direction: column; }
-    .hero-box { min-height: 350px; aspect-ratio: auto; }
+    .hero-box { min-height: 300px; aspect-ratio: auto; }
 }
