@@ -211,4 +211,16 @@
     </div>
 
     <script>
-        function closeModal
+        function closeModal() {
+            const modal = document.getElementById('brand-modal');
+            if (modal) {
+                modal.style.opacity = '0';
+                setTimeout(() => { 
+                    modal.style.display = 'none'; 
+                    document.body.style.overflow = 'auto'; 
+                }, 800);
+            }
+        }
+    </script>
+</body>
+</html>
