@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css?v=112">
+    <link rel="stylesheet" href="style.css?v=113">
 </head>
 <body>
 
-    <div id="brand-modal" class="modal-overlay">
+    <div id="brand-modal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-content">
             <h1 class="modal-title">KŌPIKO</h1>
             <div class="bird-container">
                 <img src="b11.webp" alt="Kōpiko Gold Bird" class="gold-bird">
             </div>
             <p class="modal-definition"><em>To meander; to follow a winding path.</em></p>
-            <button onclick="closeModal()" class="cta-minimal" id="enter-btn">Enter Studio</button>
+            <button class="cta-minimal">Enter Studio</button>
         </div>
     </div>
 
@@ -37,7 +37,7 @@
 
             <section class="hero-split">
                 <div class="hero-box left-image">
-                    <img src="hme.jpg" alt="Hero Image" class="hero-img">
+                    <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
                 </div>
                 
                 <div class="hero-box right-identity">
@@ -77,11 +77,8 @@
         function closeModal() {
             const modal = document.getElementById('brand-modal');
             if (modal) {
-                // Phase 1: Fade out
                 modal.style.opacity = '0';
                 modal.style.pointerEvents = 'none';
-                
-                // Phase 2: Total removal after 800ms
                 setTimeout(() => { 
                     modal.style.display = 'none'; 
                     document.body.style.overflow = 'auto';
