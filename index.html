@@ -114,3 +114,36 @@
 
             <section class="hero-split">
                 <div class="hero-box">
+                    <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
+                </div>
+                
+                <div class="hero-box">
+                    <div class="identity-stack">
+                        <img src="b11.webp" alt="Bird" class="bird-forced">
+                        <h2 class="identity-text">creative identity <br> for the bold</h2>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-grid">
+                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="about-thumb.jpg"></div><p>about</p></div>
+            </section>
+        </main>
+
+        <aside style="background:#000;"></aside>
+    </div>
+
+    <script>
+        function closeModal() {
+            const modal = document.getElementById('brand-modal');
+            if (modal) {
+                modal.style.opacity = '0';
+                modal.style.pointerEvents = 'none';
+                setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 800);
+            }
+        }
+    </script>
+</body>
+</html>
