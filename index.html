@@ -45,24 +45,38 @@
             cursor: pointer; 
         }
 
-        /* --- 3. NAV BAR (NO BORDER, HIGHER OPACITY) --- */
+        /* --- 3. NAV BAR (LIGHT SILVER GLASS) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            border: none; /* OUTLINE REMOVED */
+            border: none; 
             margin-top: 25px; 
             padding: 18px 30px; 
-            /* Higher opacity (0.45) for a less transparent look */
-            background: rgba(45, 45, 45, 0.45); 
+            /* Lighter Silver/Grey at 50% opacity */
+            background: rgba(200, 200, 200, 0.5); 
             backdrop-filter: blur(25px); 
             -webkit-backdrop-filter: blur(25px);
             z-index: 100;
         }
         .nav-group { display: flex; gap: 35px; }
-        .nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; letter-spacing: 2px; font-weight: 300; transition: opacity 0.3s;}
+        .nav-group a { 
+            color: #000; /* Darker text for better contrast on light grey */
+            text-decoration: none; 
+            font-size: 0.75rem; 
+            text-transform: lowercase; 
+            letter-spacing: 2px; 
+            font-weight: 500; 
+            transition: opacity 0.3s;
+        }
         .nav-group a:hover { opacity: 0.6; }
-        .logo { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 400; }
+        .logo { 
+            color: #000; /* Logo also dark for contrast */
+            font-size: 1.4rem; 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+            font-weight: 600; 
+        }
 
         /* --- 4. HERO SECTION --- */
         .hero-split { 
@@ -197,16 +211,4 @@
     </div>
 
     <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            if (modal) {
-                modal.style.opacity = '0';
-                setTimeout(() => { 
-                    modal.style.display = 'none'; 
-                    document.body.style.overflow = 'auto'; 
-                }, 800);
-            }
-        }
-    </script>
-</body>
-</html>
+        function closeModal
