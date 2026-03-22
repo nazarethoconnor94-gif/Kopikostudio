@@ -37,7 +37,7 @@
         .modal-definition { font-size: 0.9rem; letter-spacing: 2px; color: #888; margin-bottom: 40px; }
         .cta-enter { background: transparent; color: #fff; border: 1px solid #fff; padding: 15px 40px; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; }
 
-        /* --- 3. NAV BAR (ULTRA SLIM HEADER) --- */
+        /* --- 3. NAV BAR (SLIM & 75% OPAQUE) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
@@ -58,65 +58,65 @@
         .nav-group a:hover { opacity: 0.6; }
         .logo { color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
 
-        /* --- 4. HERO SECTION (PHOTO + TRANSPARENT BRANDING) --- */
-        .hero-split { 
-            display: grid; 
-            grid-template-columns: 2.2fr 1fr; 
-            width: 100%; 
-            margin-top: 0; /* Flush with header */
-            gap: 15px; 
-        }
-        
-        .hero-box { 
-            min-height: 550px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; 
+        /* --- 4. HERO SECTION (FULL IMAGE + RIGHT FROSTED PANE) --- */
+        .hero-full {
+            width: 100%;
+            height: 700px; 
             position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-end; /* Keeps the pane on the right */
         }
 
-        /* 4a. Photo Box (Left) */
-        .hero-img-fill { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block;
-        }
-        
-        /* 4b. Branding Box (Right - Fully Transparent & Pushed Right) */
-        .hero-identity-container { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-end; /* ALIGNS BIRD & STACK TO THE RIGHT EDGE */
-            justify-content: center; 
-            text-align: right; /* ALIGNS TEXT RIGHT */
-            padding-right: 15px; /* Tiny gap from the absolute edge */
+        /* The Image Layer - Edge to Edge */
+        .hero-img-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
         }
 
-        /* Floating Bird (Pushed Right) */
+        /* The Right Side Frosted Pane */
+        .hero-right-pane {
+            position: relative;
+            z-index: 2;
+            width: 35%; /* Covers the right 35% of the photo */
+            height: 100%;
+            
+            /* Frosted Look */
+            background: rgba(25, 25, 25, 0.5); 
+            backdrop-filter: blur(40px); 
+            -webkit-backdrop-filter: blur(40px);
+            
+            /* Visual definition */
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            
+            /* Content Layout */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+        }
+
         .bird-v2 { 
-            width: 80%; 
-            max-width: 250px; 
+            width: 220px; 
+            height: auto;
             animation: floating 6s infinite ease-in-out; 
-            margin-bottom: 25px; /* Space before text stack */
+            margin-bottom: 30px;
         }
 
-        /* --- 5. THE BRANDING STACK (Fully Transparent / High Contrast) --- */
-        .tagline-stack { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-end; /* ALIGNS TEXT LINES & VERTICAL LINE RIGHT */
-            gap: 10px; 
-        }
-        .tag-text { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 6px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Helps legibility over images */ }
+        /* --- 5. THE BRANDING STACK --- */
+        .tagline-stack { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .tag-text { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 6px; color: #fff; }
         .tag-heavy { font-weight: 700; } 
         .tag-thin { font-weight: 100; }  
-        
-        /* Vertical Divider (Pushed Right) */
         .tag-vertical-line { width: 1px; height: 35px; background-color: #fff; }
 
-        /* --- 6. BOTTOM GRID (Unchanged) --- */
+        /* --- 6. BOTTOM GRID --- */
         .bottom-grid { display: flex; gap: 15px; margin-top: 15px; padding-bottom: 150px; }
         .grid-card { flex: 1; padding: 15px; text-align: center; }
         .card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
@@ -127,9 +127,8 @@
 
         @media (max-width: 1000px) {
             .main-layout { grid-template-columns: 1fr; }
-            .hero-split { grid-template-columns: 1fr; }
-            .hero-identity-container { padding: 40px 20px; align-items: center; text-align: center;}
-            .tagline-stack { align-items: center;}
+            .hero-full { height: 600px; }
+            .hero-right-pane { width: 50%; }
             .center-col { padding: 0 20px; }
         }
     </style>
@@ -158,23 +157,15 @@
                 <div class="logo">KŌPIKO</div>
             </nav>
 
-            <section class="hero-split">
-                <div class="hero-box">
-                    <img src="hme.jpg" alt="Hero Photography" class="hero-img-fill">
-                </div>
+            <section class="hero-full">
+                <img src="hme.jpg" alt="Hero Photography" class="hero-img-bg">
                 
-                <div class="hero-box">
-                    <div class="hero-identity-container">
-                        
-                        <img src="b11.webp" alt="Gold Bird" class="bird-v2">
-                        
-                        <div class="tagline-stack">
-                            <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
-                            
-                            <div class="tag-vertical-line"></div>
-                            
-                            <span class="tag-text tag-thin">FOR THE BOLD</span>
-                        </div>
+                <div class="hero-right-pane">
+                    <img src="b11.webp" alt="Gold Bird" class="bird-v2">
+                    <div class="tagline-stack">
+                        <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
+                        <div class="tag-vertical-line"></div>
+                        <span class="tag-text tag-thin">FOR THE BOLD</span>
                     </div>
                 </div>
             </section>
