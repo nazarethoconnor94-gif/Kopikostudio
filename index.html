@@ -15,7 +15,6 @@ permalink: /
             background-color: #000; 
             color: #fff; 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            overflow-x: hidden;
         }
 
         body.modal-open { overflow: hidden; }
@@ -27,135 +26,74 @@ permalink: /
             z-index: 9999; text-align: center; 
             transition: opacity 0.8s ease, visibility 0.8s; 
         }
-
-        .modal-content { display: flex; flex-direction: column; align-items: center; }
-
-        .title-block {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 60px;
-        }
-
+        .modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 20px; }
+        .title-block { position: relative; display: inline-block; margin-bottom: 50px; }
         .modal-title { 
-            font-size: 5rem; 
+            font-size: clamp(2.5rem, 8vw, 5rem); 
             letter-spacing: 20px; 
             font-weight: 200; 
             text-transform: uppercase;
-            line-height: 1;
             margin-right: -20px; 
         }
-
-        /* STUDIO: Aligned from center of 2nd letter to center of 5th letter */
         .studio-subtitle {
-            position: absolute;
-            left: 18%; 
-            right: 18%; 
-            top: 100%;
-            margin-top: 12px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            color: #888;
+            position: absolute; left: 18%; right: 18%; top: 100%; margin-top: 10px;
+            display: flex; justify-content: space-between;
+            font-size: clamp(0.5rem, 2vw, 0.85rem); font-weight: 300; text-transform: uppercase; color: #888;
         }
-
-        .gold-bird { width: 160px; margin-bottom: 40px; animation: floating 5s infinite ease-in-out; }
-        
+        .gold-bird { width: 140px; margin-bottom: 40px; animation: floating 5s infinite ease-in-out; }
         .cta-enter { 
             background: transparent; color: #fff; border: 1px solid #fff; 
-            padding: 16px 50px; letter-spacing: 5px; text-transform: uppercase; 
+            padding: 15px 40px; letter-spacing: 5px; text-transform: uppercase; 
             font-size: 0.7rem; cursor: pointer; transition: 0.3s; 
         }
         .cta-enter:hover { background: #fff; color: #000; }
 
-        /* --- 3. LAYOUT & NAV --- */
-        .main-layout { 
-            display: grid; 
-            grid-template-columns: 80px 1fr 80px; 
-            min-height: 100vh; 
-        }
-        
-        .center-col { 
-            grid-column: 2; 
-            max-width: 1300px; /* Ensures content doesn't get too wide */
-            margin: 0 auto;
-            width: 100%;
-            display: flex; 
-            flex-direction: column; 
-        }
-
-        .top-nav { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 30px 0; 
-        }
+        /* --- 3. LAYOUT --- */
+        .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; }
+        .center-col { grid-column: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
+        .top-nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 0; }
         .logo { font-size: 1rem; text-transform: uppercase; letter-spacing: 6px; }
 
         /* --- 4. HERO SECTION --- */
-        .hero-container { 
-            position: relative; 
-            width: 100%; 
-            margin-bottom: 60px;
-        }
-
+        .hero-container { position: relative; width: 100%; margin-bottom: 80px; display: flex; align-items: center; }
         .hero-img-main { 
             width: 100%; height: auto; display: block; 
-            border: 55px solid transparent; 
+            border: 50px solid transparent; 
             border-image-source: url('border.png'); 
             border-image-slice: 500 fill; 
             border-image-repeat: round;
-            box-shadow: inset 0 0 60px rgba(0,0,0,0.9), 0 40px 100px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 30px 80px rgba(0,0,0,0.7);
         }
-
         .hero-branding {
-            position: absolute; z-index: 10; right: 8%; top: 50%;
-            transform: translateY(-50%); text-align: center; pointer-events: none;
+            position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none;
         }
-        .bird-v2 { width: 260px; animation: floating 6s infinite ease-in-out; filter: drop-shadow(0 20px 40px #000); }
+        .bird-v2 { width: 240px; animation: floating 6s infinite ease-in-out; filter: drop-shadow(0 15px 30px #000); }
 
-        /* --- 5. BOTTOM GRID (NO CROP) --- */
-        .bottom-grid { 
-            display: flex; 
-            gap: 40px; 
-            padding-bottom: 120px; 
-            align-items: flex-start; /* Keeps them lined up at the top */
-        }
+        /* --- 5. BOTTOM GRID --- */
+        .bottom-grid { display: flex; gap: 40px; padding-bottom: 100px; }
+        .grid-card { flex: 1; text-align: center; text-decoration: none; color: inherit; }
+        .card-img-container { width: 100%; margin-bottom: 20px; }
+        .card-img-container img { width: 100%; height: auto; display: block; transition: 0.6s; }
+        .grid-card p { font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; }
 
-        .grid-card { 
-            flex: 1; 
-            text-align: center; 
-            text-decoration: none; 
-            color: inherit; 
-        }
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .card-img-container { 
-            width: 100%; 
-            margin-bottom: 20px; 
-            overflow: hidden; 
-            background: #000; /* No gray placeholders */
-        }
-
-        .card-img-container img { 
-            width: 100%; 
-            height: auto; /* Allows the full photo to show without cropping */
-            display: block; 
-            transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-
-        .grid-card:hover img { transform: scale(1.03); filter: brightness(1.1); }
-        .grid-card p { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; transition: 0.4s; }
-        .grid-card:hover p { opacity: 1; color: #fff; }
-
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-        /* --- MOBILE --- */
-        @media (max-width: 1000px) {
+        /* --- 6. MOBILE FIXES --- */
+        @media (max-width: 900px) {
             .main-layout { grid-template-columns: 20px 1fr 20px; }
-            .modal-title { font-size: 2.5rem; letter-spacing: 10px; margin-right: -10px; }
-            .studio-subtitle { left: 18%; right: 18%; font-size: 0.5rem; }
-            .hero-img-main { border-width: 25px; }
-            .hero-branding { position: relative; right: 0; transform: none; padding: 60px 20px; width: 100%; background: #000; }
-            .bottom-grid { flex-direction: column; gap: 60px; }
+            .top-nav { padding: 30px 0; }
+            
+            .hero-container { flex-direction: column; margin-bottom: 40px; }
+            .hero-img-main { border-width: 15px; } /* Thinner border for small screens */
+            
+            .hero-branding { 
+                position: relative; right: auto; transform: none; 
+                margin-top: 40px; width: 100%; padding: 0 20px;
+            }
+            .bird-v2 { width: 180px; }
+            
+            .bottom-grid { flex-direction: column; gap: 50px; }
+            .grid-card p { font-size: 0.7rem; opacity: 0.8; }
         }
     </style>
 </head>
@@ -185,25 +123,25 @@ permalink: /
                 <img src="hme.jpg" alt="Hero Art" class="hero-img-main">
                 <div class="hero-branding">
                     <img src="b11.webp" alt="Bird" class="bird-v2">
-                    <div style="margin-top: 25px;">
-                        <p style="letter-spacing: 10px; font-weight: 700; font-size: 1.1rem; text-shadow: 2px 2px 10px #000;">CREATIVE IDENTITY</p>
-                        <div style="width: 1px; height: 60px; background: #fff; margin: 18px auto;"></div>
-                        <p style="letter-spacing: 10px; font-weight: 100; font-size: 1.1rem; text-shadow: 2px 2px 10px #000;">FOR THE BOLD</p>
+                    <div style="margin-top: 20px;">
+                        <p style="letter-spacing: 8px; font-weight: 700; font-size: 0.9rem;">CREATIVE IDENTITY</p>
+                        <div style="width: 1px; height: 40px; background: #fff; margin: 15px auto;"></div>
+                        <p style="letter-spacing: 8px; font-weight: 100; font-size: 0.9rem;">FOR THE BOLD</p>
                     </div>
                 </div>
             </section>
 
             <section class="bottom-grid">
                 <a href="/weddings" class="grid-card">
-                    <div class="card-img-container"><img src="weddings.jpg" alt="Weddings"></div>
+                    <div class="card-img-container"><img src="weddings.jpg"></div>
                     <p>weddings</p>
                 </a>
                 <a href="/commercial" class="grid-card">
-                    <div class="card-img-container"><img src="commercial.jpg" alt="Commercial"></div>
+                    <div class="card-img-container"><img src="commercial.jpg"></div>
                     <p>commercial</p>
                 </a>
                 <a href="/about" class="grid-card">
-                    <div class="card-img-container"><img src="aboutus.jpg" alt="About Us"></div>
+                    <div class="card-img-container"><img src="aboutus.jpg"></div>
                     <p>about us</p>
                 </a>
             </section>
