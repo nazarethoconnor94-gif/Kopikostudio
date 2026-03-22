@@ -136,4 +136,28 @@
             </section>
 
             <section class="bottom-grid">
-                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><
+                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="about-thumb.jpg"></div><p>about us</p></div>
+            </section>
+        </main>
+        <aside></aside>
+    </div>
+
+    <script>
+        function closeModal() {
+            const modal = document.getElementById('brand-modal');
+            // Hide the modal
+            modal.style.opacity = '0';
+            modal.style.visibility = 'hidden';
+            
+            // Re-enable scrolling on both body and html tags
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+            
+            // Allow clicking through
+            modal.style.pointerEvents = 'none';
+        }
+    </script>
+</body>
+</html>
