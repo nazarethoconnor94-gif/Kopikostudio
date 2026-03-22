@@ -11,17 +11,21 @@ permalink: /
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        /* Unified Background Color */
+        :root { --bg-color: #000000; --accent-gold: #d4af37; }
+
         body, html { 
-            background-color: #000; 
+            background-color: var(--bg-color); 
             color: #fff; 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            overflow-x: hidden;
         }
 
         body.modal-open { overflow: hidden; }
 
         /* --- 2. SPLASH PAGE --- */
         #brand-modal { 
-            position: fixed; inset: 0; background: #000; 
+            position: fixed; inset: 0; background: var(--bg-color); 
             display: flex; justify-content: center; align-items: center; 
             z-index: 9999; text-align: center; 
             transition: opacity 0.8s ease, visibility 0.8s; 
@@ -29,7 +33,7 @@ permalink: /
         .modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 20px; }
         .title-block { position: relative; display: inline-block; margin-bottom: 50px; }
         .modal-title { 
-            font-size: clamp(2.5rem, 8vw, 5rem); 
+            font-size: clamp(2.5rem, 8vw, 5.5rem); 
             letter-spacing: 20px; 
             font-weight: 200; 
             text-transform: uppercase;
@@ -48,52 +52,79 @@ permalink: /
         }
         .cta-enter:hover { background: #fff; color: #000; }
 
-        /* --- 3. LAYOUT --- */
-        .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; }
-        .center-col { grid-column: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
-        .top-nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 0; }
-        .logo { font-size: 1rem; text-transform: uppercase; letter-spacing: 6px; }
+        /* --- 3. NAVIGATION & HAMBURGER --- */
+        .top-nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 40px 0; position: relative; z-index: 1001;
+            background: var(--bg-color);
+        }
+        .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; font-weight: 500; }
+
+        .nav-group { display: flex; gap: 30px; }
+        .nav-group a { color: #fff; text-decoration: none; font-size: 0.7rem; text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
+        .nav-group a:hover { opacity: 1; }
+
+        /* Gold Hamburger */
+        .menu-icon { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 16px; cursor: pointer; z-index: 1100; }
+        .menu-icon span { width: 100%; height: 1px; background: var(--accent-gold); transition: 0.4s; }
+        .menu-icon.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .menu-icon.open span:nth-child(2) { opacity: 0; }
+        .menu-icon.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+        .mobile-drawer { 
+            position: fixed; top: -100%; left: 0; width: 100%; background: #050505; 
+            padding: 120px 40px 60px; display: flex; flex-direction: column; gap: 35px; 
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; 
+        }
+        .mobile-drawer.active { top: 0; }
+        .mobile-drawer a { color: #fff; text-decoration: none; font-size: 1.8rem; letter-spacing: 4px; text-transform: lowercase; font-weight: 200; }
+        
+        .menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); opacity: 0; visibility: hidden; transition: 0.4s; z-index: 999; }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
 
         /* --- 4. HERO SECTION --- */
-        .hero-container { position: relative; width: 100%; margin-bottom: 80px; display: flex; align-items: center; }
+        .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; background: var(--bg-color); }
+        .center-col { grid-column: 2; max-width: 1300px; margin: 0 auto; width: 100%; background: var(--bg-color); }
+
+        .hero-container { position: relative; width: 100%; margin-bottom: 80px; display: flex; align-items: center; background: var(--bg-color); }
+        
         .hero-img-main { 
             width: 100%; height: auto; display: block; 
-            border: 50px solid transparent; 
+            background-color: var(--bg-color); /* Eliminates the 'black square' gap */
+            border: 55px solid transparent; 
             border-image-source: url('border.png'); 
             border-image-slice: 500 fill; 
             border-image-repeat: round;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 30px 80px rgba(0,0,0,0.7);
+            /* Refined shadow to blend into the black background */
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,1));
         }
-        .hero-branding {
-            position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none;
-        }
+
+        .hero-branding { position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none; }
         .bird-v2 { width: 240px; animation: floating 6s infinite ease-in-out; filter: drop-shadow(0 15px 30px #000); }
 
         /* --- 5. BOTTOM GRID --- */
-        .bottom-grid { display: flex; gap: 40px; padding-bottom: 100px; }
+        .bottom-grid { display: flex; gap: 40px; padding-bottom: 100px; align-items: flex-start; background: var(--bg-color); }
         .grid-card { flex: 1; text-align: center; text-decoration: none; color: inherit; }
-        .card-img-container { width: 100%; margin-bottom: 20px; }
-        .card-img-container img { width: 100%; height: auto; display: block; transition: 0.6s; }
+        .card-img-container { width: 100%; margin-bottom: 20px; background: var(--bg-color); }
+        .card-img-container img { width: 100%; height: auto; display: block; transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
+        .grid-card:hover img { transform: scale(1.03); filter: brightness(1.1); }
         .grid-card p { font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; }
 
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        /* --- 6. MOBILE FIXES --- */
+        /* --- 6. MOBILE RESPONSIVENESS --- */
         @media (max-width: 900px) {
-            .main-layout { grid-template-columns: 20px 1fr 20px; }
-            .top-nav { padding: 30px 0; }
+            .main-layout { grid-template-columns: 25px 1fr 25px; }
+            .nav-group { display: none; } 
+            .menu-icon { display: flex; } 
             
             .hero-container { flex-direction: column; margin-bottom: 40px; }
-            .hero-img-main { border-width: 15px; } /* Thinner border for small screens */
+            .hero-img-main { border-width: 18px; }
+            .hero-branding { position: relative; right: auto; transform: none; margin-top: 40px; width: 100%; }
+            .bird-v2 { width: 160px; }
             
-            .hero-branding { 
-                position: relative; right: auto; transform: none; 
-                margin-top: 40px; width: 100%; padding: 0 20px;
-            }
-            .bird-v2 { width: 180px; }
-            
-            .bottom-grid { flex-direction: column; gap: 50px; }
-            .grid-card p { font-size: 0.7rem; opacity: 0.8; }
+            .bottom-grid { flex-direction: column; gap: 60px; }
+            .grid-card p { font-size: 0.75rem; opacity: 0.8; }
         }
     </style>
 </head>
@@ -112,10 +143,27 @@ permalink: /
         </div>
     </div>
 
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <a href="/" onclick="toggleMenu()">home</a>
+        <a href="/weddings" onclick="toggleMenu()">weddings</a>
+        <a href="/commercial" onclick="toggleMenu()">commercial</a>
+        <a href="/about" onclick="toggleMenu()">about us</a>
+    </div>
+
     <div class="main-layout">
         <aside></aside>
         <main class="center-col">
             <nav class="top-nav">
+                <div class="menu-icon" id="menuBtn" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="nav-group">
+                    <a href="/">home</a>
+                    <a href="/weddings">weddings</a>
+                    <a href="/commercial">commercial</a>
+                    <a href="/about">about us</a>
+                </div>
                 <div class="logo">KŌPIKO</div>
             </nav>
 
@@ -123,10 +171,10 @@ permalink: /
                 <img src="hme.jpg" alt="Hero Art" class="hero-img-main">
                 <div class="hero-branding">
                     <img src="b11.webp" alt="Bird" class="bird-v2">
-                    <div style="margin-top: 20px;">
-                        <p style="letter-spacing: 8px; font-weight: 700; font-size: 0.9rem;">CREATIVE IDENTITY</p>
-                        <div style="width: 1px; height: 40px; background: #fff; margin: 15px auto;"></div>
-                        <p style="letter-spacing: 8px; font-weight: 100; font-size: 0.9rem;">FOR THE BOLD</p>
+                    <div style="margin-top: 25px;">
+                        <p style="letter-spacing: 10px; font-weight: 700; font-size: 1rem;">CREATIVE IDENTITY</p>
+                        <div style="width: 1px; height: 50px; background: #fff; margin: 15px auto;"></div>
+                        <p style="letter-spacing: 10px; font-weight: 100; font-size: 1rem;">FOR THE BOLD</p>
                     </div>
                 </div>
             </section>
@@ -156,8 +204,15 @@ permalink: /
             setTimeout(() => { 
                 modal.style.visibility = 'hidden'; 
                 document.body.classList.remove('modal-open');
+                document.body.style.overflowY = 'auto';
             }, 800);
         }
-    </script>
-</body>
-</html>
+
+        function toggleMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('menuOverlay');
+            const btn = document.getElementById('menuBtn');
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
+            btn.classList.toggle('open');
+            document.body.style.overflow = drawer.classList.contains('
