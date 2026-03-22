@@ -17,7 +17,7 @@ permalink: /
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
             overflow-x: hidden;
             height: 100%;
-            overflow-y: hidden; /* Locked until Enter is clicked */
+            overflow-y: hidden; 
         }
 
         .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
@@ -37,7 +37,7 @@ permalink: /
         .cta-enter { background: transparent; color: #fff; border: 1px solid #fff; padding: 15px 40px; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; transition: 0.3s; }
         .cta-enter:hover { background: #fff; color: #000; }
 
-        /* --- 3. STICKY NAV + MOBILE MENU --- */
+        /* --- 3. NAV --- */
         .top-nav { 
             display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; width: 100%; padding: 12px 30px; 
@@ -59,35 +59,30 @@ permalink: /
         .nav-group a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: lowercase; letter-spacing: 2px; opacity: 0.8; }
         .logo { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
 
-        /* --- 4. HERO CONTAINER: THE GILDED PNG FRAME FIX --- */
+        /* --- 4. HERO CONTAINER: ADJUSTED FOR 825x663 PNG --- */
         .hero-container { 
             width: 100%; height: auto; position: relative; line-height: 0;
-            margin-top: 20px; /* Space above frame */
+            margin-top: 25px; 
         }
 
-        /* The Custom PNG Frame Logic */
         .hero-img-main { 
             width: 100%; height: auto; display: block; 
             
-            /* --- THE CUSTOM PNG FRAME SETTINGS --- */
-            /* 1. Set the thickness (Scaled down for classic look) */
+            /* --- THE PNG BORDER SETTINGS --- */
             border-style: solid; 
-            border-width: 35px; /* Define how thick the gold pattern is */
-            
-            /* 2. Load the PNG file (Ensures it matches your filename) */
+            border-width: 40px; /* How thick the frame looks on screen */
             border-image-source: url('border.png'); 
             
-            /* 3. Define the slices for sharp scaling. (Assuming a high-res asset) */
-            border-image-slice: 200; 
+            /* Adjusted slice for your 825px image size */
+            border-image-slice: 80; 
             
-            /* 4. The main command: Stretch the pattern around the picture. */
             border-image-repeat: stretch; 
             
-            /* 5. Depth and museum shadows */
+            /* Museum lighting and depth */
             box-shadow: 
-                0 0 0 6px #000,                  /* Black inner rim */
-                inset 0 0 50px rgba(0,0,0,0.9),  /* Deep inner shadow over photo */
-                0 25px 80px rgba(0,0,0,1);       /* Heavy Outer Museum Shadow */
+                0 0 0 4px #000, 
+                inset 0 0 40px rgba(0,0,0,0.85), 
+                0 30px 100px rgba(0,0,0,1);
         }
 
         .hero-branding-overlay {
@@ -97,7 +92,7 @@ permalink: /
         }
         .bird-v2 { width: 380px; height: auto; animation: floating 6s infinite ease-in-out; margin-bottom: 35px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)); }
 
-        /* --- 5. BRANDING STACK --- */
+        /* --- 5. BRANDING --- */
         .tagline-stack { display: flex; flex-direction: column; align-items: center; gap: 12px; }
         .tag-text { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 9px; color: #fff; text-shadow: 2px 2px 5px #000, 0 0 25px rgba(0,0,0,0.9); }
         .tag-heavy { font-weight: 700; } .tag-thin { font-weight: 100; }  
@@ -113,27 +108,22 @@ permalink: /
 
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        /* --- MOBILE OPTIMIZATION --- */
+        /* --- MOBILE --- */
         @media (max-width: 1000px) {
             .main-layout { grid-template-columns: 0 1fr 0; }
             .center-col { padding: 0; }
             .nav-group { display: none; }
             .menu-icon { display: flex; }
-
             .hero-container { display: flex; flex-direction: column; width: 100vw; margin-top: 10px; }
-            
             .hero-img-main { 
-                width: 100vw; height: auto;
-                /* Scale frame thickness down heavily on mobile */
-                border-width: 15px; 
-                border-image-slice: 200; /* Must match desktop slice value */
-                box-shadow: 0 0 0 3px #000, inset 0 0 20px rgba(0,0,0,0.8), 0 12px 35px rgba(0,0,0,1);
+                width: 100vw; 
+                border-width: 18px; 
+                border-image-slice: 80; 
+                box-shadow: 0 0 0 2px #000, inset 0 0 20px rgba(0,0,0,0.8), 0 15px 40px rgba(0,0,0,1);
             }
-
             .hero-branding-overlay { position: relative; width: 100%; background: #000; padding: 60px 20px; justify-content: center; }
-            .bird-v2 { width: 220px; margin-bottom: 20px; }
-            .tag-text { font-size: 1rem; letter-spacing: 5px; text-shadow: none; }
-            .tag-vertical-line { height: 35px; box-shadow: none; }
+            .bird-v2 { width: 220px; }
+            .tag-text { font-size: 1rem; letter-spacing: 5px; }
             .bottom-grid { padding: 0 20px; flex-direction: column; gap: 40px; }
         }
     </style>
@@ -160,7 +150,6 @@ permalink: /
 
     <div class="main-layout">
         <aside></aside>
-        
         <main class="center-col">
             <nav class="top-nav">
                 <div class="menu-icon" id="menuBtn" onclick="toggleMenu()">
@@ -197,7 +186,6 @@ permalink: /
                 </a>
             </section>
         </main>
-
         <aside></aside>
     </div>
 
