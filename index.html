@@ -19,9 +19,10 @@ permalink: /
             overflow-x: hidden;
         }
 
+        /* Prevent background scroll when splash is active */
         body.modal-open { overflow: hidden; }
 
-        /* --- 2. SPLASH SCREEN (Modal) --- */
+        /* --- 2. SPLASH SCREEN (ENTRANCE) --- */
         #brand-modal { 
             position: fixed; inset: 0; background: var(--bg-color); 
             display: flex; justify-content: center; align-items: center; 
@@ -41,22 +42,31 @@ permalink: /
         }
         .cta-enter:hover { background: #fff; color: #000; }
 
-        /* --- 3. STICKY NAVIGATION (Blurred) --- */
+        /* --- 3. STICKY NAVIGATION (GLASSMORPHISM) --- */
         .top-nav-container {
-            position: sticky; top: 0; z-index: 1001;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            position: sticky; 
+            top: 0; 
+            z-index: 2000; /* Higher than everything else */
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 20px 0;
         }
         .top-nav { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px 0; max-width: 1300px; margin: 0 auto; width: 90%;
+            max-width: 1300px; margin: 0 auto; width: 90%;
         }
         .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; font-weight: 500; }
         .nav-group { display: flex; gap: 30px; }
-        .nav-group a { color: #fff; text-decoration: none; font-size: 0.7rem; text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; }
+        .nav-group a { 
+            color: #fff; text-decoration: none; font-size: 0.7rem; 
+            text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; 
+            transition: 0.3s;
+        }
+        .nav-group a:hover { opacity: 1; color: var(--accent-gold); }
 
-        /* --- 4. HERO SECTION (SOFT DOUBLE-STACK BLUR) --- */
+        /* --- 4. HERO SECTION (SOFT DOUBLE-STACK) --- */
         .main-layout { display: grid; grid-template-columns: 1fr; background: var(--bg-color); }
         .center-col { max-width: 1300px; margin: 0 auto; width: 90%; }
 
@@ -73,26 +83,23 @@ permalink: /
             border-image-slice: 500 fill; 
             border-image-repeat: round;
 
-            /* DOUBLE STACK BLUR: Deep and Soft */
+            /* SOFT BLURRED DOUBLE STACK */
             filter: drop-shadow(0 30px 60px rgba(0,0,0,0.9)) 
-                    drop-shadow(0 0 20px rgba(212, 175, 55, 0.1)); /* Subtle Gold Glow */
-            
-            box-shadow: inset 0 0 100px rgba(0,0,0,1); /* Recessed Depth */
+                    drop-shadow(0 0 15px rgba(212, 175, 55, 0.1)); 
+            box-shadow: inset 0 0 100px rgba(0,0,0,1);
         }
 
-        /* SOFT BRANDING POP (Blurred Shadow) */
+        /* SOFT BLURRED BRANDING */
         .hero-branding { 
             position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none; 
-            /* Soft blur shadows make the text look "expensive" and integrated */
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9)) 
-                    drop-shadow(0 5px 10px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
         }
         
         .bird-v2 { width: 220px; animation: floating 6s infinite ease-in-out; }
         
         .hero-branding p { 
             letter-spacing: 12px; font-weight: 700; 
-            text-shadow: 0 0 15px rgba(0,0,0,1); /* Soft glow instead of harsh offset */
+            text-shadow: 0 0 20px rgba(0,0,0,1); 
             text-transform: uppercase;
         }
 
@@ -104,7 +111,6 @@ permalink: /
             box-shadow: 0 20px 40px rgba(0,0,0,1);
         }
         .card-img-container img { width: 100%; height: auto; display: block; transition: 0.5s ease; }
-        .grid-card:hover img { transform: scale(1.03); }
 
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
@@ -112,7 +118,7 @@ permalink: /
             .nav-group { display: none; }
             .hero-container { flex-direction: column; }
             .hero-img-main { border-width: 20px; }
-            .hero-branding { position: relative; right: auto; margin-top: 40px; }
+            .hero-branding { position: relative; right: auto; margin-top: 40px; width: 100%; }
             .bottom-grid { flex-direction: column; }
         }
     </style>
@@ -148,7 +154,7 @@ permalink: /
                     <div style="margin-top: 25px;">
                         <p>CREATIVE IDENTITY</p>
                         <div style="width: 1px; height: 60px; background: #fff; margin: 20px auto;"></div>
-                        <p style="font-weight: 100;">FOR THE BOLD</p>
+                        <p style="font-weight: 100; letter-spacing: 15px;">FOR THE BOLD</p>
                     </div>
                 </div>
             </section>
