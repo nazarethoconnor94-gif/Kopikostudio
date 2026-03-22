@@ -12,30 +12,30 @@
         .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
         .center-col { padding: 0 40px; display: flex; flex-direction: column; }
 
-        /* --- NAV BAR (DARK TRANSPARENT GREY) --- */
+        /* --- NAV BAR (DARKISH TRANSPARENT GREY) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            border: 1px solid rgba(255,255,255,0.3); 
+            border: 1px solid rgba(255,255,255,0.2); 
             margin-top: 25px; 
             padding: 12px 25px; 
-            background: rgba(40, 40, 40, 0.7); /* Darkish transparent grey */
-            backdrop-filter: blur(10px); /* Adds a premium glass feel */
+            background: rgba(30, 30, 30, 0.75); 
+            backdrop-filter: blur(12px);
+            z-index: 100;
         }
         .nav-group { flex: 1; display: flex; gap: 25px; }
         .nav-group.right { justify-content: flex-end; }
         .nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; letter-spacing: 1px; }
-        .logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; text-align: center; }
+        .logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; }
 
-        /* --- HERO SECTION (70/30 SPLIT) --- */
+        /* --- HERO SECTION --- */
         .hero-split { 
             display: grid; 
             grid-template-columns: 2.2fr 1fr; 
             width: 100%; 
             margin-top: 15px; 
             gap: 15px; 
-            position: relative; /* Base for the tagline positioning */
         }
 
         .hero-box { 
@@ -46,12 +46,11 @@
             justify-content: center; 
             overflow: hidden; 
             background-color: #000;
-            position: relative;
+            position: relative; /* Essential for tagline placement */
         }
 
         .hero-img-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* BIRD POSITIONING */
         .bird-double { 
             width: 80% !important; 
             max-width: 450px;
@@ -59,20 +58,22 @@
             animation: floating 6s infinite ease-in-out; 
         }
 
-        /* NEW TAGLINE POSITIONING (OVERLAY) */
-        .tagline-overlay {
+        /* --- THE TAGLINE PLACEMENT --- */
+        .tag-left-box {
             position: absolute;
             bottom: 30px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 40px;
-            pointer-events: none; /* Allows clicks to pass through to the box */
-            z-index: 10;
+            right: 30px; /* Pinned to the RIGHT of the image box */
+            font-size: clamp(1rem, 1.8vw, 1.6rem);
+            font-weight: 200;
+            text-transform: lowercase;
+            letter-spacing: 4px;
         }
 
-        .tag-part {
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
+        .tag-right-box {
+            position: absolute;
+            bottom: 30px;
+            left: 30px; /* Pinned to the LEFT of the bird box */
+            font-size: clamp(1rem, 1.8vw, 1.6rem);
             font-weight: 200;
             text-transform: lowercase;
             letter-spacing: 4px;
@@ -88,78 +89,5 @@
         /* --- SPLASH --- */
         .modal-overlay { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; text-align: center; transition: 0.8s; cursor: pointer; }
         .gold-bird { width: 250px; margin-bottom: 25px; animation: floating 5s infinite ease-in-out; }
-        .modal-title { font-size: 3rem; letter-spacing: 18px; font-weight: 100; }
         
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        @media (max-width: 1000px) {
-            .main-layout { grid-template-columns: 1fr; }
-            .hero-split { grid-template-columns: 1fr; }
-            .tagline-overlay { position: relative; flex-direction: column; bottom: 0; padding: 20px; text-align: center; align-items: center; }
-            .bottom-grid { flex-direction: column; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="brand-modal" class="modal-overlay" onclick="closeModal()">
-        <div class="modal-content">
-            <h1 class="modal-title">KŌPIKO</h1>
-            <div class="bird-container"><img src="b11.webp" alt="Gold Bird" class="gold-bird"></div>
-            <p><em>To meander; to follow a winding path.</em></p>
-        </div>
-    </div>
-
-    <div class="main-layout">
-        <aside style="background:#000;"></aside>
-
-        <main class="center-col">
-            <nav class="top-nav">
-                <div class="nav-group left">
-                    <a href="index.html">home</a>
-                    <a href="weddings.html">weddings</a>
-                </div>
-                <div class="logo">Kōpiko</div>
-                <div class="nav-group right">
-                    <a href="commercial.html">commercial</a>
-                    <a href="about.html">about us</a>
-                </div>
-            </nav>
-
-            <section class="hero-split">
-                <div class="hero-box">
-                    <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
-                </div>
-                
-                <div class="hero-box">
-                    <img src="b11.webp" alt="Bird" class="bird-double">
-                </div>
-
-                <div class="tagline-overlay">
-                    <span class="tag-part">creative identity</span>
-                    <span class="tag-part">for the bold</span>
-                </div>
-            </section>
-
-            <section class="bottom-grid">
-                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
-                <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
-                <div class="grid-card"><div class="card-img-placeholder"><img src="about-thumb.jpg"></div><p>about us</p></div>
-            </section>
-        </main>
-
-        <aside style="background:#000;"></aside>
-    </div>
-
-    <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            if (modal) {
-                modal.style.opacity = '0';
-                modal.style.pointerEvents = 'none';
-                setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 800);
-            }
-        }
-    </script>
-</body>
-</html>
+        @keyframes floating { 0%,
