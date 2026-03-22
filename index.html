@@ -37,62 +37,109 @@
         .modal-definition { font-size: 0.9rem; letter-spacing: 2px; color: #888; margin-bottom: 40px; }
         .cta-enter { background: transparent; color: #fff; border: 1px solid #fff; padding: 15px 40px; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; }
 
-        /* --- 3. NAV BAR (NO GAP / STICKY HEADER) --- */
+        /* --- 3. NAV BAR (ULTRA SLIM HEADER) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            
             position: sticky;
-            top: 0; /* Snaps directly to the top edge */
-            
+            top: 0; 
             width: 100%; 
-            margin-top: 0; /* Removed the 20px/25px gap */
-            padding: 7px 15px; 
-            
-            /* Frost Effect with 0.85 opacity */
-            background: rgba(30, 30, 30, 0.75); 
-            backdrop-filter: blur(40px); 
-            -webkit-backdrop-filter: blur(40px);
-            
-            /* Removed border-radius for a flush fit */
-            border-radius: 0; 
+            padding: 8px 30px; 
+            background: rgba(25, 25, 25, 0.75); 
+            backdrop-filter: blur(45px); 
+            -webkit-backdrop-filter: blur(45px);
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
         }
         
-        .nav-group { display: flex; gap: 35px; }
-        .nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; letter-spacing: 2px; font-weight: 400; transition: opacity 0.3s; }
+        .nav-group { display: flex; gap: 30px; }
+        .nav-group a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: lowercase; letter-spacing: 2px; font-weight: 400; transition: opacity 0.3s; }
         .nav-group a:hover { opacity: 0.6; }
-        .logo { color: #fff; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
+        .logo { color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 500; }
 
-        /* --- 4. HERO SECTION --- */
-        .hero-split { display: grid; grid-template-columns: 2.2fr 1fr; width: 100%; margin-top: 0; gap: 15px; }
-        .hero-box { min-height: 550px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-        .hero-img-fill { width: 100%; height: 100%; object-fit: cover; }
-        
-        .identity-container { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .bird-v2 { width: 80%; max-width: 400px; animation: floating 6s infinite ease-in-out; margin-bottom: 25px; }
+        /* --- 4. NEW HERO SECTION (EDGE TO EDGE) --- */
+        .hero-edge-container {
+            width: 100%;
+            height: 600px; /* Base height for the image area */
+            margin-top: 0; /* Flush with header */
+            position: relative; /* Setup context for layering */
+            overflow: hidden; /* Keep image contained */
+            display: flex; /* Flex layout to center the content box */
+            align-items: center;
+            justify-content: center;
+        }
 
-        /* --- 5. THE BRANDING STACK --- */
+        /* The Image Layer (Behind everything) */
+        .hero-img-behind {
+            position: absolute;
+            inset: 0; /* Cover the container */
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio */
+            z-index: 1; /* Lowest z-index in the container */
+            display: block;
+        }
+
+        /* The Floating Identity Box (Frosted Glass Layer) */
+        .floating-identity-box {
+            position: relative;
+            z-index: 2; /* Sits above the image */
+            
+            /* Box Styling */
+            padding: 50px 70px; /* Room for content */
+            border-radius: 12px;
+            
+            /* THE FROST EFFECT (Matches Nav) */
+            background: rgba(30, 30, 30, 0.45); /* Lighter base color for contrast */
+            backdrop-filter: blur(35px); /* Strong frost over the image */
+            -webkit-backdrop-filter: blur(35px);
+            
+            /* Faint boundary edge */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); /* Subtle depth shadow */
+            
+            /* Content Layout */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Bird inside the glass box */
+        .bird-v2 { 
+            width: 250px; /* Reduced width for focus */
+            height: auto;
+            animation: floating 6s infinite ease-in-out; 
+            margin-bottom: 25px; /* Space before text */
+        }
+
+        /* --- 5. THE BRANDING STACK (Inside Glass) --- */
         .tagline-stack { display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .tag-text { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 6px; color: #fff; }
-        .tag-heavy { font-weight: 700; } 
-        .tag-thin { font-weight: 100; }  
+        
+        /* The specific contrasts you requested */
+        .tag-heavy { font-weight: 700; }  /* CREATIVE IDENTITY is bold */
+        .tag-thin { font-weight: 100; }    /* FOR THE BOLD is thin */
+        
         .tag-vertical-line { width: 1px; height: 35px; background-color: #fff; }
 
-        /* --- 6. BOTTOM GRID --- */
-        .bottom-grid { display: flex; gap: 15px; margin-top: 15px; padding-bottom: 100px; }
+        /* --- 6. BOTTOM GRID (Unchanged) --- */
+        .bottom-grid { display: flex; gap: 15px; margin-top: 15px; padding-bottom: 150px; }
         .grid-card { flex: 1; padding: 15px; text-align: center; }
         .card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
         .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-        .grid-card p { text-transform: lowercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 300; }
+        .grid-card p { text-transform: lowercase; font-size: 0.65rem; letter-spacing: 2px; font-weight: 300; }
 
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
+        /* Responsiveness for the new layout */
         @media (max-width: 1000px) {
             .main-layout { grid-template-columns: 1fr; }
-            .hero-split { grid-template-columns: 1fr; }
+            .hero-edge-container { height: auto; padding: 40px 0; }
+            .hero-img-behind { position: relative; inset: 0; }
+            .floating-identity-box { position: absolute; padding: 30px; border-radius: 0; width: 100%; }
             .center-col { padding: 0 20px; }
         }
     </style>
@@ -121,18 +168,18 @@
                 <div class="logo">KŌPIKO</div>
             </nav>
 
-            <section class="hero-split">
-                <div class="hero-box">
-                    <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
-                </div>
-                <div class="hero-box">
-                    <div class="identity-container">
-                        <img src="b11.webp" alt="Bird" class="bird-v2">
-                        <div class="tagline-stack">
-                            <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
-                            <div class="tag-vertical-line"></div>
-                            <span class="tag-text tag-thin">FOR THE BOLD</span>
-                        </div>
+            <section class="hero-edge-container">
+                <img src="hme.jpg" alt="Hero Image Background" class="hero-img-behind">
+
+                <div class="floating-identity-box">
+                    <img src="b11.webp" alt="Gold Bird Identity" class="bird-v2">
+                    
+                    <div class="tagline-stack">
+                        <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
+                        
+                        <div class="tag-vertical-line"></div>
+                        
+                        <span class="tag-text tag-thin">FOR THE BOLD</span>
                     </div>
                 </div>
             </section>
