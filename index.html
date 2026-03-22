@@ -4,7 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kōpiko Studio | Creative Agency</title>
-    <link rel="stylesheet" href="style.css?v=117">
+    <style>
+        /* --- CORE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; background-color: #000; color: #fff; font-family: sans-serif; overflow-x: hidden; }
+
+        .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
+        .center-col { padding: 0 40px; display: flex; flex-direction: column; }
+
+        /* --- NAV --- */
+        .top-nav { display: flex; justify-content: space-between; align-items: center; border: 1px solid #fff; margin-top: 25px; padding: 12px 25px; }
+        .nav-group { flex: 1; display: flex; gap: 30px; }
+        .nav-group.right { justify-content: flex-end; }
+        .nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; }
+        .logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; }
+
+        /* --- HERO SECTION --- */
+        .hero-split { display: flex; width: 100%; margin-top: 15px; gap: 15px; align-items: stretch; }
+
+        .hero-box { 
+            flex: 1; 
+            border: 1px solid #fff; 
+            aspect-ratio: 16 / 9; 
+            min-height: 400px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            position: relative; /* For absolute positioning of text if needed */
+        }
+
+        .hero-img-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .identity-stack { 
+            text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* THE BIRD - Using % to force size regardless of cache */
+        .bird-forced { 
+            width: 45% !important; /* This makes it 45% of the box width */
+            max-width: 320px;
+            height: auto; 
+            display: block;
+            margin: 0 auto;
+            animation: floating 6s infinite ease-in-out; 
+        }
+
+        .identity-text { 
+            font-size: 1.2rem; 
+            font-weight: 200; 
+            text-transform: lowercase; 
+            margin-top: 40px; 
+            letter-spacing: 3px;
+        }
+
+        /* --- BOTTOM GRID --- */
+        .bottom-grid { display: flex; gap: 15px; margin-top: 15px; padding-bottom: 40px; }
+        .grid-card { flex: 1; border: 1px solid #fff; padding: 15px; text-align: center; }
+        .card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
+        .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- SPLASH --- */
+        .modal-overlay { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; text-align: center; transition: 0.8s; cursor: pointer; }
+        .gold-bird { width: 250px; margin-bottom: 25px; animation: floating 5s infinite ease-in-out; }
+        .modal-title { font-size: 3rem; letter-spacing: 18px; font-weight: 100; }
+        .cta-minimal { background: transparent; color: white; border: 1px solid #333; padding: 12px 45px; letter-spacing: 4px; font-size: 0.75rem; margin-top: 25px; pointer-events: none; }
+
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        @media (max-width: 1000px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .hero-split, .bottom-grid { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +98,7 @@
     </div>
 
     <div class="main-layout">
-        <aside class="noir-frame"></aside>
+        <aside style="background:#000;"></aside>
 
         <main class="center-col">
             <nav class="top-nav">
@@ -36,41 +114,26 @@
             </nav>
 
             <section class="hero-split">
-                <div class="hero-box left-image">
+                <div class="hero-box">
                     <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
                 </div>
                 
-                <div class="hero-box right-identity">
+                <div class="hero-box">
                     <div class="identity-stack">
-                        <img src="b11.webp" alt="Floating Bird" class="hero-bird-balanced">
+                        <img src="b11.webp" alt="Bird" class="bird-forced">
                         <h2 class="identity-text">creative identity <br> for the bold</h2>
                     </div>
                 </div>
             </section>
 
             <section class="bottom-grid">
-                <div class="grid-card">
-                    <div class="card-img-placeholder">
-                        <img src="wedding-thumb.jpg" alt="Weddings">
-                    </div>
-                    <p>weddings</p>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img-placeholder">
-                        <img src="commercial-thumb.jpg" alt="Commercial">
-                    </div>
-                    <p>commercial</p>
-                </div>
-                <div class="grid-card">
-                    <div class="card-img-placeholder">
-                        <img src="about-thumb.jpg" alt="About">
-                    </div>
-                    <p>about</p>
-                </div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
+                <div class="grid-card"><div class="card-img-placeholder"><img src="about-thumb.jpg"></div><p>about</p></div>
             </section>
         </main>
 
-        <aside class="noir-frame"></aside>
+        <aside style="background:#000;"></aside>
     </div>
 
     <script>
@@ -79,10 +142,7 @@
             if (modal) {
                 modal.style.opacity = '0';
                 modal.style.pointerEvents = 'none';
-                setTimeout(() => { 
-                    modal.style.display = 'none'; 
-                    document.body.style.overflow = 'auto';
-                }, 800);
+                setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }, 800);
             }
         }
     </script>
