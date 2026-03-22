@@ -2,7 +2,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body, html { height: 100%; background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; overflow-x: hidden; }
 
-/* --- 2. MASTER GRID --- */
+/* --- 2. THE MASTER GRID --- */
 .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
 .noir-frame { background-color: #000; }
 .center-col { padding: 0 40px; display: flex; flex-direction: column; }
@@ -14,14 +14,14 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
 .nav-group.right { justify-content: flex-end; }
 .logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; font-weight: 200; }
 
-/* --- 4. HERO SPLIT (XL BIRD) --- */
+/* --- 4. HERO SPLIT (BALANCED BIRD) --- */
 .hero-split { display: flex; width: 100%; margin-top: 15px; gap: 15px; align-items: stretch; }
 
 .hero-box { 
     flex: 1; 
     border: 1px solid #fff; 
     aspect-ratio: 16 / 9; 
-    min-height: 450px; /* Bumped min-height slightly to accommodate the bigger bird */
+    min-height: 400px; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -36,28 +36,26 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: flex-end; /* Align everything toward the bottom */
+    justify-content: center; /* Balanced centering */
     width: 100%;
     height: 100%;
-    padding-bottom: 30px; /* Space from bottom border */
 }
 
-/* XL BIRD: Doubled from previous size */
-.hero-bird-xl { 
-    width: clamp(250px, 30vw, 360px); 
+/* BALANCED BIRD: Precise sizing */
+.hero-bird-balanced { 
+    width: 210px; 
     height: auto; 
     animation: floating 6s infinite ease-in-out; 
-    margin-bottom: 20px;
 }
 
-/* TEXT AT THE BOTTOM */
+/* TEXT POSITIONING */
 .identity-text { 
-    font-size: clamp(1.1rem, 2vw, 1.4rem); 
+    font-size: clamp(1rem, 2vw, 1.3rem); 
     font-weight: 200; 
     text-transform: lowercase; 
+    margin-top: 45px; /* Keeps the line pushed down */
     line-height: 1.2;
     letter-spacing: 3px;
-    margin-top: 20px;
 }
 
 /* --- 5. GRID --- */
@@ -78,5 +76,5 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
 @media (max-width: 1000px) {
     .main-layout { grid-template-columns: 1fr; }
     .hero-split, .bottom-grid { flex-direction: column; }
-    .hero-box { min-height: 350px; aspect-ratio: auto; }
+    .hero-box { min-height: 300px; aspect-ratio: auto; }
 }
