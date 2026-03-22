@@ -12,7 +12,8 @@
             background-color: #000; 
             color: #fff; 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            overflow: hidden; 
+            overflow-x: hidden;
+            overflow-y: auto; 
             height: 100%;
         }
 
@@ -34,154 +35,34 @@
         .modal-title { font-size: 3.5rem; letter-spacing: 18px; font-weight: 200; margin-bottom: 20px; text-transform: uppercase; }
         .gold-bird { width: 220px; margin-bottom: 30px; animation: floating 5s infinite ease-in-out; }
         .modal-definition { font-size: 0.9rem; letter-spacing: 2px; color: #888; margin-bottom: 40px; }
-        .cta-enter { 
-            background: transparent; 
-            color: #fff; 
-            border: 1px solid #fff; 
-            padding: 15px 40px; 
-            letter-spacing: 5px; 
-            text-transform: uppercase; 
-            font-size: 0.7rem; 
-            cursor: pointer; 
-        }
+        .cta-enter { background: transparent; color: #fff; border: 1px solid #fff; padding: 15px 40px; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; cursor: pointer; }
 
-        /* --- 3. NAV BAR (FLOATING / HANGING) --- */
+        /* --- 3. NAV BAR (LESS TRANSPARENT / FROSTED) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             
-            /* Hanging Position */
-            margin: 20px auto 0 auto; 
-            width: 100%; /* Spans the center column */
-            max-width: 1200px; /* Optional: caps the width on ultra-wide screens */
+            position: sticky;
+            top: 20px; 
             
-            padding: 10px 35px; 
-            background: rgba(45, 45, 45, 0.35); 
-            backdrop-filter: blur(35px); 
-            -webkit-backdrop-filter: blur(35px);
+            width: 100%; 
+            margin-top: 25px; 
+            padding: 12px 30px; 
             
-            /* Rounded "Pill" or Soft Corner feel */
+            /* Reduced transparency: 0.85 opacity makes it much more visible */
+            background: rgba(30, 30, 30, 0.85); 
+            /* Kept the high blur for the "frosted" texture */
+            backdrop-filter: blur(40px); 
+            -webkit-backdrop-filter: blur(40px);
+            
             border-radius: 12px; 
             z-index: 100;
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Very faint edge to define it */
+            /* Thin border to catch the light on the edges */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
         }
         
         .nav-group { display: flex; gap: 35px; }
-        .nav-group a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-size: 0.7rem; 
-            text-transform: lowercase; 
-            letter-spacing: 2px; 
-            font-weight: 300; 
-            transition: opacity 0.3s;
-        }
-        .nav-group a:hover { opacity: 0.5; }
-        .logo { 
-            color: #fff; 
-            font-size: 1.1rem; 
-            text-transform: uppercase; 
-            letter-spacing: 5px; 
-            font-weight: 400; 
-        }
-
-        /* --- 4. HERO SECTION --- */
-        .hero-split { 
-            display: grid; 
-            grid-template-columns: 2.2fr 1fr; 
-            width: 100%; 
-            margin-top: 25px; /* Added space for the hanging nav */
-            gap: 15px; 
-        }
-        .hero-box { min-height: 550px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-        .hero-img-fill { width: 100%; height: 100%; object-fit: cover; }
-        
-        .identity-container { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .bird-v2 { width: 80%; max-width: 400px; animation: floating 6s infinite ease-in-out; margin-bottom: 25px; }
-
-        /* --- 5. THE BRANDING STACK --- */
-        .tagline-stack { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .tag-text { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 6px; color: #fff; }
-        .tag-heavy { font-weight: 700; } 
-        .tag-thin { font-weight: 100; }  
-        .tag-vertical-line { width: 1px; height: 35px; background-color: #fff; }
-
-        /* --- 6. BOTTOM GRID --- */
-        .bottom-grid { display: flex; gap: 15px; margin-top: 15px; padding-bottom: 40px; }
-        .grid-card { flex: 1; padding: 15px; text-align: center; }
-        .card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
-        .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-        .grid-card p { text-transform: lowercase; font-size: 0.7rem; letter-spacing: 2px; font-weight: 300; }
-
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        @media (max-width: 1000px) {
-            .main-layout { grid-template-columns: 1fr; }
-            .hero-split { grid-template-columns: 1fr; }
-            .center-col { padding: 0 20px; }
-            .top-nav { width: calc(100% - 40px); margin: 20px auto 0 auto; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="brand-modal">
-        <div class="modal-content">
-            <h1 class="modal-title">KŌPIKO</h1>
-            <img src="b11.webp" alt="Gold Bird" class="gold-bird">
-            <p class="modal-definition"><em>To meander; to follow a winding path.</em></p>
-            <button class="cta-enter" onclick="closeModal()">Enter Studio</button>
-        </div>
-    </div>
-
-    <div class="main-layout">
-        <aside></aside>
-        <main class="center-col">
-            <nav class="top-nav">
-                <div class="nav-group">
-                    <a href="index.html">home</a>
-                    <a href="weddings.html">weddings</a>
-                    <a href="commercial.html">commercial</a>
-                    <a href="about.html">about us</a>
-                </div>
-                <div class="logo">KŌPIKO</div>
-            </nav>
-
-            <section class="hero-split">
-                <div class="hero-box">
-                    <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
-                </div>
-                <div class="hero-box">
-                    <div class="identity-container">
-                        <img src="b11.webp" alt="Bird" class="bird-v2">
-                        <div class="tagline-stack">
-                            <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
-                            <div class="tag-vertical-line"></div>
-                            <span class="tag-text tag-thin">FOR THE BOLD</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="bottom-grid">
-                <div class="grid-card"><div class="card-img-placeholder"><img src="wedding-thumb.jpg"></div><p>weddings</p></div>
-                <div class="grid-card"><div class="card-img-placeholder"><img src="commercial-thumb.jpg"></div><p>commercial</p></div>
-                <div class="grid-card"><div class="card-img-placeholder"><img src="about-thumb.jpg"></div><p>about us</p></div>
-            </section>
-        </main>
-        <aside></aside>
-    </div>
-
-    <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            modal.style.opacity = '0';
-            modal.style.visibility = 'hidden';
-            modal.style.pointerEvents = 'none';
-            document.body.style.overflow = 'auto';
-            document.documentElement.style.overflow = 'auto';
-        }
-    </script>
-</body>
-</html>
+        .nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; letter-spacing: 2px; font-weight: 400; transition: opacity 0.3s; }
+        .nav-group a:hover { opacity: 0.6; }
+        .logo { color: #fff; font-size: 1.2rem
