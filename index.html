@@ -20,7 +20,7 @@ permalink: /
 
         body.modal-open { overflow: hidden; }
 
-        /* --- 2. SPLASH PAGE (THE FIX) --- */
+        /* --- 2. SPLASH PAGE (STUDIO ALIGNMENT) --- */
         #brand-modal { 
             position: fixed; inset: 0; background: #000; 
             display: flex; justify-content: center; align-items: center; 
@@ -30,7 +30,6 @@ permalink: /
 
         .modal-content { display: flex; flex-direction: column; align-items: center; }
 
-        /* Title Container */
         .title-block {
             position: relative;
             display: inline-block;
@@ -43,27 +42,23 @@ permalink: /
             font-weight: 200; 
             text-transform: uppercase;
             line-height: 1;
-            display: flex;
-            justify-content: center;
+            /* Corrects the visual center due to letter-spacing */
+            margin-right: -20px; 
         }
 
-        /* Target the specific letters for alignment */
-        .modal-title span { position: relative; display: inline-block; }
-
+        /* STUDIO: Aligned from 2nd letter (O) to 5th letter (K) */
         .studio-subtitle {
             position: absolute;
-            /* This targets the space between the 2nd letter (O) and 5th letter (K) */
-            left: calc(100% / 6 * 1 + 10px); 
-            right: calc(100% / 6 * 1 + 10px);
+            left: 16.6%; /* Starts at the 2nd letter */
+            right: 16.6%; /* Ends at the 5th letter */
             top: 100%;
-            margin-top: 15px;
+            margin-top: 12px;
             display: flex;
             justify-content: space-between;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 300;
             text-transform: uppercase;
-            color: #aaa;
-            letter-spacing: 2px;
+            color: #888;
         }
 
         .gold-bird { width: 160px; margin-bottom: 40px; animation: floating 5s infinite ease-in-out; }
@@ -78,34 +73,54 @@ permalink: /
         /* --- 3. NAV --- */
         .top-nav { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 25px 40px; background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(20px); 
+            padding: 25px 40px; background: rgba(10, 10, 10, 0.9); 
         }
         .logo { font-size: 1rem; text-transform: uppercase; letter-spacing: 6px; }
 
-        /* --- 4. HERO SECTION (4K OVERLAY) --- */
+        /* --- 4. HERO SECTION (REVERTED TO BORDER-IMAGE) --- */
         .hero-container { 
-            position: relative; width: 100%; margin-top: 40px;
-            display: flex; justify-content: center; align-items: center;
+            position: relative; 
+            width: 100%; 
+            max-width: 1400px; /* Keeps it sharp on big screens */
+            margin: 40px auto;
+            padding: 0 40px;
         }
 
-        .frame-wrapper { position: relative; width: 100%; z-index: 5; pointer-events: none; }
-        .frame-png { width: 100%; height: auto; display: block; filter: drop-shadow(0 30px 60px #000); }
-
-        .photo-underlay {
-            position: absolute;
-            top: 11.2%; left: 13.5%; width: 73%; height: 77.5%;
-            z-index: 1; overflow: hidden; background: #050505;
+        .hero-img-main { 
+            width: 100%; height: auto; display: block; 
+            
+            /* Physical frame logic */
+            border: 55px solid transparent; 
+            border-image-source: url('border.png'); 
+            border-image-slice: 500 fill; 
+            border-image-repeat: round;
+            
+            /* Lighting */
+            box-shadow: 
+                inset 0 0 60px rgba(0,0,0,0.9), 
+                0 40px 100px rgba(0,0,0,0.8);
         }
-        .photo-underlay img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
 
         .hero-branding {
-            position: absolute; z-index: 10; right: 15%; top: 50%;
-            transform: translateY(-50%); text-align: center; pointer-events: none;
+            position: absolute; 
+            z-index: 10; 
+            right: 12%; 
+            top: 50%;
+            transform: translateY(-50%); 
+            text-align: center; 
+            pointer-events: none;
         }
-        .bird-v2 { width: 300px; animation: floating 6s infinite ease-in-out; filter: drop-shadow(0 20px 40px #000); }
+        
+        .bird-v2 { 
+            width: 280px; 
+            animation: floating 6s infinite ease-in-out; 
+            filter: drop-shadow(0 20px 40px #000); 
+        }
+
+        .tag-text { letter-spacing: 10px; font-size: 1.1rem; text-shadow: 2px 2px 15px #000; }
 
         /* --- 5. GRID --- */
-        .bottom-grid { display: flex; gap: 30px; padding: 80px 40px; }
+        .bottom-grid { display: flex; gap: 30px; padding: 60px 40px; }
         .grid-card { flex: 1; text-align: center; text-decoration: none; color: inherit; }
         .card-img { width: 100%; aspect-ratio: 4/5; background: #111; overflow: hidden; margin-bottom: 15px; }
         .card-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
@@ -115,9 +130,10 @@ permalink: /
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
         @media (max-width: 1000px) {
-            .modal-title { font-size: 2.5rem; letter-spacing: 8px; }
-            .studio-subtitle { font-size: 0.5rem; }
-            .hero-container { flex-direction: column; }
+            .modal-title { font-size: 2.5rem; letter-spacing: 10px; margin-right: -10px; }
+            .studio-subtitle { left: 16%; right: 16%; font-size: 0.5rem; }
+            .hero-container { padding: 0; }
+            .hero-img-main { border-width: 30px; }
             .hero-branding { position: relative; right: 0; transform: none; padding: 40px; background: #000; width: 100%; }
             .bottom-grid { flex-direction: column; }
         }
@@ -128,9 +144,7 @@ permalink: /
     <div id="brand-modal">
         <div class="modal-content">
             <div class="title-block">
-                <h1 class="modal-title">
-                    K<span>Ō</span>P<span>I</span>K<span>O</span>
-                </h1>
+                <h1 class="modal-title">KŌPIKO</h1>
                 <div class="studio-subtitle">
                     <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span>
                 </div>
@@ -142,24 +156,20 @@ permalink: /
         </div>
     </div>
 
-    <main class="center-col">
+    <main>
         <nav class="top-nav">
             <div class="logo">KŌPIKO</div>
         </nav>
 
         <section class="hero-container">
-            <div class="photo-underlay">
-                <img src="hme.jpg" alt="Art">
-            </div>
-            <div class="frame-wrapper">
-                <img src="border.png" alt="Frame" class="frame-png">
-            </div>
+            <img src="hme.jpg" alt="Art" class="hero-img-main">
+            
             <div class="hero-branding">
                 <img src="b11.webp" alt="Bird" class="bird-v2">
-                <div style="margin-top: 20px;">
-                    <p style="letter-spacing: 10px; font-weight: 700;">CREATIVE IDENTITY</p>
-                    <div style="width: 1px; height: 50px; background: #fff; margin: 15px auto;"></div>
-                    <p style="letter-spacing: 10px; font-weight: 100;">FOR THE BOLD</p>
+                <div style="margin-top: 25px;">
+                    <p class="tag-text" style="font-weight: 700;">CREATIVE IDENTITY</p>
+                    <div style="width: 1px; height: 60px; background: #fff; margin: 18px auto;"></div>
+                    <p class="tag-text" style="font-weight: 100;">FOR THE BOLD</p>
                 </div>
             </div>
         </section>
@@ -167,4 +177,19 @@ permalink: /
         <section class="bottom-grid">
             <a href="#" class="grid-card"><div class="card-img"><img src="weddings.jpg"></div><p>weddings</p></a>
             <a href="#" class="grid-card"><div class="card-img"><img src="commercial.jpg"></div><p>commercial</p></a>
-            <a href="#" class="grid-card"><div class="card-img"><img src="aboutus.jpg"></div><p>about us</
+            <a href="#" class="grid-card"><div class="card-img"><img src="aboutus.jpg"></div><p>about us</p></a>
+        </section>
+    </main>
+
+    <script>
+        function closeModal() {
+            const modal = document.getElementById('brand-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => { 
+                modal.style.visibility = 'hidden'; 
+                document.body.classList.remove('modal-open');
+            }, 800);
+        }
+    </script>
+</body>
+</html>
