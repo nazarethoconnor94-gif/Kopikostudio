@@ -16,7 +16,6 @@
             overflow: hidden; 
         }
 
-        /* Removed side-border logic from main layout */
         .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
         .center-col { padding: 0 40px; display: flex; flex-direction: column; }
 
@@ -46,17 +45,18 @@
             cursor: pointer; 
         }
 
-        /* --- 3. NAV BAR --- */
+        /* --- 3. NAV BAR (NO BORDER, HIGHER OPACITY) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            /* Subtle border remains on nav only for structure, or remove by changing to 0px */
-            border: 1px solid rgba(255,255,255,0.1); 
+            border: none; /* OUTLINE REMOVED */
             margin-top: 25px; 
-            padding: 15px 30px; 
-            background: rgba(150, 150, 150, 0.15); 
-            backdrop-filter: blur(20px); 
+            padding: 18px 30px; 
+            /* Higher opacity (0.45) for a less transparent look */
+            background: rgba(45, 45, 45, 0.45); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px);
             z-index: 100;
         }
         .nav-group { display: flex; gap: 35px; }
@@ -73,7 +73,6 @@
             gap: 15px; 
         }
         .hero-box { 
-            /* BORDERS REMOVED */
             border: none; 
             min-height: 550px; 
             display: flex; 
@@ -126,7 +125,6 @@
         .bottom-grid { display: flex; gap: 15px; margin-top: 15px; padding-bottom: 40px; }
         .grid-card { 
             flex: 1; 
-            /* BORDERS REMOVED */
             border: none; 
             padding: 15px; 
             text-align: center; 
