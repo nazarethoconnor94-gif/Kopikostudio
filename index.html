@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kōpiko Studio | Creative Agency</title>
+    <title>KŌPIKO STUDIO | Creative Agency</title>
     <style>
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { height: 100%; background-color: #000; color: #fff; font-family: sans-serif; overflow: hidden; }
+        
+        body, html { 
+            height: 100%; 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            overflow: hidden; 
+        }
 
         .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
         .center-col { padding: 0 40px; display: flex; flex-direction: column; }
 
-        /* --- 2. SPLASH PAGE (THE MODAL) --- */
+        /* --- 2. SPLASH PAGE --- */
         #brand-modal { 
             position: fixed; 
             inset: 0; 
@@ -22,11 +29,9 @@
             align-items: center; 
             z-index: 9999; 
             text-align: center; 
-            transition: opacity 0.8s ease, visibility 0.8s; 
-            cursor: default;
+            transition: opacity 0.8s ease; 
         }
-        .modal-content { max-width: 600px; }
-        .modal-title { font-size: 3.5rem; letter-spacing: 18px; font-weight: 100; margin-bottom: 20px; text-transform: uppercase; }
+        .modal-title { font-size: 3.5rem; letter-spacing: 18px; font-weight: 200; margin-bottom: 20px; text-transform: uppercase; }
         .gold-bird { width: 220px; margin-bottom: 30px; animation: floating 5s infinite ease-in-out; }
         .modal-definition { font-size: 0.9rem; letter-spacing: 2px; color: #888; margin-bottom: 40px; }
         .cta-enter { 
@@ -38,25 +43,35 @@
             text-transform: uppercase; 
             font-size: 0.7rem; 
             cursor: pointer; 
-            transition: 0.3s;
         }
-        .cta-enter:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* --- 3. NAV BAR --- */
+        /* --- 3. NAV BAR (TRANSPARENT GREY GLASS) --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            border: 1px solid rgba(255,255,255,0.2); 
+            border: 1px solid rgba(255,255,255,0.15); 
             margin-top: 25px; 
-            padding: 12px 25px; 
-            background: rgba(30, 30, 30, 0.75); 
-            backdrop-filter: blur(12px);
+            padding: 15px 30px; 
+            /* Transparent grey background */
+            background: rgba(150, 150, 150, 0.15); 
+            /* Blur effect for the "Glass" look */
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
         }
-        .nav-group { flex: 1; display: flex; gap: 25px; }
-        .nav-group.right { justify-content: flex-end; }
-        .nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; letter-spacing: 1px; }
-        .logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; }
+        .nav-group { display: flex; gap: 35px; }
+        .nav-group a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 0.75rem; 
+            text-transform: lowercase; 
+            letter-spacing: 2px; 
+            font-weight: 300; 
+            transition: opacity 0.3s;
+        }
+        .nav-group a:hover { opacity: 0.6; }
+        .logo { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 400; }
 
         /* --- 4. HERO SECTION --- */
         .hero-split { 
@@ -73,31 +88,30 @@
             align-items: center; 
             justify-content: center; 
             overflow: hidden; 
-            background-color: #000;
             position: relative;
         }
         .hero-img-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
         .bird-double { width: 80% !important; max-width: 450px; height: auto; animation: floating 6s infinite ease-in-out; }
 
-        /* --- 5. TAGLINE PLACEMENT --- */
+        /* --- 5. TAGLINE --- */
         .tag-left-box {
             position: absolute;
             bottom: 30px;
             right: 30px; 
             font-size: clamp(1rem, 1.8vw, 1.6rem);
-            font-weight: 200;
             text-transform: lowercase;
             letter-spacing: 4px;
+            font-weight: 800; 
         }
         .tag-right-box {
             position: absolute;
             bottom: 30px;
             left: 30px; 
             font-size: clamp(1rem, 1.8vw, 1.6rem);
-            font-weight: 200;
             text-transform: lowercase;
             letter-spacing: 4px;
             white-space: nowrap;
+            font-weight: 100; 
         }
 
         /* --- 6. BOTTOM GRID --- */
@@ -112,7 +126,6 @@
             .main-layout { grid-template-columns: 1fr; }
             .hero-split { grid-template-columns: 1fr; }
             .tag-left-box, .tag-right-box { position: relative; bottom: 0; left: 0; right: 0; padding: 10px; text-align: center; }
-            .bottom-grid { flex-direction: column; }
         }
     </style>
 </head>
@@ -132,15 +145,13 @@
 
         <main class="center-col">
             <nav class="top-nav">
-                <div class="nav-group left">
+                <div class="nav-group">
                     <a href="index.html">home</a>
                     <a href="weddings.html">weddings</a>
-                </div>
-                <div class="logo">Kōpiko</div>
-                <div class="nav-group right">
                     <a href="commercial.html">commercial</a>
                     <a href="about.html">about us</a>
                 </div>
+                <div class="logo">KŌPIKO</div>
             </nav>
 
             <section class="hero-split">
@@ -172,7 +183,7 @@
                 modal.style.opacity = '0';
                 setTimeout(() => { 
                     modal.style.display = 'none'; 
-                    document.body.style.overflow = 'auto'; // Re-enable scrolling
+                    document.body.style.overflow = 'auto'; 
                 }, 800);
             }
         }
