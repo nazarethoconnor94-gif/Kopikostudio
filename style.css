@@ -1,8 +1,8 @@
 /* --- 1. CORE --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body, html { height: 100%; background-color: #000; color: #fff; font-family: sans-serif; overflow-x: hidden; }
+body, html { height: 100%; background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; overflow-x: hidden; }
 
-/* --- 2. THE MASTER GRID --- */
+/* --- 2. MASTER GRID --- */
 .main-layout { display: grid; grid-template-columns: 80px 1fr 80px; min-height: 100vh; }
 .noir-frame { background-color: #000; }
 .center-col { padding: 0 40px; display: flex; flex-direction: column; }
@@ -14,52 +14,63 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: san
 .nav-group.right { justify-content: flex-end; }
 .logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; font-weight: 200; }
 
-/* --- 4. HERO --- */
-.hero-split { display: flex; width: 100%; margin-top: 15px; gap: 15px; }
-.hero-box { flex: 1; border: 1px solid #fff; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: #000; }
-.hero-img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-.large-sketch-bird { width: clamp(120px, 15vw, 200px); height: auto; margin-bottom: 20px; animation: floating 6s infinite ease-in-out; }
-.identity-stack { text-align: center; }
-.identity-stack h2 { font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 200; text-transform: lowercase; }
+/* --- 4. HERO SPLIT (THE FILL FIX) --- */
+.hero-split { 
+    display: flex; 
+    width: 100%; 
+    margin-top: 15px; 
+    gap: 15px; 
+    align-items: stretch; /* Ensures the bird box height matches the image box */
+}
+
+.hero-box { 
+    flex: 1; 
+    border: 1px solid #fff; 
+    /* We keep a base aspect ratio, but allow it to grow if needed */
+    min-height: 400px; 
+    aspect-ratio: 16 / 9; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; 
+    background-color: #000; 
+}
+
+.hero-img-fill { 
+    width: 100%; 
+    height: 100%; 
+    /* THIS IS THE KEY: It crops the image slightly to fill the entire box */
+    object-fit: cover; 
+    display: block; 
+}
+
+.large-sketch-bird { 
+    width: clamp(140px, 18vw, 220px); 
+    height: auto; 
+    margin-bottom: 20px; 
+    animation: floating 6s infinite ease-in-out; 
+}
+
+.identity-stack { text-align: center; padding: 20px; }
+.identity-stack h2 { font-size: clamp(1.2rem, 2.5vw, 2rem); font-weight: 200; text-transform: lowercase; }
 
 /* --- 5. GRID --- */
-.bottom-grid { display: flex; gap: 15px; margin-top: 15px; width: 100%; }
+.bottom-grid { display: flex; gap: 15px; margin-top: 15px; width: 100%; padding-bottom: 40px; }
 .grid-card { flex: 1; border: 1px solid #fff; padding: 15px; text-align: center; }
-.card-img-placeholder { width: 100%; aspect-ratio: 3 / 2; margin-bottom: 12px; background: #111; overflow: hidden; }
+.card-img-placeholder { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 12px; background: #111; overflow: hidden; }
 .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
 .grid-card p { font-size: 0.8rem; text-transform: lowercase; }
 
-/* --- 6. SPLASH SCREEN (FIXED) --- */
-.modal-overlay { 
-    position: fixed; 
-    inset: 0; 
-    background: #000; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    z-index: 9999; 
-    text-align: center; 
-    transition: opacity 0.8s ease; /* Essential for the fade effect */
-}
+/* --- 6. SPLASH --- */
+.modal-overlay { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; text-align: center; transition: opacity 0.8s ease; cursor: pointer; }
 .gold-bird { width: 250px; margin-bottom: 25px; animation: floating 5s infinite ease-in-out; }
 .modal-title { font-size: 3rem; letter-spacing: 18px; font-weight: 100; }
-.cta-minimal { 
-    background: transparent; 
-    color: white; 
-    border: 1px solid #333; 
-    padding: 12px 45px; 
-    cursor: pointer; /* Makes it clear you can click it */
-    letter-spacing: 4px; 
-    font-size: 0.75rem; 
-    margin-top: 25px; 
-    transition: 0.3s;
-}
-.cta-minimal:hover { border-color: #fff; }
+.cta-minimal { background: transparent; color: white; border: 1px solid #333; padding: 12px 45px; letter-spacing: 4px; font-size: 0.75rem; margin-top: 25px; pointer-events: none; }
 
-@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
 @media (max-width: 1000px) {
     .main-layout { grid-template-columns: 1fr; }
     .hero-split, .bottom-grid { flex-direction: column; }
-    .hero-box { aspect-ratio: auto; min-height: 250px; }
+    .hero-box { min-height: 300px; aspect-ratio: auto; }
 }
