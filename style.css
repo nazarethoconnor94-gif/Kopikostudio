@@ -14,14 +14,14 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
 .nav-group.right { justify-content: flex-end; }
 .logo { font-size: 1.4rem; text-transform: capitalize; letter-spacing: 2px; font-weight: 200; }
 
-/* --- 4. HERO SPLIT (REFINED BIRD SIZE) --- */
+/* --- 4. HERO SPLIT (XL BIRD) --- */
 .hero-split { display: flex; width: 100%; margin-top: 15px; gap: 15px; align-items: stretch; }
 
 .hero-box { 
     flex: 1; 
     border: 1px solid #fff; 
     aspect-ratio: 16 / 9; 
-    min-height: 400px; 
+    min-height: 450px; /* Bumped min-height slightly to accommodate the bigger bird */
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -36,26 +36,28 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: center;
+    justify-content: flex-end; /* Align everything toward the bottom */
     width: 100%;
+    height: 100%;
+    padding-bottom: 30px; /* Space from bottom border */
 }
 
-/* REFINED BIRD: Approx 20% larger than original 140px */
-.hero-bird-refined { 
-    width: 170px; 
-    max-height: 45%; /* Prevents it from taking over the box */
+/* XL BIRD: Doubled from previous size */
+.hero-bird-xl { 
+    width: clamp(250px, 30vw, 360px); 
     height: auto; 
     animation: floating 6s infinite ease-in-out; 
+    margin-bottom: 20px;
 }
 
-/* TEXT POSITIONING */
+/* TEXT AT THE BOTTOM */
 .identity-text { 
-    font-size: clamp(1.1rem, 2vw, 1.5rem); 
+    font-size: clamp(1.1rem, 2vw, 1.4rem); 
     font-weight: 200; 
     text-transform: lowercase; 
-    margin-top: 50px; /* Stronger push downward */
     line-height: 1.2;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    margin-top: 20px;
 }
 
 /* --- 5. GRID --- */
@@ -76,5 +78,5 @@ body, html { height: 100%; background-color: #000; color: #fff; font-family: 'He
 @media (max-width: 1000px) {
     .main-layout { grid-template-columns: 1fr; }
     .hero-split, .bottom-grid { flex-direction: column; }
-    .hero-box { min-height: 300px; aspect-ratio: auto; }
+    .hero-box { min-height: 350px; aspect-ratio: auto; }
 }
