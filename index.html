@@ -45,7 +45,7 @@
             cursor: pointer; 
         }
 
-        /* --- 3. NAV BAR (TRANSPARENT GREY GLASS) --- */
+        /* --- 3. NAV BAR --- */
         .top-nav { 
             display: flex; 
             justify-content: space-between; 
@@ -53,23 +53,12 @@
             border: 1px solid rgba(255,255,255,0.15); 
             margin-top: 25px; 
             padding: 15px 30px; 
-            /* Transparent grey background */
             background: rgba(150, 150, 150, 0.15); 
-            /* Blur effect for the "Glass" look */
             backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
             z-index: 100;
         }
         .nav-group { display: flex; gap: 35px; }
-        .nav-group a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-size: 0.75rem; 
-            text-transform: lowercase; 
-            letter-spacing: 2px; 
-            font-weight: 300; 
-            transition: opacity 0.3s;
-        }
+        .nav-group a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: lowercase; letter-spacing: 2px; font-weight: 300; transition: opacity 0.3s;}
         .nav-group a:hover { opacity: 0.6; }
         .logo { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 400; }
 
@@ -91,27 +80,47 @@
             position: relative;
         }
         .hero-img-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .bird-double { width: 80% !important; max-width: 450px; height: auto; animation: floating 6s infinite ease-in-out; }
-
-        /* --- 5. TAGLINE --- */
-        .tag-left-box {
-            position: absolute;
-            bottom: 30px;
-            right: 30px; 
-            font-size: clamp(1rem, 1.8vw, 1.6rem);
-            text-transform: lowercase;
-            letter-spacing: 4px;
-            font-weight: 800; 
+        
+        .identity-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
         }
-        .tag-right-box {
-            position: absolute;
-            bottom: 30px;
-            left: 30px; 
-            font-size: clamp(1rem, 1.8vw, 1.6rem);
-            text-transform: lowercase;
-            letter-spacing: 4px;
-            white-space: nowrap;
-            font-weight: 100; 
+
+        .bird-v2 { 
+            width: 80%; 
+            max-width: 400px; 
+            height: auto; 
+            animation: floating 6s infinite ease-in-out; 
+            margin-bottom: 25px; 
+        }
+
+        /* --- 5. THE BRANDING STACK --- */
+        .tagline-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Unified branding font styles */
+        .tag-text {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 6px; /* Branding tracking */
+            color: #fff;
+        }
+
+        .tag-heavy { font-weight: 700; } /* CREATIVE IDENTITY - Bold */
+        .tag-thin { font-weight: 100; }  /* FOR THE BOLD - Thin */
+
+        .tag-vertical-line {
+            width: 1px;
+            height: 35px;
+            background-color: #fff;
         }
 
         /* --- 6. BOTTOM GRID --- */
@@ -125,7 +134,7 @@
         @media (max-width: 1000px) {
             .main-layout { grid-template-columns: 1fr; }
             .hero-split { grid-template-columns: 1fr; }
-            .tag-left-box, .tag-right-box { position: relative; bottom: 0; left: 0; right: 0; padding: 10px; text-align: center; }
+            .identity-container { padding: 40px 0; }
         }
     </style>
 </head>
@@ -157,12 +166,18 @@
             <section class="hero-split">
                 <div class="hero-box">
                     <img src="hme.jpg" alt="Hero Image" class="hero-img-fill">
-                    <span class="tag-left-box">creative identity</span>
                 </div>
                 
                 <div class="hero-box">
-                    <img src="b11.webp" alt="Bird" class="bird-double">
-                    <span class="tag-right-box">for the bold</span>
+                    <div class="identity-container">
+                        <img src="b11.webp" alt="Bird" class="bird-v2">
+                        
+                        <div class="tagline-stack">
+                            <span class="tag-text tag-heavy">CREATIVE IDENTITY</span>
+                            <div class="tag-vertical-line"></div>
+                            <span class="tag-text tag-thin">FOR THE BOLD</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
