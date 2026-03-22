@@ -16,7 +16,6 @@ permalink: /
             background-color: var(--bg-color); 
             color: #fff; 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            /* overflow-x: clip allows sticky positioning to work, hidden breaks it */
             overflow-x: clip; 
         }
 
@@ -44,7 +43,7 @@ permalink: /
 
         /* --- 3. STICKY NAVIGATION --- */
         .top-nav-container {
-            position: -webkit-sticky; /* For Safari */
+            position: -webkit-sticky; 
             position: sticky; 
             top: 0; 
             z-index: 2000; 
@@ -67,7 +66,6 @@ permalink: /
         }
         .nav-group a:hover { opacity: 1; color: var(--accent-gold); }
 
-        /* HAMBURGER ICON */
         .menu-icon { 
             display: none; flex-direction: column; justify-content: space-between; 
             width: 28px; height: 16px; cursor: pointer; z-index: 2100; 
@@ -77,7 +75,6 @@ permalink: /
         .menu-icon.open span:nth-child(2) { opacity: 0; }
         .menu-icon.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-        /* MOBILE DRAWER */
         .mobile-drawer { 
             position: fixed; top: -100%; left: 0; width: 100%; 
             background: rgba(5,5,5,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -94,7 +91,7 @@ permalink: /
         }
         .menu-overlay.active { opacity: 1; visibility: visible; }
 
-        /* --- 4. HERO SECTION (SOFT DOUBLE-STACK) --- */
+        /* --- 4. HERO SECTION --- */
         .main-layout { display: grid; grid-template-columns: 1fr; background: var(--bg-color); }
         .center-col { max-width: 1300px; margin: 0 auto; width: 90%; }
 
@@ -110,18 +107,35 @@ permalink: /
             border-image-source: url('border.png'); 
             border-image-slice: 500 fill; 
             border-image-repeat: round;
-
-            /* SOFT BLURRED DOUBLE STACK */
             filter: drop-shadow(0 30px 60px rgba(0,0,0,0.9)) drop-shadow(0 0 15px rgba(212, 175, 55, 0.1)); 
             box-shadow: inset 0 0 100px rgba(0,0,0,1);
         }
 
+        /* UPDATED BRANDING SHADOWS */
         .hero-branding { 
             position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none; 
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
+            /* Soft deep shadow for the whole group */
+            filter: drop-shadow(0 15px 40px rgba(0,0,0,1));
         }
-        .bird-v2 { width: 220px; animation: floating 6s infinite ease-in-out; }
-        .hero-branding p { letter-spacing: 12px; font-weight: 700; text-shadow: 0 0 20px rgba(0,0,0,1); text-transform: uppercase; }
+
+        .bird-v2 { 
+            width: 220px; 
+            animation: floating 6s infinite ease-in-out; 
+            /* Double-stack shadow on the bird graphic itself */
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,1)) 
+                    drop-shadow(0 0 20px rgba(0,0,0,0.8));
+        }
+
+        .hero-branding p { 
+            letter-spacing: 12px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            /* Triple-stack text shadow for absolute clarity */
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,1), 
+                0px 0px 20px rgba(0,0,0,1), 
+                0px 0px 40px rgba(0,0,0,0.8);
+        }
 
         /* --- 5. BOTTOM GRID --- */
         .bottom-grid { display: flex; gap: 40px; padding-bottom: 100px; }
@@ -129,33 +143,23 @@ permalink: /
         .card-img-container { width: 100%; margin-bottom: 20px; box-shadow: 0 20px 40px rgba(0,0,0,1); }
         .card-img-container img { width: 100%; height: auto; display: block; transition: 0.5s ease; }
         .grid-card p { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; transition: 0.3s; }
-        .grid-card:hover p { opacity: 1; color: var(--accent-gold); }
 
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        /* --- 6. MOBILE FIXES --- */
         @media (max-width: 900px) {
             .nav-group { display: none; }
             .menu-icon { display: flex; }
-            
-            /* Center logo perfectly on mobile */
             .logo { position: absolute; left: 50%; transform: translateX(-50%); }
-            
             .hero-container { flex-direction: column; margin-top: 20px; }
             .hero-img-main { border-width: 20px; }
-            
-            /* Ground the branding on mobile */
             .hero-branding { position: relative; right: auto; margin-top: 40px; width: 100%; }
             .bird-v2 { width: 160px; }
-            .hero-branding p { font-size: 0.9rem; letter-spacing: 8px; }
-            
             .bottom-grid { flex-direction: column; gap: 50px; }
         }
     </style>
 </head>
 <body class="modal-open">
 
-    <!-- SPLASH SCREEN -->
     <div id="brand-modal">
         <div class="modal-content">
             <h1 class="modal-title">KŌPIKO</h1>
@@ -164,7 +168,6 @@ permalink: /
         </div>
     </div>
 
-    <!-- MOBILE DRAWER & OVERLAY -->
     <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
     <div class="mobile-drawer" id="mobileDrawer">
         <a href="/">home</a>
@@ -173,7 +176,6 @@ permalink: /
         <a href="/about">about us</a>
     </div>
 
-    <!-- STICKY NAV -->
     <div class="top-nav-container">
         <nav class="top-nav">
             <div class="menu-icon" onclick="toggleMenu()">
@@ -221,7 +223,6 @@ permalink: /
     </div>
 
     <script>
-        /* Splash Screen Logic */
         function closeModal() {
             const modal = document.getElementById('brand-modal');
             modal.style.opacity = '0';
@@ -230,13 +231,10 @@ permalink: /
                 document.body.classList.remove('modal-open');
             }, 800);
         }
-
-        /* Mobile Menu Logic */
         function toggleMenu() {
             const icon = document.querySelector('.menu-icon');
             const drawer = document.getElementById('mobileDrawer');
             const overlay = document.getElementById('menuOverlay');
-            
             icon.classList.toggle('open');
             drawer.classList.toggle('active');
             overlay.classList.toggle('active');
