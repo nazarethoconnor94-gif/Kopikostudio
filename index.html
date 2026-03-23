@@ -10,7 +10,8 @@ permalink: /
     <style>
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg-color: #000000; --accent-gold: #d4af37; }
+        /* UPDATED: Changed from #000 to a deep charcoal grey */
+        :root { --bg-color: #121212; --accent-gold: #d4af37; }
 
         body, html { 
             background-color: var(--bg-color); 
@@ -23,7 +24,7 @@ permalink: /
 
         /* --- 2. SPLASH SCREEN --- */
         #brand-modal { 
-            position: fixed; inset: 0; background: var(--bg-color); 
+            position: fixed; inset: 0; background: #000; /* Kept splash pure black for impact */
             display: flex; justify-content: center; align-items: center; 
             z-index: 9999; text-align: center; 
             transition: opacity 0.8s ease, visibility 0.8s; 
@@ -50,8 +51,7 @@ permalink: /
             position: sticky; 
             top: 0; 
             z-index: 2000; 
-            /* UPDATED: Transparency set to 0.65 with 55px deep blur */
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(18, 18, 18, 0.65); /* Matches new charcoal bg */
             backdrop-filter: blur(55px); 
             -webkit-backdrop-filter: blur(55px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -81,7 +81,7 @@ permalink: /
 
         .mobile-drawer { 
             position: fixed; top: -100%; left: 0; width: 100%; 
-            background: rgba(5,5,5,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 120px 40px 60px; display: flex; flex-direction: column; gap: 35px; 
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1900; 
             text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -111,7 +111,8 @@ permalink: /
             border-image-source: url('border.png'); 
             border-image-slice: 500 fill; 
             border-image-repeat: round;
-            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.9)); 
+            /* Shadow will now pop against the #121212 background */
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9)); 
             box-shadow: inset 0 0 100px rgba(0,0,0,1);
         }
 
@@ -138,7 +139,12 @@ permalink: /
         /* --- 5. BOTTOM GRID --- */
         .bottom-grid { display: flex; gap: 40px; padding-bottom: 100px; }
         .grid-card { flex: 1; text-align: center; text-decoration: none; color: inherit; }
-        .card-img-container { width: 100%; margin-bottom: 20px; box-shadow: 0 20px 40px rgba(0,0,0,1); }
+        .card-img-container { 
+            width: 100%; 
+            margin-bottom: 20px; 
+            /* Soft shadow for small cards */
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); 
+        }
         .card-img-container img { width: 100%; height: auto; display: block; transition: 0.5s ease; }
         .grid-card p { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; transition: 0.3s; }
         .grid-card:hover p { opacity: 1; color: var(--accent-gold); }
