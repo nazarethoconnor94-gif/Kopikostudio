@@ -204,4 +204,46 @@ permalink: /
                     <img src="b11.webp" alt="Bird" class="bird-v2">
                     <div style="margin-top: 25px;">
                         <p>CREATIVE IDENTITY</p>
-                        <div style="width: 1px; height:
+                        <div style="width: 1px; height: 60px; background: #fff; margin: 20px auto; filter: drop-shadow(0 0 10px rgba(0,0,0,1));"></div>
+                        <p style="font-weight: 100; letter-spacing: 15px;">FOR THE BOLD</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-grid">
+                <a href="/weddings" class="grid-card">
+                    <div class="card-img-container"><img src="weddings.jpg"></div>
+                    <p>weddings</p>
+                </a>
+                <a href="/commercial" class="grid-card">
+                    <div class="card-img-container"><img src="commercial.jpg"></div>
+                    <p>commercial</p>
+                </a>
+                <a href="/about" class="grid-card">
+                    <div class="card-img-container"><img src="aboutus.jpg"></div>
+                    <p>about us</p>
+                </a>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function closeModal() {
+            const modal = document.getElementById('brand-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => { 
+                modal.style.visibility = 'hidden'; 
+                document.body.classList.remove('modal-open');
+            }, 800);
+        }
+        function toggleMenu() {
+            const icon = document.querySelector('.menu-icon');
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('menuOverlay');
+            icon.classList.toggle('open');
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
