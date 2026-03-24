@@ -34,35 +34,15 @@ permalink: /
             transition: opacity 0.8s ease, visibility 0.8s; 
         }
         .modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 20px; }
-        
-        /* Container ensures both words share the same width boundary */
-        .logo-wrapper-splash { 
-            margin-bottom: 40px; 
-            display: inline-block; /* Wraps tightly around content */
-        }
-
+        .logo-wrapper-splash { margin-bottom: 40px; display: inline-block; }
         .modal-title { 
-            font-size: 3.2rem; 
-            letter-spacing: 20px; 
-            font-weight: 300; 
-            text-transform: uppercase; 
-            line-height: 1;
-            margin-right: -20px; /* Essential to offset the last letter's spacing */
-            display: block;
+            font-size: 3.2rem; letter-spacing: 20px; font-weight: 300; 
+            text-transform: uppercase; line-height: 1; margin-right: -20px; display: block;
         }
-
-        /* AUTO-STRETCH: This forces STUDIO to match the width of KŌPIKO above it */
         .modal-subtitle {
-            font-size: 1.1rem;
-            font-weight: 100;
-            text-transform: uppercase;
-            margin-top: 15px;
-            color: #fff;
-            display: flex;
-            justify-content: space-between; /* Spreads letters to the edges */
-            width: 100%;
+            font-size: 1.1rem; font-weight: 100; text-transform: uppercase;
+            margin-top: 15px; color: #fff; display: flex; justify-content: space-between; width: 100%;
         }
-
         .gold-bird-splash { width: 140px; margin-bottom: 40px; animation: floating 5s infinite ease-in-out; }
         .cta-enter { 
             background: transparent; color: #fff; border: 1px solid #fff; 
@@ -73,206 +53,38 @@ permalink: /
 
         /* --- 3. STICKY NAVIGATION --- */
         .top-nav-container {
-            position: -webkit-sticky; 
-            position: sticky; 
-            top: 0; 
-            z-index: 2000; 
-            background: rgba(42, 39, 39, 0.65);
-            backdrop-filter: blur(55px); 
-            -webkit-backdrop-filter: blur(55px);
+            position: -webkit-sticky; position: sticky; top: 0; z-index: 2000; 
+            background: rgba(42, 39, 39, 0.65); backdrop-filter: blur(55px); -webkit-backdrop-filter: blur(55px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .top-nav { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 20px 0; max-width: 1300px; margin: 0 auto; width: 90%;
-            position: relative;
         }
-        
         .logo-link { text-decoration: none; color: inherit; display: flex; align-items: center; }
-        .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; font-weight: 500; z-index: 2100; color: #fff; }
-        .logo span { font-weight: 100; letter-spacing: 4px; margin-left: 8px; color: #fff; }
-        
+        .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; font-weight: 500; color: #fff; }
+        .logo span { font-weight: 100; letter-spacing: 4px; margin-left: 8px; }
         .nav-group { display: flex; gap: 30px; }
-        .nav-group a { 
-            color: #fff; text-decoration: none; font-size: 0.7rem; 
-            text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s;
-        }
+        .nav-group a { color: #fff; text-decoration: none; font-size: 0.7rem; text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
         .nav-group a:hover { opacity: 1; color: var(--accent-gold); }
-
-        .menu-icon { 
-            display: none; flex-direction: column; justify-content: space-between; 
-            width: 28px; height: 16px; cursor: pointer; z-index: 2100; 
-        }
-        .menu-icon span { width: 100%; height: 1px; background: #fff; transition: 0.4s; }
-        .menu-icon.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-        .menu-icon.open span:nth-child(2) { opacity: 0; }
-        .menu-icon.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
-
-        .mobile-drawer { 
-            position: fixed; top: -100%; left: 0; width: 100%; 
-            background: rgba(42, 39, 39, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 120px 40px 60px; display: flex; flex-direction: column; gap: 35px; 
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1900; 
-            text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .mobile-drawer.active { top: 0; }
-        .mobile-drawer a { color: #fff; text-decoration: none; font-size: 1.5rem; letter-spacing: 4px; text-transform: lowercase; font-weight: 200; }
-        
-        .menu-overlay { 
-            position: fixed; inset: 0; background: rgba(0,0,0,0.8); 
-            opacity: 0; visibility: hidden; transition: 0.4s; z-index: 1800; 
-        }
-        .menu-overlay.active { opacity: 1; visibility: visible; }
 
         /* --- 4. HERO SECTION --- */
         .main-layout { display: grid; grid-template-columns: 1fr; background: var(--bg-color); }
         .center-col { max-width: 1300px; margin: 0 auto; width: 90%; }
-
-        .hero-container { 
-            position: relative; width: 100%; margin-top: 40px; margin-bottom: 80px; 
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .hero-img-main { 
-            width: 100%; height: auto; display: block; 
-            background-color: #000;
-            border: none;
-            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9)); 
-        }
-
-        .hero-branding { 
-            position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none; 
-        }
-
-        .bird-v2 { 
-            width: 220px; 
-            animation: floating 6s infinite ease-in-out; 
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.7));
-        }
-
-        .hero-branding p { 
-            letter-spacing: 12px; 
-            font-weight: 700; 
-            text-transform: uppercase;
-            text-shadow: 
-                0px 0px 20px rgba(0,0,0,1), 
-                0px 0px 40px rgba(0,0,0,1), 
-                0px 0px 70px rgba(0,0,0,0.9);
-        }
+        .hero-container { position: relative; width: 100%; margin-top: 40px; margin-bottom: 80px; display: flex; align-items: center; justify-content: center; }
+        .hero-img-main { width: 100%; height: auto; display: block; border: none; filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9)); }
+        .hero-branding { position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none; }
+        .bird-v2 { width: 220px; animation: floating 6s infinite ease-in-out; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.7)); }
+        .hero-branding p { letter-spacing: 12px; font-weight: 700; text-transform: uppercase; text-shadow: 0 0 20px #000; }
 
         /* --- 5. BOTTOM GRID --- */
-        .bottom-grid { display: flex; gap: 40px; padding-bottom: 100px; }
+        .bottom-grid { display: flex; gap: 40px; padding-bottom: 100px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .grid-card { flex: 1; text-align: center; text-decoration: none; color: inherit; }
-        .card-img-container { 
-            width: 100%; margin-bottom: 20px; 
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); 
-        }
+        .card-img-container { width: 100%; margin-bottom: 20px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); }
         .card-img-container img { width: 100%; height: auto; display: block; transition: 0.5s ease; }
         .grid-card p { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; transition: 0.3s; }
         .grid-card:hover p { opacity: 1; color: var(--accent-gold); }
 
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        @media (max-width: 900px) {
-            .nav-group { display: none; }
-            .menu-icon { display: flex; }
-            .logo { position: absolute; left: 50%; transform: translateX(-50%); }
-            .hero-container { flex-direction: column; margin-top: 20px; }
-            .hero-branding { position: relative; right: auto; margin-top: 40px; width: 100%; }
-            .bird-v2 { width: 160px; }
-            .modal-title { font-size: 2.2rem; letter-spacing: 12px; margin-right: -12px; }
-            .bottom-grid { flex-direction: column; gap: 50px; }
-        }
-    </style>
-</head>
-<body class="modal-open">
-
-    <div id="brand-modal">
-        <div class="modal-content">
-            <div class="logo-wrapper-splash">
-                <h1 class="modal-title">KŌPIKO</h1>
-                <div class="modal-subtitle">
-                    <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span>
-                </div>
-            </div>
-            <img src="b11.webp" alt="Bird" class="gold-bird-splash">
-            <button class="cta-enter" onclick="closeModal()">Enter Studio</button>
-        </div>
-    </div>
-
-    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
-    <div class="mobile-drawer" id="mobileDrawer">
-        <a href="/">home</a>
-        <a href="/weddings">weddings</a>
-        <a href="/commercial">commercial</a>
-        <a href="/about">about us</a>
-    </div>
-
-    <div class="top-nav-container">
-        <nav class="top-nav">
-            <div class="menu-icon" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </div>
-            <a href="/" class="logo-link">
-                <div class="logo">KŌPIKO<span>STUDIO</span></div>
-            </a>
-            <div class="nav-group">
-                <a href="/">home</a>
-                <a href="/weddings">weddings</a>
-                <a href="/commercial">commercial</a>
-                <a href="/about">about us</a>
-            </div>
-        </nav>
-    </div>
-
-    <div class="main-layout">
-        <main class="center-col">
-            <section class="hero-container">
-                <img src="hme.jpg" alt="Hero Art" class="hero-img-main">
-                <div class="hero-branding">
-                    <img src="b11.webp" alt="Bird" class="bird-v2">
-                    <div style="margin-top: 25px;">
-                        <p>CREATIVE IDENTITY</p>
-                        <div style="width: 1px; height: 60px; background: #fff; margin: 20px auto; filter: drop-shadow(0 0 10px rgba(0,0,0,1));"></div>
-                        <p style="font-weight: 100; letter-spacing: 15px;">FOR THE BOLD</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="bottom-grid">
-                <a href="/weddings" class="grid-card">
-                    <div class="card-img-container"><img src="weddings.jpg"></div>
-                    <p>weddings</p>
-                </a>
-                <a href="/commercial" class="grid-card">
-                    <div class="card-img-container"><img src="commercial.jpg"></div>
-                    <p>commercial</p>
-                </a>
-                <a href="/about" class="grid-card">
-                    <div class="card-img-container"><img src="aboutus.jpg"></div>
-                    <p>about us</p>
-                </a>
-            </section>
-        </main>
-    </div>
-
-    <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            modal.style.opacity = '0';
-            setTimeout(() => { 
-                modal.style.visibility = 'hidden'; 
-                document.body.classList.remove('modal-open');
-            }, 800);
-        }
-        function toggleMenu() {
-            const icon = document.querySelector('.menu-icon');
-            const drawer = document.getElementById('mobileDrawer');
-            const overlay = document.getElementById('menuOverlay');
-            icon.classList.toggle('open');
-            drawer.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-    </script>
-</body>
-</html>
+        /* --- 6. CONTACT SECTION --- */
+        .contact-section { padding: 100px 0; max-width: 600px; margin: 0 auto; text-align: center; }
+        .contact-section h2 { font-weight: 200; letter-spacing: 15px; text-transform: uppercase; margin-bottom: 40px;
