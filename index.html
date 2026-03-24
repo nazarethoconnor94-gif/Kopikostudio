@@ -6,7 +6,7 @@ permalink: /
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOPIKO STUDIO | Creative Agency</title>
+    <title>KŌPIKO STUDIO | Creative Agency</title>
     <style>
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,16 +42,18 @@ permalink: /
             font-weight: 300; 
             text-transform: uppercase; 
             line-height: 1;
+            margin-right: -20px; /* Offset the spacing for true center */
         }
-        /* STUDIO: Larger font + exact letter spacing to span the word above */
+        /* STUDIO: Spaced to match the visual width of KŌPIKO above */
         .modal-subtitle {
             font-size: 1rem;
             font-weight: 100;
             text-transform: uppercase;
-            letter-spacing: 34.5px; 
+            letter-spacing: 38px; 
             margin-top: 15px;
             color: #fff;
-            margin-right: -34.5px; 
+            margin-right: -38px; 
+            width: 100%;
         }
 
         .gold-bird-splash { width: 140px; margin-bottom: 40px; animation: floating 5s infinite ease-in-out; }
@@ -79,7 +81,7 @@ permalink: /
             position: relative;
         }
         
-        /* Navbar Logo: STUDIO is now full white */
+        .logo-link { text-decoration: none; color: inherit; display: flex; align-items: center; }
         .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; font-weight: 500; z-index: 2100; color: #fff; }
         .logo span { font-weight: 100; letter-spacing: 4px; margin-left: 8px; color: #fff; }
         
@@ -171,8 +173,8 @@ permalink: /
             .hero-container { flex-direction: column; margin-top: 20px; }
             .hero-branding { position: relative; right: auto; margin-top: 40px; width: 100%; }
             .bird-v2 { width: 160px; }
-            .modal-title { font-size: 2.2rem; letter-spacing: 12px; }
-            .modal-subtitle { font-size: 0.8rem; letter-spacing: 21.5px; margin-right: -21.5px; }
+            .modal-title { font-size: 2.2rem; letter-spacing: 12px; margin-right: -12px; }
+            .modal-subtitle { font-size: 0.7rem; letter-spacing: 24.5px; margin-right: -24.5px; }
             .bottom-grid { flex-direction: column; gap: 50px; }
         }
     </style>
@@ -182,7 +184,7 @@ permalink: /
     <div id="brand-modal">
         <div class="modal-content">
             <div class="logo-wrapper-splash">
-                <h1 class="modal-title">KOPIKO</h1>
+                <h1 class="modal-title">KŌPIKO</h1>
                 <div class="modal-subtitle">STUDIO</div>
             </div>
             <img src="b11.webp" alt="Bird" class="gold-bird-splash">
@@ -203,7 +205,9 @@ permalink: /
             <div class="menu-icon" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </div>
-            <div class="logo">KOPIKO<span>STUDIO</span></div>
+            <a href="/" class="logo-link">
+                <div class="logo">KŌPIKO<span>STUDIO</span></div>
+            </a>
             <div class="nav-group">
                 <a href="/">home</a>
                 <a href="/weddings">weddings</a>
