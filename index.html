@@ -87,4 +87,131 @@ permalink: /
 
         /* --- 6. CONTACT SECTION --- */
         .contact-section { padding: 100px 0; max-width: 600px; margin: 0 auto; text-align: center; }
-        .contact-section h2 { font-weight: 200; letter-spacing: 15px; text-transform: uppercase; margin-bottom: 40px;
+        .contact-section h2 { font-weight: 200; letter-spacing: 15px; text-transform: uppercase; margin-bottom: 40px; font-size: 1.5rem; }
+        .contact-form { display: flex; flex-direction: column; gap: 20px; }
+        input, textarea {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px; color: #fff; font-family: inherit; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s;
+        }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent-gold); background: rgba(255,255,255,0.07); }
+        .submit-btn {
+            background: transparent; color: #fff; border: 1px solid #fff; padding: 15px;
+            text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; cursor: pointer; transition: 0.3s; margin-top: 10px;
+        }
+        .submit-btn:hover { background: #fff; color: #000; }
+        #form-status { margin-top: 20px; font-size: 0.7rem; letter-spacing: 2px; display: none; }
+
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        @media (max-width: 900px) {
+            .nav-group { display: none; }
+            .hero-container { flex-direction: column; margin-top: 20px; }
+            .hero-branding { position: relative; right: auto; margin-top: 40px; width: 100%; }
+            .bottom-grid { flex-direction: column; gap: 50px; }
+        }
+    </style>
+</head>
+<body class="modal-open">
+
+    <div id="brand-modal">
+        <div class="modal-content">
+            <div class="logo-wrapper-splash">
+                <h1 class="modal-title">KŌPIKO</h1>
+                <div class="modal-subtitle"><span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span></div>
+            </div>
+            <img src="b11.webp" alt="Bird" class="gold-bird-splash">
+            <button class="cta-enter" onclick="closeModal()">Enter Studio</button>
+        </div>
+    </div>
+
+    <div class="top-nav-container">
+        <nav class="top-nav">
+            <a href="/" class="logo-link"><div class="logo">KŌPIKO<span>STUDIO</span></div></a>
+            <div class="nav-group">
+                <a href="/">home</a>
+                <a href="/weddings">weddings</a>
+                <a href="/commercial">commercial</a>
+                <a href="/about">about us</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main-layout">
+        <main class="center-col">
+            <section class="hero-container">
+                <img src="hme.jpg" alt="Hero Art" class="hero-img-main">
+                <div class="hero-branding">
+                    <img src="b11.webp" alt="Bird" class="bird-v2">
+                    <div style="margin-top: 25px;">
+                        <p>CREATIVE IDENTITY</p>
+                        <div style="margin-top: 30px;"><p style="font-weight: 100; letter-spacing: 15px;">FOR THE BOLD</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-grid">
+                <a href="/weddings" class="grid-card">
+                    <div class="card-img-container"><img src="weddings.jpg"></div>
+                    <p>weddings</p>
+                </a>
+                <a href="/commercial" class="grid-card">
+                    <div class="card-img-container"><img src="commercial.jpg"></div>
+                    <p>commercial</p>
+                </a>
+                <a href="/about" class="grid-card">
+                    <div class="card-img-container"><img src="aboutus.jpg"></div>
+                    <p>about us</p>
+                </a>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <h2>Quick Inquiry</h2>
+                <form id="kopiko-form" class="contact-form">
+                    <input type="text" name="name" placeholder="YOUR NAME" required>
+                    <input type="email" name="email" placeholder="YOUR EMAIL" required>
+                    <textarea name="message" rows="5" placeholder="TELL US ABOUT YOUR PROJECT" required></textarea>
+                    <button type="submit" id="submit-btn" class="submit-btn">Send Inquiry</button>
+                    <p id="form-status"></p>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbym_6vIFurYATTEURJkv7SpWfjUyUycDtOZA3hFFym8MjBPxntRxL9F_O9umZCZwAuM/exec';
+        const form = document.getElementById('kopiko-form');
+        const btn = document.getElementById('submit-btn');
+        const status = document.getElementById('form-status');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.innerHTML = "SENDING...";
+            btn.style.opacity = "0.5";
+            btn.disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    btn.style.display = "none";
+                    status.style.display = "block";
+                    status.style.color = "var(--accent-gold)";
+                    status.style.border = "1px solid var(--accent-gold)";
+                    status.style.padding = "20px";
+                    status.innerHTML = "INQUIRY RECEIVED. <br><span style='font-weight:100; font-size:0.6rem;'>WE WILL BE IN TOUCH SOON.</span>";
+                    form.reset();
+                })
+                .catch(error => {
+                    btn.innerHTML = "SYSTEM ERROR";
+                    btn.style.borderColor = "red";
+                    btn.disabled = false;
+                    console.error('Error!', error.message);
+                });
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('brand-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => { modal.style.visibility = 'hidden'; document.body.classList.remove('modal-open'); }, 800);
+        }
+    </script>
+</body>
+</html>
