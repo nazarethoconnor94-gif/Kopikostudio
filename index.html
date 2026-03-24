@@ -10,8 +10,12 @@ permalink: /
     <style>
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        /* UPDATED: Changed from #000 to a deep charcoal grey */
-        :root { --bg-color: #121212; --accent-gold: #d4af37; }
+        
+        /* UPDATED: Background changed to your sampled slate-grey #4a4a4e */
+        :root { 
+            --bg-color: #4a4a4e; 
+            --accent-gold: #d4af37; 
+        }
 
         body, html { 
             background-color: var(--bg-color); 
@@ -24,7 +28,7 @@ permalink: /
 
         /* --- 2. SPLASH SCREEN --- */
         #brand-modal { 
-            position: fixed; inset: 0; background: #000; /* Kept splash pure black for impact */
+            position: fixed; inset: 0; background: #000; 
             display: flex; justify-content: center; align-items: center; 
             z-index: 9999; text-align: center; 
             transition: opacity 0.8s ease, visibility 0.8s; 
@@ -51,9 +55,10 @@ permalink: /
             position: sticky; 
             top: 0; 
             z-index: 2000; 
-            background: rgba(18, 18, 18, 0.65); /* Matches new charcoal bg */
-            backdrop-filter: blur(55px); 
-            -webkit-backdrop-filter: blur(55px);
+            /* Nav background blends with your new grey */
+            background: rgba(74, 74, 78, 0.75); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .top-nav { 
@@ -81,7 +86,7 @@ permalink: /
 
         .mobile-drawer { 
             position: fixed; top: -100%; left: 0; width: 100%; 
-            background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(74, 74, 78, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 120px 40px 60px; display: flex; flex-direction: column; gap: 35px; 
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1900; 
             text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -111,14 +116,11 @@ permalink: /
             border-image-source: url('border.png'); 
             border-image-slice: 500 fill; 
             border-image-repeat: round;
-            /* Shadow will now pop against the #121212 background */
-            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9)); 
-            box-shadow: inset 0 0 100px rgba(0,0,0,1);
+            /* Lighter shadow for the lighter background */
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.5)); 
         }
 
-        .hero-branding { 
-            position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none; 
-        }
+        .hero-branding { position: absolute; z-index: 10; right: 8%; text-align: center; pointer-events: none; }
 
         .bird-v2 { 
             width: 220px; 
@@ -127,24 +129,14 @@ permalink: /
         }
 
         .hero-branding p { 
-            letter-spacing: 12px; 
-            font-weight: 700; 
-            text-transform: uppercase;
-            text-shadow: 
-                0px 0px 20px rgba(0,0,0,1), 
-                0px 0px 40px rgba(0,0,0,1), 
-                0px 0px 70px rgba(0,0,0,0.9);
+            letter-spacing: 12px; font-weight: 700; text-transform: uppercase;
+            text-shadow: 0px 0px 40px rgba(0,0,0,0.8);
         }
 
         /* --- 5. BOTTOM GRID --- */
         .bottom-grid { display: flex; gap: 40px; padding-bottom: 100px; }
         .grid-card { flex: 1; text-align: center; text-decoration: none; color: inherit; }
-        .card-img-container { 
-            width: 100%; 
-            margin-bottom: 20px; 
-            /* Soft shadow for small cards */
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); 
-        }
+        .card-img-container { width: 100%; margin-bottom: 20px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3)); }
         .card-img-container img { width: 100%; height: auto; display: block; transition: 0.5s ease; }
         .grid-card p { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; transition: 0.3s; }
         .grid-card:hover p { opacity: 1; color: var(--accent-gold); }
@@ -166,6 +158,7 @@ permalink: /
 </head>
 <body class="modal-open">
 
+    <!-- Splash Screen -->
     <div id="brand-modal">
         <div class="modal-content">
             <h1 class="modal-title">KŌPIKO</h1>
@@ -174,6 +167,7 @@ permalink: /
         </div>
     </div>
 
+    <!-- Mobile Navigation Overlay & Drawer -->
     <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
     <div class="mobile-drawer" id="mobileDrawer">
         <a href="/">home</a>
@@ -182,6 +176,7 @@ permalink: /
         <a href="/about">about us</a>
     </div>
 
+    <!-- Navigation Header -->
     <div class="top-nav-container">
         <nav class="top-nav">
             <div class="menu-icon" onclick="toggleMenu()">
@@ -197,54 +192,56 @@ permalink: /
         </nav>
     </div>
 
-    <div class="main-layout">
-        <main class="center-col">
+    <!-- Main Layout -->
+    <main class="main-layout">
+        <div class="center-col">
+            
             <section class="hero-container">
-                <img src="hme.jpg" alt="Hero Art" class="hero-img-main">
+                <img src="hero.jpg" alt="Featured Work" class="hero-img-main">
                 <div class="hero-branding">
-                    <img src="b11.webp" alt="Bird" class="bird-v2">
-                    <div style="margin-top: 25px;">
-                        <p>CREATIVE IDENTITY</p>
-                        <div style="width: 1px; height: 60px; background: #fff; margin: 20px auto; filter: drop-shadow(0 0 10px rgba(0,0,0,1));"></div>
-                        <p style="font-weight: 100; letter-spacing: 15px;">FOR THE BOLD</p>
-                    </div>
+                    <img src="b11.webp" alt="Icon" class="bird-v2">
+                    <p>Creative Studio</p>
                 </div>
             </section>
 
             <section class="bottom-grid">
                 <a href="/weddings" class="grid-card">
-                    <div class="card-img-container"><img src="weddings.jpg"></div>
-                    <p>weddings</p>
+                    <div class="card-img-container"><img src="wedding.jpg" alt="Weddings Gallery"></div>
+                    <p>Weddings</p>
                 </a>
                 <a href="/commercial" class="grid-card">
-                    <div class="card-img-container"><img src="commercial.jpg"></div>
-                    <p>commercial</p>
+                    <div class="card-img-container"><img src="commercial.jpg" alt="Commercial Portfolio"></div>
+                    <p>Commercial</p>
                 </a>
                 <a href="/about" class="grid-card">
-                    <div class="card-img-container"><img src="aboutus.jpg"></div>
-                    <p>about us</p>
+                    <div class="card-img-container"><img src="about.jpg" alt="About the Team"></div>
+                    <p>About Us</p>
                 </a>
             </section>
-        </main>
-    </div>
+
+        </div>
+    </main>
 
     <script>
         function closeModal() {
             const modal = document.getElementById('brand-modal');
             modal.style.opacity = '0';
-            setTimeout(() => { 
-                modal.style.visibility = 'hidden'; 
+            setTimeout(() => {
+                modal.style.display = 'none';
                 document.body.classList.remove('modal-open');
             }, 800);
         }
+
         function toggleMenu() {
-            const icon = document.querySelector('.menu-icon');
             const drawer = document.getElementById('mobileDrawer');
             const overlay = document.getElementById('menuOverlay');
-            icon.classList.toggle('open');
+            const icon = document.querySelector('.menu-icon');
             drawer.classList.toggle('active');
             overlay.classList.toggle('active');
+            icon.classList.toggle('open');
         }
     </script>
 </body>
 </html>
+
+
