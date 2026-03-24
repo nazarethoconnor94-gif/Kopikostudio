@@ -43,15 +43,15 @@ permalink: /
             text-transform: uppercase; 
             line-height: 1;
         }
-        /* STUDIO under title, spread across width */
+        /* STUDIO: Larger font + exact letter spacing to span the word above */
         .modal-subtitle {
-            font-size: 0.8rem;
+            font-size: 1rem;
             font-weight: 100;
             text-transform: uppercase;
-            letter-spacing: 34px; /* Spread to match KOPIKO width */
-            margin-top: 10px;
-            opacity: 0.8;
-            margin-right: -34px; /* Offset the last letter's spacing */
+            letter-spacing: 34.5px; 
+            margin-top: 15px;
+            color: #fff;
+            margin-right: -34.5px; 
         }
 
         .gold-bird-splash { width: 140px; margin-bottom: 40px; animation: floating 5s infinite ease-in-out; }
@@ -79,9 +79,9 @@ permalink: /
             position: relative;
         }
         
-        /* Navbar Logo with thin STUDIO after it */
-        .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; font-weight: 500; z-index: 2100; }
-        .logo span { font-weight: 100; opacity: 0.7; letter-spacing: 4px; margin-left: 5px; }
+        /* Navbar Logo: STUDIO is now full white */
+        .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; font-weight: 500; z-index: 2100; color: #fff; }
+        .logo span { font-weight: 100; letter-spacing: 4px; margin-left: 8px; color: #fff; }
         
         .nav-group { display: flex; gap: 30px; }
         .nav-group a { 
@@ -172,7 +172,7 @@ permalink: /
             .hero-branding { position: relative; right: auto; margin-top: 40px; width: 100%; }
             .bird-v2 { width: 160px; }
             .modal-title { font-size: 2.2rem; letter-spacing: 12px; }
-            .modal-subtitle { letter-spacing: 22px; margin-right: -22px; }
+            .modal-subtitle { font-size: 0.8rem; letter-spacing: 21.5px; margin-right: -21.5px; }
             .bottom-grid { flex-direction: column; gap: 50px; }
         }
     </style>
