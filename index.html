@@ -11,8 +11,9 @@ permalink: /
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        /* UPDATED: Matches your #2A2727 request */
         :root { 
-            --bg-color: #36353d; 
+            --bg-color: #2A2727; 
             --accent-gold: #d4af37; 
         }
 
@@ -28,7 +29,7 @@ permalink: /
         /* --- 2. SPLASH SCREEN (Modal) --- */
         #brand-modal { 
             position: fixed; inset: 0; 
-            background: #000000;
+            background: #000000; /* Stays Black */
             display: flex; justify-content: center; align-items: center; 
             z-index: 9999; text-align: center; 
             transition: opacity 0.8s ease, visibility 0.8s; 
@@ -55,7 +56,8 @@ permalink: /
             position: sticky; 
             top: 0; 
             z-index: 2000; 
-            background: rgba(54, 53, 61, 0.65);
+            /* Tinted to match the new #2A2727 bg */
+            background: rgba(42, 39, 39, 0.65);
             backdrop-filter: blur(55px); 
             -webkit-backdrop-filter: blur(55px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -85,7 +87,7 @@ permalink: /
 
         .mobile-drawer { 
             position: fixed; top: -100%; left: 0; width: 100%; 
-            background: rgba(54, 53, 61, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(42, 39, 39, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 120px 40px 60px; display: flex; flex-direction: column; gap: 35px; 
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1900; 
             text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -99,7 +101,7 @@ permalink: /
         }
         .menu-overlay.active { opacity: 1; visibility: visible; }
 
-        /* --- 4. HERO SECTION (FRAME REMOVED) --- */
+        /* --- 4. HERO SECTION --- */
         .main-layout { display: grid; grid-template-columns: 1fr; background: var(--bg-color); }
         .center-col { max-width: 1300px; margin: 0 auto; width: 90%; }
 
@@ -111,11 +113,8 @@ permalink: /
         .hero-img-main { 
             width: 100%; height: auto; display: block; 
             background-color: #000;
-            
-            /* UPDATED: Border/Frame properties removed */
             border: none;
-            
-            /* Shadows still applied for depth against bg */
+            /* Shadows pop beautifully on #2A2727 */
             filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9)); 
         }
 
@@ -157,7 +156,6 @@ permalink: /
             .menu-icon { display: flex; }
             .logo { position: absolute; left: 50%; transform: translateX(-50%); }
             .hero-container { flex-direction: column; margin-top: 20px; }
-            /* Mobile adjustment removed as border is gone */
             .hero-branding { position: relative; right: auto; margin-top: 40px; width: 100%; }
             .bird-v2 { width: 160px; }
             .modal-title { font-size: 2.2rem; letter-spacing: 12px; }
@@ -206,46 +204,4 @@ permalink: /
                     <img src="b11.webp" alt="Bird" class="bird-v2">
                     <div style="margin-top: 25px;">
                         <p>CREATIVE IDENTITY</p>
-                        <div style="width: 1px; height: 60px; background: #fff; margin: 20px auto; filter: drop-shadow(0 0 10px rgba(0,0,0,1));"></div>
-                        <p style="font-weight: 100; letter-spacing: 15px;">FOR THE BOLD</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="bottom-grid">
-                <a href="/weddings" class="grid-card">
-                    <div class="card-img-container"><img src="weddings.jpg"></div>
-                    <p>weddings</p>
-                </a>
-                <a href="/commercial" class="grid-card">
-                    <div class="card-img-container"><img src="commercial.jpg"></div>
-                    <p>commercial</p>
-                </a>
-                <a href="/about" class="grid-card">
-                    <div class="card-img-container"><img src="aboutus.jpg"></div>
-                    <p>about us</p>
-                </a>
-            </section>
-        </main>
-    </div>
-
-    <script>
-        function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            modal.style.opacity = '0';
-            setTimeout(() => { 
-                modal.style.visibility = 'hidden'; 
-                document.body.classList.remove('modal-open');
-            }, 800);
-        }
-        function toggleMenu() {
-            const icon = document.querySelector('.menu-icon');
-            const drawer = document.getElementById('mobileDrawer');
-            const overlay = document.getElementById('menuOverlay');
-            icon.classList.toggle('open');
-            drawer.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-    </script>
-</body>
-</html>
+                        <div style="width: 1px; height:
