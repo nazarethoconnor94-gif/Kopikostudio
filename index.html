@@ -35,24 +35,31 @@ permalink: /
         }
         .modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 20px; }
         
-        .logo-wrapper-splash { margin-bottom: 40px; }
+        /* Container ensures both words share the same width boundary */
+        .logo-wrapper-splash { 
+            margin-bottom: 40px; 
+            display: inline-block; /* Wraps tightly around content */
+        }
+
         .modal-title { 
             font-size: 3.2rem; 
             letter-spacing: 20px; 
             font-weight: 300; 
             text-transform: uppercase; 
             line-height: 1;
-            margin-right: -20px; /* Offset the spacing for true center */
+            margin-right: -20px; /* Essential to offset the last letter's spacing */
+            display: block;
         }
-        /* STUDIO: Spaced to match the visual width of KŌPIKO above */
+
+        /* AUTO-STRETCH: This forces STUDIO to match the width of KŌPIKO above it */
         .modal-subtitle {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 100;
             text-transform: uppercase;
-            letter-spacing: 38px; 
             margin-top: 15px;
             color: #fff;
-            margin-right: -38px; 
+            display: flex;
+            justify-content: space-between; /* Spreads letters to the edges */
             width: 100%;
         }
 
@@ -174,7 +181,6 @@ permalink: /
             .hero-branding { position: relative; right: auto; margin-top: 40px; width: 100%; }
             .bird-v2 { width: 160px; }
             .modal-title { font-size: 2.2rem; letter-spacing: 12px; margin-right: -12px; }
-            .modal-subtitle { font-size: 0.7rem; letter-spacing: 24.5px; margin-right: -24.5px; }
             .bottom-grid { flex-direction: column; gap: 50px; }
         }
     </style>
@@ -185,7 +191,9 @@ permalink: /
         <div class="modal-content">
             <div class="logo-wrapper-splash">
                 <h1 class="modal-title">KŌPIKO</h1>
-                <div class="modal-subtitle">STUDIO</div>
+                <div class="modal-subtitle">
+                    <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span>
+                </div>
             </div>
             <img src="b11.webp" alt="Bird" class="gold-bird-splash">
             <button class="cta-enter" onclick="closeModal()">Enter Studio</button>
