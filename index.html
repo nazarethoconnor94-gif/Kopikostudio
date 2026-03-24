@@ -1,41 +1,65 @@
-<section id="contact" class="contact-section">
-    <h2>Quick Inquiry</h2>
-    <form id="kopiko-form" class="contact-form">
-        <input type="text" name="name" placeholder="YOUR NAME" required>
-        <input type="email" name="email" placeholder="YOUR EMAIL" required>
-        <textarea name="message" rows="5" placeholder="TELL US ABOUT YOUR PROJECT" required></textarea>
-        <button type="submit" id="submit-btn" class="submit-btn">Send Inquiry</button>
+---
+permalink: /
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KŌPIKO STUDIO | Creative Agency</title>
+    <style>
+        /* --- 1. CORE & RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        <p style="margin-top: 15px; font-size: 0.55rem; letter-spacing: 1px; opacity: 0.4; text-transform: uppercase;">
-            By sending, you agree to our <a href="javascript:void(0)" onclick="openPrivacy()" style="color: #fff; text-decoration: underline;">Privacy Policy</a>
-        </p>
-        
-        <p id="form-status"></p>
-    </form>
-</section>
+        :root { 
+            --bg-color: #2A2727; 
+            --accent-gold: #d4af37; 
+        }
 
-<div id="privacy-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999; padding:60px 20px; overflow-y:auto;">
-    <div style="max-width:600px; margin:0 auto; text-align:left; font-size:0.8rem; line-height:1.6; letter-spacing:1px;">
-        <h3 style="letter-spacing:5px; text-transform:uppercase; margin-bottom:30px; color:var(--accent-gold);">Privacy Policy</h3>
-        <p>At KŌPIKO STUDIO, we value your privacy. Information collected via this form is used solely to respond to your inquiry and manage our business relationship.</p>
-        <br>
-        <p><strong>Data Collection:</strong> We collect your name, email, and message details. This data is stored securely in our private database and is never sold to third parties.</p>
-        <br>
-        <p><strong>Usage:</strong> We may use your contact details to provide project quotes or updates. You can request the removal of your data at any time by contacting us directly.</p>
-        <br><br>
-        <button onclick="closePrivacy()" class="submit-btn" style="width:auto; padding:10px 30px;">Close</button>
-    </div>
-</div>
+        body, html { 
+            background-color: var(--bg-color); 
+            color: #fff; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            overflow-x: clip; 
+        }
 
-<script>
-    // 1. FORM LOGIC
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbym_6vIFurYATTEURJkv7SpWfjUyUycDtOZA3hFFym8MjBPxntRxL9F_O9umZCZwAuM/exec';
-    const form = document.getElementById('kopiko-form');
-    const btn = document.getElementById('submit-btn');
-    const status = document.getElementById('form-status');
+        body.modal-open { overflow: hidden; }
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        btn.innerHTML = "SENDING...";
-        btn.style.opacity = "0.5";
-        btn.disabled = true;
+        /* --- 2. SPLASH SCREEN --- */
+        #brand-modal { 
+            position: fixed; inset: 0; 
+            background: #000000;
+            display: flex; justify-content: center; align-items: center; 
+            z-index: 9999; text-align: center; 
+            transition: opacity 0.8s ease, visibility 0.8s; 
+        }
+        .modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 20px; }
+        .logo-wrapper-splash { margin-bottom: 40px; display: inline-block; }
+        .modal-title { 
+            font-size: 3.2rem; letter-spacing: 20px; font-weight: 300; 
+            text-transform: uppercase; line-height: 1; margin-right: -20px; display: block;
+        }
+        .modal-subtitle {
+            font-size: 1.1rem; font-weight: 100; text-transform: uppercase;
+            margin-top: 15px; color: #fff; display: flex; justify-content: space-between; width: 100%;
+        }
+        .gold-bird-splash { width: 140px; margin-bottom: 40px; animation: floating 5s infinite ease-in-out; }
+        .cta-enter { 
+            background: transparent; color: #fff; border: 1px solid #fff; 
+            padding: 15px 40px; letter-spacing: 5px; text-transform: uppercase; 
+            font-size: 0.7rem; cursor: pointer; transition: 0.3s; 
+        }
+        .cta-enter:hover { background: #fff; color: #000; }
+
+        /* --- 3. STICKY NAVIGATION --- */
+        .top-nav-container {
+            position: -webkit-sticky; position: sticky; top: 0; z-index: 2000; 
+            background: rgba(42, 39, 39, 0.65); backdrop-filter: blur(55px); -webkit-backdrop-filter: blur(55px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .top-nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 0; max-width: 1300px; margin: 0 auto; width: 90%;
+        }
+        .logo-link { text-decoration: none; color: inherit; display: flex; align-items: center; }
+        .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; font-weight: 500; color: #fff;
