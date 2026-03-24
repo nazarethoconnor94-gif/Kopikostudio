@@ -11,7 +11,7 @@ permalink: /
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* UPDATED: Sampled grey from your image */
+        /* UPDATED: Lighter grey from your image */
         :root { --bg-color: #4a4a4e; --accent-gold: #d4af37; }
 
         body, html { 
@@ -112,7 +112,7 @@ permalink: /
             border-image-source: url('border.png'); 
             border-image-slice: 500 fill; 
             border-image-repeat: round;
-            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.4)); 
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9)); 
             box-shadow: inset 0 0 100px rgba(0,0,0,1);
         }
 
@@ -139,7 +139,7 @@ permalink: /
         .card-img-container { 
             width: 100%; 
             margin-bottom: 20px; 
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3)); 
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); 
         }
         .card-img-container img { width: 100%; height: auto; display: block; transition: 0.5s ease; }
         .grid-card p { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; transition: 0.3s; }
@@ -190,60 +190,57 @@ permalink: /
                 <a href="/commercial">commercial</a>
                 <a href="/about">about us</a>
             </div>
-        </nav> <!-- Fixed: Added missing nav close -->
-    </div> <!-- Fixed: Added missing div close -->
+        </nav>
+    </div>
 
-    <main class="main-layout">
+    <div class="main-layout">
         <div class="center-col">
             
-            <section class="hero-container">
-                <!-- Using your original image logic -->
-                <div class="hero-img-main"></div>
+            <div class="hero-container">
+                <!-- Restored as an IMG tag to ensure the border-image fill works exactly as before -->
+                <img src="border.png" class="hero-img-main">
                 <div class="hero-branding">
                     <img src="b11.webp" alt="Bird" class="bird-v2">
                     <p>Creative Studio</p>
                 </div>
-            </section>
+            </div>
 
-            <section class="bottom-grid">
+            <div class="bottom-grid">
                 <a href="/weddings" class="grid-card">
-                    <div class="card-img-container"><img src="b11.webp" alt="Weddings"></div>
+                    <div class="card-img-container"><img src="wedding.jpg" alt="Weddings"></div>
                     <p>Weddings</p>
                 </a>
                 <a href="/commercial" class="grid-card">
-                    <div class="card-img-container"><img src="b11.webp" alt="Commercial"></div>
+                    <div class="card-img-container"><img src="commercial.jpg" alt="Commercial"></div>
                     <p>Commercial</p>
                 </a>
                 <a href="/about" class="grid-card">
-                    <div class="card-img-container"><img src="b11.webp" alt="About Us"></div>
+                    <div class="card-img-container"><img src="about.jpg" alt="About Us"></div>
                     <p>About Us</p>
                 </a>
-            </section>
+            </div>
 
         </div>
-    </main>
+    </div>
 
     <script>
         function closeModal() {
-            const modal = document.getElementById('brand-modal');
-            modal.style.opacity = '0';
+            document.getElementById('brand-modal').style.opacity = '0';
             setTimeout(() => {
-                modal.style.display = 'none';
+                document.getElementById('brand-modal').style.display = 'none';
                 document.body.classList.remove('modal-open');
             }, 800);
         }
 
         function toggleMenu() {
-            const drawer = document.getElementById('mobileDrawer');
-            const overlay = document.getElementById('menuOverlay');
-            const icon = document.querySelector('.menu-icon');
-            drawer.classList.toggle('active');
-            overlay.classList.toggle('active');
-            icon.classList.toggle('open');
+            document.getElementById('mobileDrawer').classList.toggle('active');
+            document.getElementById('menuOverlay').classList.toggle('active');
+            document.querySelector('.menu-icon').classList.toggle('open');
         }
     </script>
 </body>
 </html>
+
 
 
 
