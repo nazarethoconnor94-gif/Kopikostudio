@@ -10,9 +10,8 @@ permalink: /
     <style>
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* UPDATED: Lighter grey from your image */
-        :root { --bg-color: #4a4a4e; --accent-gold: #d4af37; }
+        /* UPDATED: Changed from #000 to a deep charcoal grey */
+        :root { --bg-color: #121212; --accent-gold: #d4af37; }
 
         body, html { 
             background-color: var(--bg-color); 
@@ -25,7 +24,7 @@ permalink: /
 
         /* --- 2. SPLASH SCREEN --- */
         #brand-modal { 
-            position: fixed; inset: 0; background: #000; 
+            position: fixed; inset: 0; background: #000; /* Kept splash pure black for impact */
             display: flex; justify-content: center; align-items: center; 
             z-index: 9999; text-align: center; 
             transition: opacity 0.8s ease, visibility 0.8s; 
@@ -52,7 +51,7 @@ permalink: /
             position: sticky; 
             top: 0; 
             z-index: 2000; 
-            background: rgba(74, 74, 78, 0.65); 
+            background: rgba(18, 18, 18, 0.65); /* Matches new charcoal bg */
             backdrop-filter: blur(55px); 
             -webkit-backdrop-filter: blur(55px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -82,7 +81,7 @@ permalink: /
 
         .mobile-drawer { 
             position: fixed; top: -100%; left: 0; width: 100%; 
-            background: rgba(74, 74, 78, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 120px 40px 60px; display: flex; flex-direction: column; gap: 35px; 
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1900; 
             text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -112,6 +111,7 @@ permalink: /
             border-image-source: url('border.png'); 
             border-image-slice: 500 fill; 
             border-image-repeat: round;
+            /* Shadow will now pop against the #121212 background */
             filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9)); 
             box-shadow: inset 0 0 100px rgba(0,0,0,1);
         }
@@ -130,7 +130,10 @@ permalink: /
             letter-spacing: 12px; 
             font-weight: 700; 
             text-transform: uppercase;
-            text-shadow: 0px 0px 40px rgba(0,0,0,0.8);
+            text-shadow: 
+                0px 0px 20px rgba(0,0,0,1), 
+                0px 0px 40px rgba(0,0,0,1), 
+                0px 0px 70px rgba(0,0,0,0.9);
         }
 
         /* --- 5. BOTTOM GRID --- */
@@ -139,6 +142,7 @@ permalink: /
         .card-img-container { 
             width: 100%; 
             margin-bottom: 20px; 
+            /* Soft shadow for small cards */
             filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); 
         }
         .card-img-container img { width: 100%; height: auto; display: block; transition: 0.5s ease; }
@@ -194,53 +198,56 @@ permalink: /
     </div>
 
     <div class="main-layout">
-        <div class="center-col">
-            
-            <div class="hero-container">
-                <!-- Restored as an IMG tag to ensure the border-image fill works exactly as before -->
-                <img src="border.png" class="hero-img-main">
+        <main class="center-col">
+            <section class="hero-container">
+                <img src="hme.jpg" alt="Hero Art" class="hero-img-main">
                 <div class="hero-branding">
                     <img src="b11.webp" alt="Bird" class="bird-v2">
-                    <p>Creative Studio</p>
+                    <div style="margin-top: 25px;">
+                        <p>CREATIVE IDENTITY</p>
+                        <div style="width: 1px; height: 60px; background: #fff; margin: 20px auto; filter: drop-shadow(0 0 10px rgba(0,0,0,1));"></div>
+                        <p style="font-weight: 100; letter-spacing: 15px;">FOR THE BOLD</p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="bottom-grid">
+            <section class="bottom-grid">
                 <a href="/weddings" class="grid-card">
-                    <div class="card-img-container"><img src="wedding.jpg" alt="Weddings"></div>
-                    <p>Weddings</p>
+                    <div class="card-img-container"><img src="weddings.jpg"></div>
+                    <p>weddings</p>
                 </a>
                 <a href="/commercial" class="grid-card">
-                    <div class="card-img-container"><img src="commercial.jpg" alt="Commercial"></div>
-                    <p>Commercial</p>
+                    <div class="card-img-container"><img src="commercial.jpg"></div>
+                    <p>commercial</p>
                 </a>
                 <a href="/about" class="grid-card">
-                    <div class="card-img-container"><img src="about.jpg" alt="About Us"></div>
-                    <p>About Us</p>
+                    <div class="card-img-container"><img src="aboutus.jpg"></div>
+                    <p>about us</p>
                 </a>
-            </div>
-
-        </div>
+            </section>
+        </main>
     </div>
 
     <script>
         function closeModal() {
-            document.getElementById('brand-modal').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('brand-modal').style.display = 'none';
+            const modal = document.getElementById('brand-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => { 
+                modal.style.visibility = 'hidden'; 
                 document.body.classList.remove('modal-open');
             }, 800);
         }
-
         function toggleMenu() {
-            document.getElementById('mobileDrawer').classList.toggle('active');
-            document.getElementById('menuOverlay').classList.toggle('active');
-            document.querySelector('.menu-icon').classList.toggle('open');
+            const icon = document.querySelector('.menu-icon');
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('menuOverlay');
+            icon.classList.toggle('open');
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
     </script>
 </body>
 </html>
-
 
 
 
