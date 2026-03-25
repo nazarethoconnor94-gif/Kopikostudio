@@ -10,19 +10,15 @@ permalink: /weddings
     <style>
         /* --- 1. CORE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { 
-            --bg-color: #2A2727; 
-            --accent-gold: #d4af37; 
-        }
+        :root { --bg-color: #2A2727; --accent-gold: #d4af37; }
 
         body { 
             background-color: var(--bg-color); 
             color: #fff; 
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            overflow-x: hidden;
         }
 
-        /* --- 2. STICKY NAVIGATION --- */
+        /* --- 2. NAVIGATION --- */
         .top-nav-container {
             position: sticky; top: 0; z-index: 2000; 
             background: rgba(42, 39, 39, 0.9);
@@ -33,90 +29,50 @@ permalink: /weddings
             display: flex; justify-content: space-between; align-items: center; 
             padding: 20px 0; max-width: 1300px; margin: 0 auto; width: 90%;
         }
-        .logo { 
-            font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; 
-            text-decoration: none; color: #fff; font-weight: 500; 
-        }
+        .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; text-decoration: none; color: #fff; font-weight: 500; }
         .nav-group { display: flex; gap: 30px; }
-        .nav-group a { 
-            color: #fff; text-decoration: none; font-size: 0.7rem; 
-            text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; 
-        }
+        .nav-group a { color: #fff; text-decoration: none; font-size: 0.7rem; text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
         .nav-group a:hover, .nav-group a.active { opacity: 1; color: var(--accent-gold); }
 
         /* --- 3. CONTAINER --- */
         .container { max-width: 1300px; margin: 0 auto 100px; width: 90%; }
 
         /* --- 4. HERO SECTION --- */
-        .hero-section {
-            position: relative;
-            width: 100%;
-            margin-top: 40px;
-            margin-bottom: 80px; 
-        }
-
+        .hero-section { position: relative; width: 100%; margin-top: 40px; margin-bottom: 80px; }
         .hero-main-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            background-color: #000;
+            width: 100%; height: auto; display: block;
             filter: grayscale(1) brightness(0.7) drop-shadow(0 40px 80px rgba(0,0,0,0.9));
         }
+        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10; }
+        .bird-v2 { width: 220px; animation: floating 6s infinite ease-in-out; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.7)); }
+        .hero-overlay h1 { margin-top: 25px; font-size: 1.8rem; letter-spacing: 15px; font-weight: 700; text-transform: uppercase; text-shadow: 0px 0px 20px rgba(0,0,0,1); }
 
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .bird-v2 { 
-            width: 220px; 
-            animation: floating 6s infinite ease-in-out; 
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.7));
-        }
-
-        .hero-overlay h1 { 
-            margin-top: 25px;
-            font-size: 1.8rem; 
-            letter-spacing: 15px; 
-            font-weight: 700; 
-            text-transform: uppercase;
-            text-shadow: 0px 0px 20px rgba(0,0,0,1), 0px 0px 40px rgba(0,0,0,1);
-        }
-
-        /* --- 5. GALLERY (FIXED SEQUENCE) --- */
-        .gallery-grid {
+        /* --- 5. COLUMN-BASED GALLERY (FORCES ORDER) --- */
+        .gallery-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
         }
 
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
         .gallery-item {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-            background-color: #000;
+            width: 100%; display: block;
             filter: brightness(0.9) drop-shadow(0 30px 40px rgba(0,0,0,0.85));
             transition: 0.5s ease;
         }
-        .gallery-item:hover { 
-            transform: scale(1.02); 
-            filter: brightness(1) drop-shadow(0 40px 50px rgba(0,0,0,1)); 
-        }
-
-        .p9-16 { aspect-ratio: 9 / 16; grid-row: span 2; }
-        .l16-9 { aspect-ratio: 16 / 9; grid-row: span 1; }
+        .gallery-item:hover { transform: scale(1.02); filter: brightness(1); }
 
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
         @media (max-width: 900px) {
             .nav-group { display: none; }
-            .bird-v2 { width: 160px; }
-            .hero-overlay h1 { font-size: 1.2rem; letter-spacing: 8px; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .p9-16, .l16-9 { grid-row: auto; aspect-ratio: auto; height: 350px; }
+            .gallery-columns { grid-template-columns: repeat(2, 1fr); }
+            /* Mobile column adjustment: the 3rd column will wrap below */
         }
     </style>
 </head>
@@ -142,15 +98,23 @@ permalink: /weddings
             </div>
         </div>
 
-        <div class="gallery-grid">
-            <img src="w1.jpg" class="gallery-item p9-16">
-            <img src="w5.jpg" class="gallery-item l16-9">
+        <div class="gallery-columns">
+            
+            <div class="column">
+                <img src="w1.jpg" class="gallery-item" alt="w1 Portrait">
+                <img src="w5.jpg" class="gallery-item" alt="w5 Landscape">
+            </div>
 
-            <img src="w2.jpg" class="gallery-item l16-9">
-            <img src="w4.jpg" class="gallery-item p9-16">
+            <div class="column">
+                <img src="w2.jpg" class="gallery-item" alt="w2 Landscape">
+                <img src="w4.jpg" class="gallery-item" alt="w4 Portrait">
+            </div>
 
-            <img src="w3.jpg" class="gallery-item p9-16">
-            <img src="w6.jpg" class="gallery-item l16-9">
+            <div class="column">
+                <img src="w3.jpg" class="gallery-item" alt="w3 Portrait">
+                <img src="w6.jpg" class="gallery-item" alt="w6 Landscape">
+            </div>
+
         </div>
     </div>
 
