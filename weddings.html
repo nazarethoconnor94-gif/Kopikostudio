@@ -24,79 +24,73 @@ permalink: /weddings
 
         /* --- 2. STICKY NAVIGATION --- */
         .top-nav-container {
-            position: -webkit-sticky; 
             position: sticky; 
             top: 0; 
             z-index: 2000; 
-            background: rgba(42, 39, 39, 0.65);
-            backdrop-filter: blur(55px); 
-            -webkit-backdrop-filter: blur(55px);
+            background: rgba(42, 39, 39, 0.8);
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .top-nav { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 20px 0; max-width: 1300px; margin: 0 auto; width: 90%;
         }
-        
-        /* Updated Logo to match KŌPIKO STUDIO and white text */
         .logo { 
             font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; 
             font-weight: 500; text-decoration: none; color: #fff;
         }
-        
         .nav-group { display: flex; gap: 30px; }
-        /* Adjusted link color to white for better contrast */
         .nav-group a { 
             color: #fff; text-decoration: none; font-size: 0.7rem; 
-            text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; 
-            transition: 0.3s;
+            text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s;
         }
-        .nav-group a:hover { opacity: 1; color: var(--accent-gold); }
-        .nav-group a.active { opacity: 1; color: var(--accent-gold); }
+        .nav-group a:hover, .nav-group a.active { opacity: 1; color: var(--accent-gold); }
 
-        /* --- 3. BLUR HERO SECTION --- */
+        /* --- 3. HERO SECTION (REDUCED BLUR) --- */
         .hero-wrapper { 
             width: 100%; 
             aspect-ratio: 16 / 9; 
-            margin-bottom: 30px; 
+            margin-bottom: 50px; 
             position: relative; 
             display: flex; justify-content: center; align-items: center; 
-            overflow: hidden; /* Clips the inner blurry edge */
+            overflow: hidden;
+            background: #000; /* Dark base for better image pop */
         }
 
-        /* The Blurry Background Layer */
         .blurred-bg { 
-            position: absolute; inset: 0; z-index: -1;
+            position: absolute; inset: 0; z-index: 1;
             background-image: url('weddinghero.jpg');
-            background-size: cover; background-position: center;
-            /* Applies 40px blur, scale ensures edges don't show */
-            filter: blur(40px); transform: scale(1.1);
+            background-size: cover; 
+            background-position: center;
+            /* REDUCED BLUR: Changed to 8px so the image is identifiable */
+            filter: blur(8px) brightness(0.7); 
+            transform: scale(1.05); /* Slight scale to hide edge-blur artifacts */
         }
 
-        /* Bright center assets */
-        .hero-assets { text-align: center; }
+        .hero-assets { 
+            position: relative; 
+            z-index: 10; 
+            text-align: center; 
+        }
 
         .bird-v2 { 
-            width: 220px; /* Reduced from 220px for refinement */
+            width: 200px; 
             animation: floating 6s infinite ease-in-out; 
-            /* Soft gold "glow" shadow stack */
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5)) 
-                    drop-shadow(0 20px 40px rgba(0,0,0,1));
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.8));
         }
 
         .hero-assets h1 { 
-            margin-top: 25px;
-            font-size: 1.5rem; letter-spacing: 12px; 
-            font-weight: 700; text-transform: uppercase;
-            /* Text "halo" stack for maximum legibility */
-            text-shadow: 
-                0px 0px 15px rgba(0,0,0,1), 
-                0px 0px 30px rgba(0,0,0,1), 
-                0px 0px 60px rgba(0,0,0,0.8);
+            margin-top: 20px;
+            font-size: 1.8rem; 
+            letter-spacing: 15px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            text-shadow: 2px 2px 20px rgba(0,0,0,1);
         }
 
         /* --- 4. THE MASONRY GRID --- */
-        .container { max-width: 1300px; margin: 40px auto 100px; width: 90%; }
+        .container { max-width: 1300px; margin: 0 auto 100px; width: 90%; }
 
         .gallery-grid {
             display: grid;
@@ -106,24 +100,23 @@ permalink: /weddings
 
         .gallery-item {
             width: 100%; height: 100%; object-fit: cover; display: block;
-            transition: transform 0.5s ease;
+            filter: brightness(0.9);
+            transition: 0.5s ease;
         }
-        .gallery-item:hover { transform: scale(1.01); }
+        .gallery-item:hover { transform: scale(1.02); filter: brightness(1); }
 
-        /* Ratio Classes from your Sketch */
+        /* Ratio Classes */
         .p9-16 { aspect-ratio: 9 / 16; grid-row: span 2; }
         .l16-9 { aspect-ratio: 16 / 9; grid-row: span 1; }
 
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        /* Mobile Adjustments */
         @media (max-width: 900px) {
             .nav-group { display: none; }
-            .hero-wrapper { aspect-ratio: auto; height: 350px; }
+            .hero-wrapper { aspect-ratio: 3/2; }
             .bird-v2 { width: 140px; }
-            .hero-assets h1 { font-size: 1rem; letter-spacing: 8px; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .p9-16, .l16-9 { grid-row: auto; aspect-ratio: auto; height: 450px; }
+            .p9-16, .l16-9 { grid-row: auto; aspect-ratio: auto; height: 400px; }
         }
     </style>
 </head>
@@ -141,15 +134,15 @@ permalink: /weddings
         </nav>
     </div>
 
-    <div class="container">
-        <div class="hero-wrapper">
-            <div class="blurred-bg"></div>
-            <div class="hero-assets">
-                <img src="b11.webp" alt="Gold Bird" class="bird-v2">
-                <h1>WEDDINGS</h1>
-            </div>
+    <div class="hero-wrapper">
+        <div class="blurred-bg"></div>
+        <div class="hero-assets">
+            <img src="b11.webp" alt="Gold Bird" class="bird-v2">
+            <h1>WEDDINGS</h1>
         </div>
+    </div>
 
+    <div class="container">
         <div class="gallery-grid">
             <img src="w1.jpg" class="gallery-item p9-16">
             <img src="w5.jpg" class="gallery-item l16-9">
@@ -159,6 +152,9 @@ permalink: /weddings
             <img src="w6.jpg" class="gallery-item l16-9">
         </div>
     </div>
+
+</body>
+</html>
 
 </body>
 </html>
