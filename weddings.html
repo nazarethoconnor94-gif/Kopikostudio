@@ -15,11 +15,7 @@ permalink: /weddings
             --accent-gold: #d4af37; 
         }
 
-        body { 
-            background-color: var(--bg-color); 
-            color: #fff; 
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-        }
+        body { background-color: var(--bg-color); color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
         /* --- 2. STICKY NAVIGATION --- */
         .top-nav-container {
@@ -33,66 +29,43 @@ permalink: /weddings
             padding: 20px 0; max-width: 1300px; margin: 0 auto; width: 90%;
         }
         .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; text-decoration: none; color: #fff; }
-        .nav-group a { 
-            color: #fff; text-decoration: none; font-size: 0.7rem; 
-            text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; margin-left: 30px;
-        }
 
-        /* --- 3. WEDDINGS CONTENT --- */
+        /* --- 3. THE MASONRY GRID --- */
         .container { max-width: 1300px; margin: 40px auto 100px; width: 90%; }
 
         .wedding-hero { 
-            width: 100%; 
-            aspect-ratio: 16 / 9; /* Exact 16x9 Hero */
-            object-fit: cover;
-            margin-bottom: 30px; 
-            display: block; 
+            width: 100%; aspect-ratio: 16 / 9; object-fit: cover; 
+            margin-bottom: 25px; display: block; 
         }
 
-        /* The Grid Layout */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns across */
-            gap: 15px;
-            /* This ensures items flow into empty spaces if possible */
-            grid-auto-flow: dense; 
+            grid-template-columns: repeat(3, 1fr); /* 3 Columns like the sketch */
+            gap: 20px;
         }
 
         .gallery-item {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            background: #222; /* Placeholder color before image loads */
-            transition: transform 0.4s ease;
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: opacity 0.3s ease;
         }
+        .gallery-item:hover { opacity: 0.8; }
 
-        .gallery-item:hover { transform: scale(1.02); }
-
-        /* SPECIFIC RATIO CLASSES */
-        .landscape { 
-            aspect-ratio: 16 / 9; 
-            grid-column: span 1; 
-        }
-
-        .portrait { 
+        /* MAPPING THE RATIOS */
+        .p9-16 { 
             aspect-ratio: 9 / 16; 
-            grid-row: span 2; /* Spans 2 rows to fit the height of the layout */
+            grid-row: span 2; /* Spans 2 rows to match the height of 2 landscape boxes */
         }
 
-        /* Hero Wide (Optional if you want a massive 16x9 middle section) */
-        .wide-landscape {
-            grid-column: span 2;
-            aspect-ratio: 16 / 9;
+        .l16-9 { 
+            aspect-ratio: 16 / 9; 
+            grid-row: span 1; 
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 900px) {
+        /* Responsive */
+        @media (max-width: 800px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-group { display: none; }
-        }
-        @media (max-width: 500px) {
-            .gallery-grid { grid-template-columns: 1fr; }
+            /* Reset spans for mobile so it doesn't break the flow */
+            .p9-16, .l16-9 { grid-row: auto; aspect-ratio: auto; height: 400px; }
         }
     </style>
 </head>
@@ -101,21 +74,14 @@ permalink: /weddings
     <div class="top-nav-container">
         <nav class="top-nav">
             <a href="/" class="logo">KŌPIKO</a>
-            <div class="nav-group">
-                <a href="/">home</a>
-                <a href="/weddings" style="opacity: 1; color: var(--accent-gold);">weddings</a>
-                <a href="/commercial">commercial</a>
-                <a href="/about">about us</a>
-            </div>
         </nav>
     </div>
 
     <div class="container">
-        <img src="wedding-hero.jpg" alt="Wedding Hero" class="wedding-hero">
+        <img src="wedding-hero.jpg" alt="Hero" class="wedding-hero">
 
         <div class="gallery-grid">
-            
-            <img src="w1.jpg" class="gallery-item portrait"> <img src="w2.jpg" class="gallery-item landscape"> <img src="w3.jpg" class="gallery-item landscape"> <img src="w4.jpg" class="gallery-item landscape"> <img src="w5.jpg" class="gallery-item portrait">  <img src="w6.jpg" class="gallery-item portrait">  <img src="w7.jpg" class="gallery-item landscape"> <img src="w8.jpg" class="gallery-item landscape"> <img src="w9.jpg" class="gallery-item wide-landscape"> <img src="w10.jpg" class="gallery-item portrait"> </div>
+            <img src="w1.jpg" class="gallery-item p9-16"> <img src="w2.jpg" class="gallery-item l16-9"> <img src="w3.jpg" class="gallery-item p9-16"> <img src="w4.jpg" class="gallery-item p9-16"> <img src="w5.jpg" class="gallery-item l16-9"> <img src="w6.jpg" class="gallery-item l16-9"> </div>
     </div>
 
 </body>
