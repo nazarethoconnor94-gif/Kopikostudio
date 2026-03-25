@@ -37,23 +37,25 @@ permalink: /weddings
         .nav-group a { color: #fff; text-decoration: none; font-size: 0.7rem; text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
         .nav-group a:hover, .nav-group a.active { opacity: 1; color: var(--accent-gold); }
 
-        /* --- 3. FULL IMAGE HERO (NO CROP) --- */
+        /* --- 3. THE CONTAINER (Locks Width) --- */
         .container { max-width: 1300px; margin: 0 auto 100px; width: 90%; }
 
+        /* --- 4. HERO SECTION (SHARP & B&W) --- */
         .hero-section {
             position: relative;
             width: 100%;
             margin-top: 40px;
             margin-bottom: 40px;
-            line-height: 0; /* Removes tiny gap under image */
+            line-height: 0; /* Removes gap under image */
         }
 
-        /* The actual photo - No more background-size: cover */
+        /* The main photo - Full Frame, No Crop */
         .hero-main-img {
             width: 100%;
-            height: auto; /* Keeps original proportions */
+            height: auto;
             display: block;
-            filter: blur(6px) brightness(0.7); /* Your requested blur */
+            /* UPDATED: Blur removed. Grayscale added. Subtly darkened for legibility. */
+            filter: grayscale(1) brightness(0.8);
         }
 
         /* Centered Bird & Text Overlay */
@@ -70,7 +72,9 @@ permalink: /weddings
         .bird-v2 { 
             width: 160px; 
             animation: floating 6s infinite ease-in-out; 
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.8));
+            /* soft gold glow for the bird against the B&W image */
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)) 
+                    drop-shadow(0 10px 30px rgba(0,0,0,0.8));
         }
 
         .hero-overlay h1 { 
@@ -79,11 +83,13 @@ permalink: /weddings
             letter-spacing: 15px; 
             font-weight: 700; 
             text-transform: uppercase;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+            color: #fff;
+            /* Heavy shadow to ensure white text pops on the sharp photo */
+            text-shadow: 0 4px 25px rgba(0,0,0,1);
             line-height: 1.2;
         }
 
-        /* --- 4. THE MASONRY GRID --- */
+        /* --- 5. THE MASONRY GRID --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
