@@ -3,4 +3,105 @@ permalink: /weddings
 ---
 <!DOCTYPE html>
 <html lang="en">
-...
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEDDINGS | KŌPIKO COLLECTIONS</title>
+    <style>
+        /* --- 1. CORE & RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { 
+            --bg-color: #2A2727; 
+            --accent-gold: #d4af37; 
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            color: #fff; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        /* --- 2. STICKY NAVIGATION --- */
+        .top-nav-container {
+            position: sticky; top: 0; z-index: 2000; 
+            background: rgba(42, 39, 39, 0.65);
+            backdrop-filter: blur(55px); -webkit-backdrop-filter: blur(55px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .top-nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 0; max-width: 1300px; margin: 0 auto; width: 90%;
+        }
+        .logo { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; text-decoration: none; color: #fff; }
+        .nav-group a { 
+            color: #fff; text-decoration: none; font-size: 0.7rem; 
+            text-transform: lowercase; letter-spacing: 2px; opacity: 0.6; margin-left: 30px;
+        }
+
+        /* --- 3. WEDDINGS CONTENT --- */
+        .container { max-width: 1300px; margin: 0 auto; width: 90%; padding: 40px 0 100px; }
+
+        /* Hero Image */
+        .wedding-hero { width: 100%; height: auto; margin-bottom: 40px; display: block; }
+
+        /* Masonry Grid Setup */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 150px; /* Base unit for row heights */
+            gap: 20px;
+        }
+
+        .gallery-item { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* Applying the Spans to match your sketch */
+        .landscape { grid-row: span 2; } /* 16x9 feel */
+        .portrait { grid-row: span 3; }  /* 9x16 feel */
+
+        /* Mobile Layout - Switch to 2 columns or 1 */
+        @media (max-width: 800px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-group { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav-container">
+        <nav class="top-nav">
+            <a href="/" class="logo">KŌPIKO</a>
+            <div class="nav-group">
+                <a href="/">home</a>
+                <a href="/weddings" style="opacity: 1; color: var(--accent-gold);">weddings</a>
+                <a href="/commercial">commercial</a>
+                <a href="/about">about us</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <img src="wedding-hero.jpg" alt="Wedding Hero" class="wedding-hero">
+
+        <div class="gallery-grid">
+            <img src="w1.jpg" class="gallery-item portrait">
+            <img src="w2.jpg" class="gallery-item landscape">
+            <img src="w3.jpg" class="gallery-item portrait">
+
+            <img src="w4.jpg" class="gallery-item portrait">
+
+            <img src="w5.jpg" class="gallery-item landscape">
+            <img src="w6.jpg" class="gallery-item landscape">
+            
+            <img src="w7.jpg" class="gallery-item portrait">
+            <img src="w8.jpg" class="gallery-item landscape">
+            <img src="w9.jpg" class="gallery-item portrait">
+
+            <img src="w10.jpg" class="gallery-item landscape">
+            <img src="w11.jpg" class="gallery-item portrait">
+            <img src="w12.jpg" class="gallery-item landscape">
+        </div>
+    </div>
+
+</body>
+</html>
