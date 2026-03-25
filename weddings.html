@@ -24,13 +24,9 @@ permalink: /weddings
 
         /* --- 2. STICKY NAVIGATION --- */
         .top-nav-container {
-            position: -webkit-sticky; 
-            position: sticky; 
-            top: 0; 
-            z-index: 2000; 
+            position: sticky; top: 0; z-index: 2000; 
             background: rgba(42, 39, 39, 0.9);
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .top-nav { 
@@ -51,12 +47,12 @@ permalink: /weddings
         /* --- 3. CONTAINER --- */
         .container { max-width: 1300px; margin: 0 auto 100px; width: 90%; }
 
-        /* --- 4. HERO SECTION (SHARP B&W + SHADOW) --- */
+        /* --- 4. HERO SECTION (DEEP SHADOW) --- */
         .hero-section {
             position: relative;
             width: 100%;
             margin-top: 40px;
-            margin-bottom: 60px; /* Space for the deep shadow */
+            margin-bottom: 80px; /* Space for the deep shadow */
         }
 
         .hero-main-img {
@@ -64,7 +60,7 @@ permalink: /weddings
             height: auto;
             display: block;
             background-color: #000;
-            /* Sharp, B&W, and the Home Page shadow style */
+            /* Sharp B&W with Heavy Home Page Shadow */
             filter: grayscale(1) brightness(0.7) drop-shadow(0 40px 80px rgba(0,0,0,0.9));
         }
 
@@ -78,7 +74,6 @@ permalink: /weddings
             z-index: 10;
         }
 
-        /* Sized to 220px to match Home Page */
         .bird-v2 { 
             width: 220px; 
             animation: floating 6s infinite ease-in-out; 
@@ -91,27 +86,29 @@ permalink: /weddings
             letter-spacing: 15px; 
             font-weight: 700; 
             text-transform: uppercase;
-            text-shadow: 
-                0px 0px 20px rgba(0,0,0,1), 
-                0px 0px 40px rgba(0,0,0,1), 
-                0px 0px 70px rgba(0,0,0,0.9);
+            text-shadow: 0px 0px 20px rgba(0,0,0,1), 0px 0px 40px rgba(0,0,0,1);
         }
 
-        /* --- 5. MASONRY GALLERY (THE PUZZLE) --- */
+        /* --- 5. MASONRY GALLERY (ALL IMAGES WITH SHADOWS) --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 40px; /* Increased gap slightly to show off the shadows */
         }
 
         .gallery-item {
             width: 100%; height: 100%; object-fit: cover; display: block;
-            filter: brightness(0.9) drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+            background-color: #000;
+            /* Matched shadow for every photo */
+            filter: brightness(0.9) drop-shadow(0 30px 40px rgba(0,0,0,0.85));
             transition: 0.5s ease;
         }
-        .gallery-item:hover { transform: scale(1.01); filter: brightness(1); }
+        .gallery-item:hover { 
+            transform: scale(1.02); 
+            filter: brightness(1) drop-shadow(0 40px 50px rgba(0,0,0,1)); 
+        }
 
-        /* Ratios: Portrait spans 2 rows, Landscape spans 1 */
+        /* Ratio Spans for the "Puzzle" */
         .p9-16 { aspect-ratio: 9 / 16; grid-row: span 2; }
         .l16-9 { aspect-ratio: 16 / 9; grid-row: span 1; }
 
@@ -121,8 +118,7 @@ permalink: /weddings
             .nav-group { display: none; }
             .bird-v2 { width: 160px; }
             .hero-overlay h1 { font-size: 1.2rem; letter-spacing: 8px; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            /* On small mobile, reset ratios to simple vertical stack */
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .p9-16, .l16-9 { grid-row: auto; aspect-ratio: auto; height: 350px; }
         }
     </style>
@@ -150,14 +146,14 @@ permalink: /weddings
         </div>
 
         <div class="gallery-grid">
-            <img src="w1.jpg" class="gallery-item p9-16" alt="Wedding Portrait 1">
-            <img src="w5.jpg" class="gallery-item l16-9" alt="Wedding Landscape 1">
+            <img src="w1.jpg" class="gallery-item p9-16">
+            <img src="w5.jpg" class="gallery-item l16-9">
 
-            <img src="w2.jpg" class="gallery-item l16-9" alt="Wedding Landscape 2">
-            <img src="w4.jpg" class="gallery-item p9-16" alt="Wedding Portrait 2">
+            <img src="w2.jpg" class="gallery-item l16-9">
+            <img src="w4.jpg" class="gallery-item p9-16">
 
-            <img src="w3.jpg" class="gallery-item p9-16" alt="Wedding Portrait 3">
-            <img src="w6.jpg" class="gallery-item l16-9" alt="Wedding Landscape 3">
+            <img src="w3.jpg" class="gallery-item p9-16">
+            <img src="w6.jpg" class="gallery-item l16-9">
         </div>
     </div>
 
